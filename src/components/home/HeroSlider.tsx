@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguageStore } from "@/lib/store";
-import { t } from "@/lib/i18n";
 
 const slides = [
   {

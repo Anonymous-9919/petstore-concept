@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguageStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { Header } from "@/components/layout/Header";
@@ -12,7 +12,7 @@ import { TrustBadges } from "@/components/home/TrustBadges";
 import { HeroSlider } from "@/components/home/HeroSlider";
 import { ProductCard } from "@/components/product/ProductCard";
 import { CategoryCard } from "@/components/category/CategoryCard";
-import type { Product, Category } from "@/lib/types";
+import type { Product } from "@/lib/types";
 
 // Category display groups for homepage
 const categoryGroups = [
@@ -52,14 +52,11 @@ const categoryGroups = [
 
 export default function HomePage() {
   const lang = useLanguageStore((s) => s.lang);
-  const [products, setProducts] = useState<Product[]>([]);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     import("@/data/products.json").then((mod) => {
       const all = mod.default as Product[];
-      setProducts(all);
-      // Featured = first 8 with highest stock or random
       setFeaturedProducts(all.filter(p => p.stock_status === "instock").slice(0, 8));
     });
   }, []);

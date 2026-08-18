@@ -1,7 +1,5 @@
 import type { Product, Category, StoreSettings } from "./types";
 
-const API_BASE = process.env.NEXT_PUBLIC_WC_API_URL || "https://petstorekw.com/wp-json/wc/v3";
-
 // --- WooCommerce API Adapter ---
 // Future: Replace with real API calls when backend is ready
 

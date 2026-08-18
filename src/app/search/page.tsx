@@ -11,19 +11,13 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { ProductCard } from "@/components/product/ProductCard";
 import type { Product } from "@/lib/types";
 
-function SearchContent() {
+function SearchContent({ query }: { query: string }) {
   const lang = useLanguageStore((s) => s.lang);
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q") || "";
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!!query);
 
   useEffect(() => {
-    if (!query) {
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
+    if (!query) return;
     import("@/data/products.json").then((mod) => {
       const all = mod.default as Product[];
       const q = query.toLowerCase();
@@ -81,9 +75,16 @@ export default function SearchPage() {
       <AnnouncementBar />
       <Header />
       <Suspense fallback={<div className="flex-1 flex items-center justify-center">Loading...</div>}>
-        <SearchContent />
+        <SearchInner />
       </Suspense>
       <Footer />
     </div>
   );
+}
+
+function SearchInner() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q") || "";
+
+  return <SearchContent key={query} query={query} />;
 }

@@ -2,12 +2,11 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   Search,
   ShoppingCart,
   Heart,
-  User,
   Menu,
   X,
   ChevronDown,
@@ -16,7 +15,6 @@ import {
 } from "lucide-react";
 import { useLanguageStore, useThemeStore, useCartStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
-import { formatPrice } from "@/lib/utils";
 import type { MegaMenuItem } from "@/lib/types";
 
 const megaMenuData: MegaMenuItem[] = [
@@ -234,10 +232,10 @@ export function Header() {
   const setTheme = useThemeStore((s) => s.setTheme);
   const cartItems = useCartStore((s) => s.items);
   const totalItems = cartItems.reduce((sum, i) => sum + i.quantity, 0);
+  const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -245,22 +243,12 @@ export function Header() {
   const handleMouseEnter = useCallback((slug: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(slug);
-    setActiveSubmenu(null);
   }, []);
 
   const handleMouseLeave = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-      setActiveSubmenu(null);
     }, 150);
-  }, []);
-
-  const handleSubmenuEnter = useCallback((slug: string) => {
-    setActiveSubmenu(slug);
-  }, []);
-
-  const handleSubmenuLeave = useCallback(() => {
-    setActiveSubmenu(null);
   }, []);
 
   useEffect(() => {
@@ -272,7 +260,7 @@ export function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 
@@ -442,8 +430,6 @@ export function Header() {
                             <div
                               key={sub.slug}
                               className="mb-3"
-                              onMouseEnter={() => handleSubmenuEnter(sub.slug)}
-                              onMouseLeave={handleSubmenuLeave}
                             >
                               <Link
                                 href={`/category/${sub.slug === "food" || sub.slug === "accessories" || sub.slug === "healthcare" || sub.slug === "litter" || sub.slug === "offers" || sub.slug === "beds" || sub.slug === "travel" || sub.slug === "rabbit" || sub.slug === "hamster" || sub.slug === "reptile" || sub.slug === "cages" ? activeMegaData.subcategories.flatMap((s) => s.items).find((i) => i.slug.includes(sub.slug))?.slug || sub.slug : sub.slug}`}

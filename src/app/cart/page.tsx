@@ -11,7 +11,7 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 
 export default function CartPage() {
   const lang = useLanguageStore((s) => s.lang);
-  const { items, removeItem, updateQuantity, clearCart, totalPrice } = useCartStore();
+  const { items, removeItem, updateQuantity, totalPrice } = useCartStore();
   const total = totalPrice();
 
   return (
