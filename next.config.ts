@@ -5,21 +5,20 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tapcom-live.ams3.cdn.digitaloceanspaces.com",
-        pathname: "/media/**",
+        hostname: "petstorekw.com",
       },
       {
         protocol: "https",
-        hostname: "pub-*.r2.dev",
-        pathname: "/**",
+        hostname: "www.petstorekuwait.com",
+      },
+      {
+        protocol: "https",
+        hostname: "s3.me-south-1.amazonaws.com",
       },
     ],
+    formats: ["image/avif", "image/webp"],
   },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "10mb",
-    },
-  },
+  sassOptions: undefined,
 };
 
 export default nextConfig;

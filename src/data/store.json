@@ -1,0 +1,19 @@
+{
+  "name": "Pet Store",
+  "name_ar": "بت ستور",
+  "slogan": "Your Dependable partner in PetHood",
+  "slogan_ar": "شريكك الموثوق في عالم الحيوانات الأليفة",
+  "logo": "/assets/5deedc14df01.jpg",
+  "logo_ar": "/assets/a2604690bc60.jpg",
+  "currency": "KD",
+  "currency_symbol": "KD",
+  "currency_decimals": 3,
+  "phone": "+965 98805010",
+  "whatsapp": "+96598805010",
+  "email": "petstorekw@gmail.com",
+  "instagram": "https://www.instagram.com/petstore.kw",
+  "address": "Kuwait",
+  "address_ar": "الكويت",
+  "free_delivery_threshold": 10,
+  "delivery_charge": 1
+}

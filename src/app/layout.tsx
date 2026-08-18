@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
-import { Quicksand, Cairo } from "next/font/google";
-import { Providers } from "@/components/shared/providers";
 import "./globals.css";
-
-const quicksand = Quicksand({
-  subsets: ["latin"],
-  variable: "--font-quicksand",
-  display: "swap",
-});
-
-const cairo = Cairo({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-cairo",
-  display: "swap",
-});
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Pet Store Kuwait - Your Dependable Partner in PetHood",
+  title: {
+    default: "Pet Store | بت ستور - Kuwait's #1 Online Pet Store",
+    template: "%s | Pet Store | بت ستور",
+  },
   description:
-    "Pet Store Kuwait offers premium pet supplies, food, accessories and more. Delivery and pickup available across Kuwait.",
-  keywords: "pet store, kuwait, pet supplies, cat food, dog food, accessories",
+    "Kuwait's trusted online pet store offering premium pet food, accessories, and supplies for dogs, cats, birds, fish, and small pets. Free delivery on orders over KD 10.",
+  keywords: [
+    "pet store",
+    "pet food",
+    "dog food",
+    "cat food",
+    "pet accessories",
+    "Kuwait",
+    "متجر حيوانات",
+    "طعام حيوانات",
+  ],
   openGraph: {
-    title: "Pet Store Kuwait",
-    description: "Your Dependable Partner in PetHood",
-    type: "website",
+    title: "Pet Store | بت ستور",
+    description:
+      "Kuwait's trusted online pet store offering premium pet food, accessories, and supplies.",
+    url: "https://petstorekwt-concept.vercel.app",
+    siteName: "Pet Store | بت ستور",
     locale: "en_US",
-    alternateLocale: "ar_KW",
+    type: "website",
   },
 };
 
@@ -35,14 +36,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      dir="ltr"
-      className={`${quicksand.variable} ${cairo.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <body className="min-h-full flex flex-col">
-        <Providers>{children}</Providers>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
