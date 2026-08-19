@@ -173,6 +173,12 @@ body {
   align-items: center;
 }
 
+.header-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 .header-logo-text {
   font-size: 24px;
   font-weight: 800;
@@ -237,20 +243,8 @@ body {
 }
 .header-action-btn:hover { background-color: rgba(255,255,255,0.2); }
 
-.header-phone {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-inverse);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
 /* ============================================
    NAV BAR - PetCentral style
-   White text on dark bg, underline hover, NO chevrons
    ============================================ */
 .nav-bar {
   background-color: var(--color-bg-header);
@@ -266,6 +260,18 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.nav-phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-items {
@@ -419,6 +425,33 @@ body {
   object-position: center;
 }
 
+/* Hero Dots - bottom center */
+.hero-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hero-dot:hover {
+  border-color: rgba(255,255,255,0.9);
+}
+.hero-dot.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 /* ============================================
    BRANDS CAROUSEL - PetCentral style
    ============================================ */
@@ -426,8 +459,10 @@ body {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  padding: 12px 0;
+  padding: 12px 0 12px 4px;
+  padding-right: calc(16px + 4px);
   scrollbar-width: none;
+  scroll-padding-right: 16px;
 }
 .brands-carousel::-webkit-scrollbar { display: none; }
 
@@ -932,12 +967,12 @@ body {
 }
 
 /* ============================================
-   WHATSAPP FLOAT
+   WHATSAPP FLOAT - Bottom right, WhatsApp style
    ============================================ */
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
-  left: 24px;
+  right: 24px;
   z-index: 40;
   width: 56px;
   height: 56px;
@@ -982,7 +1017,7 @@ body {
 @media (max-width: 768px) {
   .header-main { height: 64px; gap: 8px; }
   .header-main .header-logo { flex: 1; justify-content: center; }
-  .header-logo-text { font-size: 18px; }
+  .header-logo-img { height: 36px; }
   .header-actions { gap: 4px; }
   .header-action-btn { width: 36px; height: 36px; }
   .announcement-bar { height: 36px; font-size: 12px; }
@@ -1006,6 +1041,6 @@ body {
 
 @media (max-width: 480px) {
   .header-main { height: 56px; }
-  .header-logo-text { font-size: 16px; }
+  .header-logo-img { height: 32px; }
   .product-carousel-item { width: 170px; }
 }

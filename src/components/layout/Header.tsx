@@ -49,6 +49,10 @@ export function Header() {
     setActiveMenu(slug);
   }, []);
 
+  const handleMouseEnterWithMenu = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  }, []);
+
   const handleMouseLeave = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
@@ -71,7 +75,7 @@ export function Header() {
         {/* Main Header Row - Orange bg with logo, search, icons */}
         <div className="page-container">
           <div className="header-main">
-            {/* Mobile menu toggle */}
+            {/* Mobile menu toggle - left corner */}
             <button
               className="md:hidden p-2 text-white"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -80,12 +84,12 @@ export function Header() {
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
-            {/* Logo - left side */}
+            {/* Logo - center on mobile, left on desktop */}
             <Link href="/" className="header-logo">
-              <span className="header-logo-text">PET STORE</span>
+              <img src="/assets/logo.jpg" alt="Pet Store" className="header-logo-img" />
             </Link>
 
-            {/* Search bar - center, pill-shaped */}
+            {/* Search bar - center, pill-shaped, hidden on mobile */}
             <form onSubmit={handleSearch} className="header-search hidden md:block relative">
               <input
                 type="text"
@@ -98,6 +102,15 @@ export function Header() {
               </button>
             </form>
 
+            {/* Mobile search - right side */}
+            <button
+              className="md:hidden header-action-btn"
+              aria-label="Search"
+              onClick={() => router.push("/search")}
+            >
+              <Search size={20} />
+            </button>
+
             {/* Actions - right side */}
             <div className="header-actions">
               {/* Language toggle - hidden on mobile */}
@@ -108,22 +121,13 @@ export function Header() {
                 {lang === "en" ? "عربي" : "EN"}
               </button>
 
-              {/* Mobile search */}
-              <button
-                className="md:hidden header-action-btn"
-                aria-label="Search"
-                onClick={() => router.push("/search")}
-              >
-                <Search size={20} />
-              </button>
-
-              {/* Wishlist */}
-              <Link href="/wishlist" className="header-action-btn" aria-label="Wishlist">
+              {/* Wishlist - desktop */}
+              <Link href="/wishlist" className="hidden md:flex items-center justify-center header-action-btn" aria-label="Wishlist">
                 <Heart size={20} />
               </Link>
 
-              {/* Cart */}
-              <Link href="/cart" className="header-action-btn relative" aria-label="Cart">
+              {/* Cart - desktop */}
+              <Link href="/cart" className="hidden md:flex items-center justify-center header-action-btn relative" aria-label="Cart">
                 <ShoppingCart size={20} />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-white text-[var(--color-primary)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -133,7 +137,7 @@ export function Header() {
               </Link>
 
               {/* Phone - desktop */}
-              <a href="tel:+96598805010" className="header-phone hidden lg:flex">
+              <a href="tel:+96598805010" className="hidden lg:flex items-center header-phone">
                 <Phone size={16} />
                 <span>{store.phone}</span>
               </a>
@@ -169,11 +173,21 @@ export function Header() {
                 {lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}
               </Link>
             </div>
+
+            {/* Phone number on nav bar - right side on desktop */}
+            <a href="tel:+96598805010" className="nav-phone">
+              <Phone size={14} />
+              <span>{store.phone}</span>
+            </a>
           </div>
 
           {/* Mega Menu - positioned relative to .nav-bar (full width) */}
           {activeMenu && activeMegaData && (
-            <div className="mega-menu">
+            <div
+              className="mega-menu"
+              onMouseEnter={handleMouseEnterWithMenu}
+              onMouseLeave={handleMouseLeave}
+            >
               <div className="mega-menu-inner">
                 <div className="mega-menu-columns">
                   {activeMegaData.subcategories.slice(0, 4).map((sub) => (
