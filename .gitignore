@@ -40,4 +40,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# temp files
+*.png
+*.md
+!README.md
+!PLAN.md
+.temp_petstore.html
+.playwright-mcp/
+supabase/
+vercel/
+github/
+nodejs/

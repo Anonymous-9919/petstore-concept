@@ -75,9 +75,28 @@ export interface MegaMenuItem {
   label: string;
   label_ar: string;
   slug: string;
-  pet_type: "dog" | "cat" | "bird" | "fish" | "small_pets" | "shop";
-  subcategories: { label: string; label_ar: string; slug: string; items: { label: string; label_ar: string; slug: string }[] }[];
+  pet_type: string;
+  subcategories: {
+    label: string;
+    label_ar: string;
+    slug: string;
+    items: { label: string; label_ar: string; slug: string }[];
+  }[];
   promo_image?: string;
+}
+
+export interface NavItem {
+  id: string;
+  label: string;
+  label_ar: string;
+  slug: string;
+  image?: string;
+  image_alt?: string;
+  subcategories: {
+    label: string;
+    label_ar: string;
+    items: { label: string; label_ar: string; slug: string }[];
+  }[];
 }
 
 export interface CartItem {
@@ -111,7 +130,7 @@ export interface StoreSettings {
   delivery_charge: number;
 }
 
-export type ThemeName = "blue" | "orange";
+export type ThemeName = "orange";
 export type LangCode = "en" | "ar";
 export type SortOption = "featured" | "price_asc" | "price_desc" | "newest" | "name_asc" | "name_desc";
 export type ViewMode = "grid" | "list";

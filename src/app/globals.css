@@ -1,40 +1,39 @@
 @import "tailwindcss";
 
 /* ============================================
-   THEME: Waves Blue (Default)
+   THEME: Pet Store Orange (Default & Only Theme)
    ============================================ */
-:root,
-.theme-blue {
-  --color-primary: #0891b2;
-  --color-primary-dark: #0e7490;
-  --color-primary-light: #22d3ee;
-  --color-primary-50: #ecfeff;
-  --color-primary-100: #cffafe;
-  --color-primary-200: #a5f3fc;
-  --color-primary-300: #67e8f9;
-  --color-primary-400: #22d3ee;
-  --color-primary-500: #06b6d4;
-  --color-primary-600: #0891b2;
-  --color-primary-700: #0e7490;
-  --color-primary-800: #155e75;
-  --color-primary-900: #164e63;
+:root {
+  --color-primary: #f97316;
+  --color-primary-dark: #ea580c;
+  --color-primary-light: #fb923c;
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #fed7aa;
+  --color-primary-300: #fdba74;
+  --color-primary-400: #fb923c;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-800: #9a3412;
+  --color-primary-900: #7c2d12;
 
-  --color-accent: #f59e0b;
-  --color-accent-dark: #d97706;
-  --color-accent-light: #fbbf24;
+  --color-accent: #fcd34d;
+  --color-accent-dark: #f59e0b;
+  --color-accent-light: #fde68a;
 
   --color-bg: #ffffff;
-  --color-bg-alt: #f8fafc;
+  --color-bg-alt: #fff7ed;
   --color-bg-card: #ffffff;
-  --color-bg-header: #0891b2;
-  --color-bg-footer: #164e63;
-  --color-bg-announcement: #0e7490;
+  --color-bg-header: #f97316;
+  --color-bg-footer: #7c2d12;
+  --color-bg-announcement: #ea580c;
 
   --color-text: #1e293b;
   --color-text-secondary: #64748b;
   --color-text-muted: #94a3b8;
   --color-text-inverse: #ffffff;
-  --color-text-link: #0891b2;
+  --color-text-link: #f97316;
 
   --color-border: #e2e8f0;
   --color-border-light: #f1f5f9;
@@ -43,7 +42,7 @@
   --color-success: #22c55e;
   --color-warning: #f59e0b;
 
-  --color-badge-new: #06b6d4;
+  --color-badge-new: #f97316;
   --color-badge-sale: #ef4444;
   --color-badge-hot: #f59e0b;
 
@@ -59,43 +58,12 @@
   --radius-full: 9999px;
 
   --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-ar: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', sans-serif;
-}
+  --font-ar: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', system-ui, sans-serif;
 
-/* ============================================
-   THEME: Pet Store Orange
-   ============================================ */
-.theme-orange {
-  --color-primary: #f97316;
-  --color-primary-dark: #ea580c;
-  --color-primary-light: #fb923c;
-  --color-primary-50: #fff7ed;
-  --color-primary-100: #ffedd5;
-  --color-primary-200: #fed7aa;
-  --color-primary-300: #fdba74;
-  --color-primary-400: #fb923c;
-  --color-primary-500: #f97316;
-  --color-primary-600: #ea580c;
-  --color-primary-700: #c2410c;
-  --color-primary-800: #9a3412;
-  --color-primary-900: #7c2d12;
-
-  --color-accent: #06b6d4;
-  --color-accent-dark: #0891b2;
-  --color-accent-light: #22d3ee;
-
-  --color-bg: #ffffff;
-  --color-bg-alt: #fff7ed;
-  --color-bg-card: #ffffff;
-  --color-bg-header: #f97316;
-  --color-bg-footer: #7c2d12;
-  --color-bg-announcement: #ea580c;
-
-  --color-text: #1e293b;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
-  --color-text-inverse: #ffffff;
-  --color-text-link: #f97316;
+  /* PetCentral-style mega menu */
+  --mega-menu-width: 640px;
+  --mega-menu-height: 320px;
+  --nav-underline-height: 2px;
 }
 
 /* ============================================
@@ -127,6 +95,100 @@ body {
 
 [dir="rtl"] .rtl-flip {
   transform: scaleX(-1);
+}
+
+/* ============================================
+   PETCENTRAL-STYLE NAVIGATION
+   ============================================ */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-underline:hover::after {
+  width: 100%;
+}
+
+.nav-underline-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-primary);
+}
+
+/* Mega menu dropdown - PetCentral style */
+.mega-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: var(--mega-menu-width);
+  background: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: 0 0 8px 8px;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.mega-menu-sidebar {
+  width: 320px;
+  padding: 20px 16px;
+}
+
+.mega-menu-sidebar .mega-group {
+  margin-bottom: 24px;
+}
+
+.mega-menu-sidebar .mega-group:last-child {
+  margin-bottom: 0;
+}
+
+.mega-group-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.mega-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mega-group-link {
+  display: block;
+  padding: 4px 0;
+  font-size: 14px;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mega-group-link:hover {
+  color: var(--color-primary);
+}
+
+.mega-menu-image {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  padding: 20px;
 }
 
 /* ============================================
@@ -213,6 +275,79 @@ body {
 }
 
 /* ============================================
+   CATEGORY CARD - Orange overlay style
+   ============================================ */
+.category-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 40%);
+}
+
+.category-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  color: white;
+  text-align: center;
+}
+
+.category-card-label h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.category-card-label p {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* ============================================
+   WHATSAPP BUTTON
+   ============================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #25d36e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* RTL WhatsApp position */
+[dir="rtl"] .whatsapp-float {
+  right: 24px;
+  left: auto;
+}
+
+/* ============================================
    SCROLLBAR
    ============================================ */
 ::-webkit-scrollbar {
@@ -251,6 +386,12 @@ body {
   to { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
@@ -261,6 +402,10 @@ body {
 
 .animate-slide-in-left {
   animation: slideInLeft 0.3s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
 }
 
 /* ============================================
@@ -285,4 +430,114 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+/* ============================================
+   HERO SLIDER - PetCentral style
+   ============================================ */
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 200px;
+  }
+  .hero-slide-img {
+    height: 200px;
+  }
+}
+
+/* ============================================
+   BRANDS CAROUSEL - PetCentral style
+   ============================================ */
+.brands-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 32px;
+  padding: 8px 0;
+  scrollbar-width: none;
+}
+
+.brands-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-logo {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 8px 12px;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: translateY(-2px);
+}
+
+.brand-logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.brand-logo:hover .brand-logo-text {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   PROMO BANNER
+   ============================================ */
+.promo-banner {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.promo-banner:hover {
+  transform: translateY(-2px);
+}
+
+.promo-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.promo-banner:hover .promo-banner-img {
+  transform: scale(1.03);
+}
+
+.promo-banner-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: 20px 16px 12px;
+}
+
+.promo-banner-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.promo-banner-text p {
+  font-size: 12px;
+  opacity: 0.8;
 }

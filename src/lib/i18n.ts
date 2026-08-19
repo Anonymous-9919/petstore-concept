@@ -80,6 +80,8 @@ const translations: Record<string, { en: string; ar: string }> = {
 
   // Home
   "home.shop_by_category": { en: "Shop by Category", ar: "تسوق حسب الفئة" },
+  "home.shop_by_brands": { en: "Shop by Popular Brands", ar: "تسوق حسب العلامات التجارية" },
+  "home.explore_categories": { en: "Explore Pet Food Categories", ar: "استكشف فئات طعام الحيوانات" },
   "home.featured_products": { en: "Featured Products", ar: "منتجات مميزة" },
   "home.view_all": { en: "View All", ar: "عرض الكل" },
   "home.trust_title": { en: "Why Shop With Us?", ar: "لماذا تتسوق معنا؟" },
@@ -93,6 +95,8 @@ const translations: Record<string, { en: string; ar: string }> = {
   "home.trust_secure_desc": { en: "Pay on delivery or online", ar: "ادفع عند التوصيل أو أونلاين" },
   "home.shop_dog": { en: "Shop Dog", ar: "تسوق للكلاب" },
   "home.shop_cat": { en: "Shop Cat", ar: "تسوق للقطط" },
+  "home.dog_food": { en: "Top Selling Dog Food", ar: "أفضل طعام كلاب يُباع" },
+  "home.cat_food": { en: "Top Selling Cat Food", ar: "أفضل طعام قطط يُباع" },
   "home.puppy_food": { en: "Puppy Food", ar: "طعام الجراء" },
   "home.adult_dog_food": { en: "Adult Dog Food", ar: "طعام كلاب بالغة" },
   "home.senior_dog_food": { en: "Senior Dog Food", ar: "طعام كلاب مسنّة" },
@@ -210,14 +214,15 @@ const translations: Record<string, { en: string; ar: string }> = {
 
   // Trust Badges
   "badge.support": { en: "24/7 Support", ar: "دعم 24/7" },
+  "badge.whatsapp_247": { en: "WhatsApp us anytime", ar: "تواصل معنا عبر واتساب" },
   "badge.free_delivery": { en: "Free Delivery", ar: "توصيل مجاني" },
+  "badge.free_delivery_desc": { en: "On orders over KD 10", ar: "للطلبات فوق 10 د.ك" },
   "badge.easy_returns": { en: "Easy Returns", ar: "مرتجعات سهلة" },
+  "badge.easy_returns_desc": { en: "Hassle-free returns", ar: "مرتجعات بدون تعقيد" },
   "badge.secure_payment": { en: "Secure Payment", ar: "دفع آمن" },
+  "badge.secure_payment_desc": { en: "Pay on delivery or online", ar: "ادفع عند التوصيل أو أونلاين" },
   "badge.pay_on_delivery": { en: "Pay on Delivery", ar: "الدفع عند التوصيل" },
-
-  // Theme
-  "theme.blue": { en: "Waves Blue", ar: "أزرق الأمواج" },
-  "theme.orange": { en: "Pet Store Orange", ar: "برتقالي متجر الحيوانات" },
+  "badge.pay_on_delivery_desc": { en: "Cash or card on delivery", ar: "نقداً أو بطاقة عند التوصيل" },
 
   // General
   "general.loading": { en: "Loading...", ar: "جاري التحميل..." },

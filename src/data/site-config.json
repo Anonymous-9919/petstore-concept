@@ -1,0 +1,16 @@
+{
+  "sections": [
+    { "id": "hero", "enabled": true, "order": 1 },
+    { "id": "brands", "enabled": true, "order": 2 },
+    { "id": "main_banner", "enabled": true, "order": 3 },
+    { "id": "categories", "enabled": true, "order": 4 },
+    { "id": "two_banners", "enabled": true, "order": 5 },
+    { "id": "dog_food_carousel", "enabled": true, "order": 6 },
+    { "id": "dog_age_banners", "enabled": true, "order": 7 },
+    { "id": "cat_food_carousel", "enabled": true, "order": 8 },
+    { "id": "cat_age_banners", "enabled": true, "order": 9 },
+    { "id": "accessory_banners", "enabled": true, "order": 10 }
+  ],
+  "default_theme": "orange",
+  "default_lang": "en"
+}

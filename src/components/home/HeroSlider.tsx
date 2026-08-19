@@ -5,88 +5,94 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguageStore } from "@/lib/store";
 
-const slides = [
-  {
-    id: 1,
-    title_en: "Premium Pet Food",
-    title_ar: "أعلاف حيوانات فاخرة",
-    subtitle_en: "Shop top brands for your furry friends",
-    subtitle_ar: "تسوق أفضل العلامات التجارية لأصدقائك",
-    cta_en: "Shop Now",
-    cta_ar: "تسوق الآن",
-    href: "/category/cat-dry-food",
-    gradient: "from-cyan-600 to-teal-700",
-    emoji: "🐕",
-  },
-  {
-    id: 2,
-    title_en: "New Arrivals",
-    title_ar: "وصل حديثاً",
-    subtitle_en: "Discover the latest in pet supplies",
-    subtitle_ar: "اكتشف أحدث مستلزمات الحيوانات",
-    cta_en: "Explore",
-    cta_ar: "استكشف",
-    href: "/category",
-    gradient: "from-orange-500 to-red-600",
-    emoji: "🐈",
-  },
-  {
-    id: 3,
-    title_en: "Special Offers",
-    title_ar: "عروض خاصة",
-    subtitle_en: "Save big on your pet's favorites",
-    subtitle_ar: "وفّر على مستلزمات حيوانك المفضلة",
-    cta_en: "View Deals",
-    cta_ar: "عرض العروض",
-    href: "/category/special-offer",
-    gradient: "from-violet-600 to-indigo-700",
-    emoji: "🐠",
-  },
-];
+interface Slide {
+  id: number;
+  title_en: string;
+  title_ar: string;
+  subtitle_en: string;
+  subtitle_ar: string;
+  cta_en: string;
+  cta_ar: string;
+  href: string;
+  image: string;
+}
+
+let cachedSlides: Slide[] | null = null;
+
+async function loadSlides(): Promise<Slide[]> {
+  if (cachedSlides) return cachedSlides;
+  const mod = await import("@/data/banners.json");
+  cachedSlides = mod.default.hero_slides;
+  return cachedSlides;
+}
 
 export function HeroSlider() {
   const lang = useLanguageStore((s) => s.lang);
   const [current, setCurrent] = useState(0);
+  const [slides, setSlides] = useState<Slide[]>([]);
 
   useEffect(() => {
+    loadSlides().then(setSlides);
+  }, []);
+
+  useEffect(() => {
+    if (slides.length === 0) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides]);
 
   const goTo = (idx: number) => setCurrent(idx);
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
   const next = () => setCurrent((c) => (c + 1) % slides.length);
 
+  if (slides.length === 0) {
+    return (
+      <div className="relative overflow-hidden bg-gray-200 animate-pulse" style={{ height: "280px" }}>
+        <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+          Loading...
+        </div>
+      </div>
+    );
+  }
+
   const slide = slides[current];
 
   return (
-    <div className="relative overflow-hidden">
-      <div
-        className={`bg-gradient-to-r ${slide.gradient} transition-all duration-700`}
-        style={{ minHeight: "280px" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 flex items-center">
-          <div className="flex-1 text-white">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-2 md:mb-3 leading-tight animate-fade-in">
-              {lang === "ar" ? slide.title_ar : slide.title_en}
-            </h1>
-            <p className="text-sm md:text-lg opacity-90 mb-4 md:mb-6 animate-fade-in">
-              {lang === "ar" ? slide.subtitle_ar : slide.subtitle_en}
-            </p>
-            <Link
-              href={slide.href}
-              className="inline-flex items-center gap-2 bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm md:text-base animate-fade-in"
-            >
-              {lang === "ar" ? slide.cta_ar : slide.cta_en}
-            </Link>
-          </div>
-          <div className="hidden md:flex items-center justify-center text-8xl lg:text-9xl opacity-20 select-none">
-            {slide.emoji}
+    <div className="relative overflow-hidden hero-slider">
+      {slides.map((s, idx) => (
+        <div
+          key={s.id}
+          className={`absolute inset-0 transition-opacity duration-700 ${idx === current ? "opacity-100" : "opacity-0"}`}
+        >
+          <img
+            src={s.image}
+            alt={lang === "ar" ? s.title_ar : s.title_en}
+            className="hero-slide-img"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/assets/placeholder-banner.jpg";
+            }}
+          />
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 flex items-center justify-center text-center text-white px-4">
+            <div className="max-w-2xl">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-2 md:mb-3 leading-tight">
+                {lang === "ar" ? s.title_ar : s.title_en}
+              </h1>
+              <p className="text-sm md:text-lg opacity-90 mb-4 md:mb-6">
+                {lang === "ar" ? s.subtitle_ar : s.subtitle_en}
+              </p>
+              <Link
+                href={s.href}
+                className="inline-flex items-center gap-2 bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm md:text-base"
+              >
+                {lang === "ar" ? s.cta_ar : s.cta_en}
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
 
       {/* Navigation arrows */}
       <button

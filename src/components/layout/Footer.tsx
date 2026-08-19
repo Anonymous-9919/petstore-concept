@@ -42,9 +42,11 @@ export function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <span className="text-sm font-bold" style={{ color: "var(--color-primary)" }}>PS</span>
-              </div>
+              <img
+                src="/assets/logo.png"
+                alt="Pet Store"
+                className="h-8 w-auto object-contain"
+              />
               <div className="font-bold text-base">PET STORE</div>
             </div>
             <p className="text-sm opacity-80 mb-4 leading-relaxed">{t("footer.about_text", lang)}</p>
