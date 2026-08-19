@@ -34,7 +34,7 @@ export function MainBanner() {
   return (
     <section className="py-4">
       <div className="page-container">
-        <Link href={banner.href} className="block">
+        <Link href={banner.href} className="block main-banner">
           <div className="promo-banner">
             <img
               src={banner.image}

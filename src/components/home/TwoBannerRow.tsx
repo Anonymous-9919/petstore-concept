@@ -34,7 +34,7 @@ export function TwoBannerRow() {
   return (
     <section className="py-4">
       <div className="page-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="two-promo-grid grid grid-cols-1 md:grid-cols-2 gap-4">
           {banners.map((banner) => (
             <Link key={banner.id} href={banner.href} className="block">
               <div className="promo-banner">

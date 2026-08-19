@@ -57,12 +57,12 @@
     "title_ar": "تخفيضات نولو الصيفية"
   },
   "category_banners": [
-    { "id": "cat1", "title_en": "Dog Food", "title_ar": "طعام الكلاب", "slug": "dog-dry-food", "image": "/assets/f3065c4d794b.jpg" },
-    { "id": "cat2", "title_en": "Dog Treats", "title_ar": "مكافآت الكلاب", "slug": "dog-treats", "image": "/assets/ae41631e64c8.jpg" },
-    { "id": "cat3", "title_en": "Cat Food", "title_ar": "طعام القطط", "slug": "cat-dry-food", "image": "/assets/c7fd71bf4b74.jpg" },
-    { "id": "cat4", "title_en": "Cat Treats", "title_ar": "مكافآت القطط", "slug": "cat-treats", "image": "/assets/4c833de33386.jpg" },
-    { "id": "cat5", "title_en": "Cat Litter", "title_ar": "تراب القطط", "slug": "cat-litter-and-boxes", "image": "/assets/2d36fa870d4a.jpg" },
-    { "id": "cat6", "title_en": "Special Offers", "title_ar": "عروض خاصة", "slug": "special-offer", "image": "/assets/d656136dadd3.jpg" }
+    { "id": "cat1", "title_en": "Dog Food", "title_ar": "طعام الكلاب", "slug": "dog-dry-food", "image": "/assets/cat-dog-food.png" },
+    { "id": "cat2", "title_en": "Dog Treats", "title_ar": "مكافآت الكلاب", "slug": "dog-treats", "image": "/assets/cat-dog-treats.png" },
+    { "id": "cat3", "title_en": "Cat Food", "title_ar": "طعام القطط", "slug": "cat-dry-food", "image": "/assets/cat-cat-food.png" },
+    { "id": "cat4", "title_en": "Cat Treats", "title_ar": "مكافآت القطط", "slug": "cat-treats", "image": "/assets/cat-cat-treats.png" },
+    { "id": "cat5", "title_en": "Cat Litter", "title_ar": "تراب القطط", "slug": "cat-litter-and-boxes", "image": "/assets/cat-cat-litter.png" },
+    { "id": "cat6", "title_en": "Special Offers", "title_ar": "عروض خاصة", "slug": "special-offer", "image": "/assets/cat-offers.png" }
   ],
   "two_promo_banners": [
     { "id": "promo1", "title_en": "Stella & Chewy's", "title_ar": "ستيلا آند تشويس", "href": "/collections/stella-chewys", "image": "/assets/pc-promo-stella.jpg" },

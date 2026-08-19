@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Slide {
   id: number;
@@ -40,10 +39,6 @@ export function HeroSlider() {
     return () => clearInterval(timer);
   }, [slides]);
 
-  const goTo = (idx: number) => setCurrent(idx);
-  const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
-  const next = () => setCurrent((c) => (c + 1) % slides.length);
-
   if (slides.length === 0) {
     return (
       <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
@@ -59,7 +54,7 @@ export function HeroSlider() {
       {slides.map((s, idx) => (
         <div
           key={s.id}
-          className={`hero-slide ${idx === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+          className={`hero-slide ${idx === current ? "active" : ""}`}
         >
           <img
             src={s.image}
@@ -68,34 +63,6 @@ export function HeroSlider() {
           />
         </div>
       ))}
-
-      {/* Navigation arrows */}
-      <button
-        onClick={prev}
-        className="hero-nav-btn left-4"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft size={24} />
-      </button>
-      <button
-        onClick={next}
-        className="hero-nav-btn right-4"
-        aria-label="Next slide"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Dots */}
-      <div className="hero-dots">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={`hero-dot ${i === current ? "active bg-white" : "bg-white/50"}`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
     </div>
   );
 }
