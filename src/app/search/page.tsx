@@ -24,7 +24,7 @@ function SearchContent({ query }: { query: string }) {
       const filtered = all.filter(
         (p) =>
           p.name.toLowerCase().includes(q) ||
-          (p as unknown as { ar_name?: string }).ar_name?.toLowerCase().includes(q) ||
+          p.ar_name?.toLowerCase().includes(q) ||
           p.description?.toLowerCase().includes(q) ||
           p.short_description?.toLowerCase().includes(q) ||
           p.categories?.some((c) => c.name.toLowerCase().includes(q) || c.slug.includes(q))

@@ -136,11 +136,8 @@ export function Header() {
                 )}
               </Link>
 
-              {/* Phone - desktop */}
-              <a href="tel:+96598805010" className="hidden lg:flex items-center header-phone">
-                <Phone size={16} />
-                <span>{store.phone}</span>
-              </a>
+              {/* Phone - desktop (REMOVED) */}
+
             </div>
           </div>
         </div>

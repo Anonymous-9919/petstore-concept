@@ -41,12 +41,15 @@ export interface ProductVariation {
 export interface Product {
   id: number;
   name: string;
+  ar_name?: string;
   slug: string;
   price: string;
   regular_price: string;
   sale_price: string;
   description: string;
+  ar_description?: string;
   short_description: string;
+  ar_short_description?: string;
   images: ProductImage[];
   categories: ProductCategory[];
   attributes: ProductAttribute[];

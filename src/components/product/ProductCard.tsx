@@ -32,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
       product_id: product.id,
       variation_id: 0,
       quantity: 1,
-      name: lang === "ar" ? (product as unknown as { ar_name?: string }).ar_name || product.name : product.name,
+      name: lang === "ar" ? product.ar_name || product.name : product.name,
       price: bestPrice,
       image: getProductImage(product),
     });
@@ -48,7 +48,7 @@ export function ProductCard({ product }: ProductCardProps) {
     }
   };
 
-  const name = lang === "ar" ? (product as unknown as { ar_name?: string }).ar_name || product.name : product.name;
+  const name = lang === "ar" ? product.ar_name || product.name : product.name;
 
   return (
     <Link href={`/product/${product.slug}`} className="group">

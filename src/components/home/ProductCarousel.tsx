@@ -22,11 +22,20 @@ export function ProductCarousel({ titleKey, collectionSlug, productCount = 8 }: 
   useEffect(() => {
     import("@/data/products.json").then((mod) => {
       const all = mod.default as Product[];
-      const filtered = all.filter(p => {
-        if (p.stock_status !== "instock") return false;
-        if (!collectionSlug) return true;
-        return p.categories?.some(c => c.slug === collectionSlug || c.slug.startsWith(collectionSlug.split("-")[0]));
-      }).slice(0, productCount);
+      const seenImages = new Set();
+      const filtered = all
+        .filter(p => {
+          if (p.stock_status !== "instock") return false;
+          if (!collectionSlug) return true;
+          return p.categories?.some(c => c.slug === collectionSlug || c.slug.startsWith(collectionSlug.split("-")[0]));
+        })
+        .filter(p => {
+          const imgSrc = p.images?.[0]?.src;
+          if (seenImages.has(imgSrc)) return false;
+          seenImages.add(imgSrc);
+          return true;
+        })
+        .slice(0, productCount);
       setProducts(filtered);
     });
   }, [collectionSlug, productCount]);

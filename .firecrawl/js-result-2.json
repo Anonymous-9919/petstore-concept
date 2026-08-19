@@ -1,0 +1,225 @@
+```json
+{
+  "container": {
+    "className": "image-size-auto big-slider-initialized",
+    "styles": {
+      "opacity": "1",
+      "position": "relative",
+      "transform": "none",
+      "transition": "height 0.3s ease-in-out",
+      "visibility": "visible",
+      "zIndex": "auto"
+    }
+  },
+  "slidesCount": 8,
+  "slides": [
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area active",
+      "styles": {
+        "opacity": "1",
+        "position": "absolute",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "2"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    },
+    {
+      "className": "clear-underline for-buttons__item--js slideshow hover-area",
+      "styles": {
+        "opacity": "0",
+        "position": "absolute",
+        "transform": "matrix(3, 0, 0, 3, 0, 0)",
+        "transition": "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+        "visibility": "visible",
+        "zIndex": "1"
+      }
+    }
+  ],
+  "arrowsCount": 2,
+  "arrows": [
+    {
+      "className": "ctrl__button ctrl__button--left",
+      "styles": {
+        "opacity": "1",
+        "position": "absolute",
+        "transform": "none",
+        "transition": "all",
+        "visibility": "visible",
+        "zIndex": "3"
+      }
+    },
+    {
+      "className": "ctrl__button ctrl__button--right",
+      "styles": {
+        "opacity": "1",
+        "position": "absolute",
+        "transform": "none",
+        "transition": "all",
+        "visibility": "visible",
+        "zIndex": "3"
+      }
+    }
+  ],
+  "dots": {
+    "containerClass": "big-slider__dots for-buttons--js unstyle-ul big-slider__dots-center mobile__navigation__hide",
+    "count": 8,
+    "items": [
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js active",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      },
+      {
+        "className": "big-slider__dots__item for-buttons__item--js",
+        "styles": {
+          "opacity": "1",
+          "position": "relative",
+          "transform": "none",
+          "transition": "opacity 0.3s",
+          "visibility": "visible",
+          "zIndex": "1"
+        }
+      }
+    ]
+  }
+}
+```

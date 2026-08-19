@@ -41,7 +41,7 @@ export function HeroSlider() {
 
   if (slides.length === 0) {
     return (
-      <div className="page-container pt-[40px] pb-4">
+    <div className="page-container pt-[160px] pb-4">
         <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
           <div className="absolute inset-0 flex items-center justify-center text-gray-400">
             Loading...
@@ -66,6 +66,18 @@ export function HeroSlider() {
             />
           </div>
         ))}
+
+        {/* Dots - bottom center */}
+        <div className="hero-dots">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              className={`hero-dot ${idx === current ? "active" : ""}`}
+              onClick={() => setCurrent(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

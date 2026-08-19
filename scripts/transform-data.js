@@ -87,30 +87,6 @@ const transformedProducts = srcProducts.map(p => {
       alt: p.name,
     });
   }
-  if (p.photo_thumb) {
-    images.push({
-      id: p.id + 1,
-      src: p.photo_thumb,
-      name: p.name + ' thumb',
-      alt: p.name,
-    });
-  }
-  if (p.photo_small) {
-    images.push({
-      id: p.id + 2,
-      src: p.photo_small,
-      name: p.name + ' small',
-      alt: p.name,
-    });
-  }
-  if (p.photo_medium) {
-    images.push({
-      id: p.id + 3,
-      src: p.photo_medium,
-      name: p.name + ' medium',
-      alt: p.name,
-    });
-  }
   // Add gallery images
   if (p.gallery && p.gallery.length > 0) {
     p.gallery.forEach((g, i) => {
@@ -149,12 +125,15 @@ const transformedProducts = srcProducts.map(p => {
   return {
     id: p.id,
     name: p.name,
+    ar_name: p.ar_name || p.name,
     slug: p.slug,
     price: price,
     regular_price: regular_price,
     sale_price: sale_price,
     description: p.description || '',
+    ar_description: p.ar_description || p.description || '',
     short_description: p.short_description || '',
+    ar_short_description: p.ar_short_description || p.short_description || '',
     images: images,
     categories: categories,
     attributes: attributes,

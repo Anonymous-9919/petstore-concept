@@ -72,10 +72,10 @@ function ProductInner({ slug }: { slug: string }) {
     );
   }
 
-  const name = lang === "ar" ? (product as unknown as { ar_name?: string }).ar_name || product.name : product.name;
-  const description = lang === "ar" ? (product as unknown as { ar_description?: string }).ar_description || product.description : product.description;
+  const name = lang === "ar" ? product.ar_name || product.name : product.name;
+  const description = lang === "ar" ? product.ar_description || product.description : product.description;
   const shortDesc = lang === "ar"
-    ? (product as unknown as { ar_short_description?: string }).ar_short_description || product.short_description
+    ? product.ar_short_description || product.short_description
     : product.short_description;
   const bestPrice = getBestPrice(product);
   const originalPrice = product.regular_price && parseFloat(product.regular_price) > parseFloat(bestPrice)
