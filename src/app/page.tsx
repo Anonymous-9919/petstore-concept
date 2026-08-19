@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { TrustBadges } from "@/components/home/TrustBadges";
 import { HeroSlider } from "@/components/home/HeroSlider";
 import { ShopByBrands } from "@/components/home/ShopByBrands";
 import { MainBanner } from "@/components/home/MainBanner";
@@ -24,9 +23,6 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Slider */}
         <HeroSlider />
-
-        {/* Trust Badges */}
-        <TrustBadges />
 
         {/* Shop by Popular Brands */}
         <ShopByBrands />

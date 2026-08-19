@@ -46,7 +46,7 @@ export function ProductCarousel({ titleKey, collectionSlug, productCount = 8 }: 
   if (products.length === 0) return null;
 
   return (
-    <section className="product-carousel-section">
+    <section className="section-spacing-medium">
       <div className="page-container">
         <div className="product-carousel-header">
           <h2 className="product-carousel-title">

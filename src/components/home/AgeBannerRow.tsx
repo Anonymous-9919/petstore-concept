@@ -40,7 +40,7 @@ export function AgeBannerRow({ type }: AgeBannerRowProps) {
   if (banners.length === 0) return null;
 
   return (
-    <section className="py-4">
+    <section className="section-spacing-small">
       <div className="page-container">
         <div className="age-banner-grid">
           {banners.map((banner) => (

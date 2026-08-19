@@ -41,28 +41,32 @@ export function HeroSlider() {
 
   if (slides.length === 0) {
     return (
-      <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
-        <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-          Loading...
+      <div className="page-container py-4">
+        <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
+          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+            Loading...
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="hero-slider">
-      {slides.map((s, idx) => (
-        <div
-          key={s.id}
-          className={`hero-slide ${idx === current ? "active" : ""}`}
-        >
-          <img
-            src={s.image}
-            alt={s.title_en || `Slide ${s.id}`}
-            className="hero-slide-img"
-          />
-        </div>
-      ))}
+    <div className="page-container py-4">
+      <div className="hero-slider">
+        {slides.map((s, idx) => (
+          <div
+            key={s.id}
+            className={`hero-slide ${idx === current ? "active" : ""}`}
+          >
+            <img
+              src={s.image}
+              alt={s.title_en || `Slide ${s.id}`}
+              className="hero-slide-img"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

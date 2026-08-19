@@ -1,12 +1,12 @@
 {
   "brands": [
-    { "id": 1, "name": "Nulo", "slug": "nulo" },
-    { "id": 2, "name": "Royal Canin", "slug": "royal-canin" },
-    { "id": 3, "name": "Primal", "slug": "primal" },
-    { "id": 4, "name": "Purina Pro Plan", "slug": "purina-pro-plan" },
-    { "id": 5, "name": "Stella & Chewy's", "slug": "stella-chewys" },
-    { "id": 6, "name": "Taste of the Wild", "slug": "taste-of-the-wild" },
-    { "id": 7, "name": "Inaba", "slug": "inaba" },
-    { "id": 8, "name": "Intersand", "slug": "intersand" }
+    { "id": 1, "name": "Nulo", "slug": "nulo", "image": "/assets/brand-nulo.png" },
+    { "id": 2, "name": "Royal Canin", "slug": "royal-canin", "image": "/assets/brand-royalcanin.png" },
+    { "id": 3, "name": "Primal", "slug": "primal", "image": "/assets/brand-primal.png" },
+    { "id": 4, "name": "Purina Pro Plan", "slug": "purina-pro-plan", "image": "/assets/brand-purinaproplan.png" },
+    { "id": 5, "name": "Stella & Chewy's", "slug": "stella-chewys", "image": "/assets/brand-stella.png" },
+    { "id": 6, "name": "Taste of the Wild", "slug": "taste-of-the-wild", "image": "/assets/brand-tasteofwild.png" },
+    { "id": 7, "name": "Inaba", "slug": "inaba", "image": "/assets/brand-inaba.png" },
+    { "id": 8, "name": "Intersand", "slug": "intersand", "image": "/assets/brand-intersand.png" }
   ]
 }

@@ -30,7 +30,7 @@ export function AccessoryBanners() {
   if (banners.length === 0) return null;
 
   return (
-    <section className="py-4">
+    <section className="section-spacing-small">
       <div className="page-container">
         <div className="accessory-banner-grid">
           {banners.map((banner) => (

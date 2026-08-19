@@ -141,7 +141,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* Navigation Bar - Dark bg with white text, hidden on mobile */}
+        {/* Navigation Bar - Same orange bg, white text, hidden on mobile */}
         <div className="nav-bar hidden md:block">
           <div className="nav-bar-inner">
             <div className="nav-items">

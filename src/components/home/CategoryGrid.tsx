@@ -33,10 +33,10 @@ export function CategoryGrid() {
   if (categories.length === 0) return null;
 
   return (
-    <section className="py-6">
+    <section className="section-spacing-small">
       <div className="page-container">
-        <div className="mb-5">
-          <h2 className="text-xl font-bold text-gray-900">
+        <div className="section-heading-container">
+          <h2 className="section-heading">
             {t("home.explore_categories", lang)}
           </h2>
         </div>

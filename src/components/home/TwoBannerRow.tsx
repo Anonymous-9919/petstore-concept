@@ -32,7 +32,7 @@ export function TwoBannerRow() {
   if (banners.length === 0) return null;
 
   return (
-    <section className="py-4">
+    <section className="section-spacing-small">
       <div className="page-container">
         <div className="two-promo-grid grid grid-cols-1 md:grid-cols-2 gap-4">
           {banners.map((banner) => (
