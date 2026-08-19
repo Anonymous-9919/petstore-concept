@@ -49,27 +49,21 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   const name = lang === "ar" ? (product as unknown as { ar_name?: string }).ar_name || product.name : product.name;
-  const shortDesc = lang === "ar"
-    ? (product as unknown as { ar_short_description?: string }).ar_short_description || product.short_description
-    : product.short_description;
 
   return (
     <Link href={`/product/${product.slug}`} className="group">
-      <div className="card relative">
+      <div className="product-card relative">
         {/* Badges */}
-        <div className="absolute top-2 left-2 z-10 flex flex-col gap-1">
+        <div className="product-card-badges">
           {discount > 0 && (
             <span className="badge badge-sale">-{discount}%</span>
-          )}
-          {product.on_sale && discount === 0 && (
-            <span className="badge badge-sale">{t("sort.featured", lang)}</span>
           )}
         </div>
 
         {/* Wishlist button */}
         <button
           onClick={handleWishlist}
-          className="absolute top-2 right-2 z-10 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-sm transition-all"
+          className="product-card-wishlist"
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
           <Heart
@@ -82,7 +76,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </button>
 
         {/* Image */}
-        <div className="aspect-square overflow-hidden bg-gray-50 p-3">
+        <div className="product-card-image">
           <img
             src={getProductImage(product)}
             alt={name}
@@ -92,27 +86,22 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-3">
+        <div className="product-card-content">
           {/* Category */}
           {product.categories && product.categories.length > 0 && (
-            <p className="text-[10px] uppercase tracking-wider mb-1" style={{ color: "var(--color-text-muted)" }}>
+            <p className="product-card-category">
               {product.categories[0].name}
             </p>
           )}
 
           {/* Name */}
-          <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 mb-1 group-hover:text-[var(--color-primary)] transition-colors">
+          <h3 className="product-card-name group-hover:text-[var(--color-primary)] transition-colors">
             {name}
           </h3>
 
-          {/* Short description */}
-          {shortDesc && (
-            <p className="text-xs text-gray-500 line-clamp-1 mb-2">{truncate(stripHtml(shortDesc), 50)}</p>
-          )}
-
           {/* Rating */}
           {parseFloat(product.average_rating) > 0 && (
-            <div className="flex items-center gap-1 mb-1">
+            <div className="product-card-rating">
               <div className="flex items-center">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
@@ -131,21 +120,21 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* Price */}
-          <div className="flex items-center gap-2">
-            <span className="text-base font-bold" style={{ color: "var(--color-primary)" }}>
+          <div className="product-card-price">
+            <span className="product-card-price-current">
               {formatPrice(bestPrice, "KD", 3)}
             </span>
             {originalPrice && (
-              <span className="text-xs text-gray-400 line-through">
+              <span className="product-card-price-original">
                 {formatPrice(originalPrice, "KD", 3)}
               </span>
             )}
           </div>
 
-          {/* Add to Cart */}
+          {/* Add to Cart - Orange button matching PetCentral */}
           <button
             onClick={handleAddToCart}
-            className="w-full mt-3 py-2 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-1"
+            className="product-card-cart-btn mt-auto"
             style={{
               backgroundColor: "var(--color-primary)",
               color: "var(--color-text-inverse)",

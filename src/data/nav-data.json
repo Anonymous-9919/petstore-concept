@@ -30,11 +30,21 @@
           { "label": "Collar & Leashes", "label_ar": "رهنات وحبال", "slug": "dog-collar-leashes" },
           { "label": "Grooming", "label_ar": "العناية", "slug": "dog-grooming" },
           { "label": "Carrier & Travel", "label_ar": "حقائب سفر", "slug": "dog-carrier-travel" },
-          { "label": "Calming", "label_ar": "تهدئة", "slug": "dog-calming" },
+          { "label": "Dog Calming", "label_ar": "تهدئة", "slug": "dog-calming" },
           { "label": "Cleaning & Potty", "label_ar": "نظافة وتدريب", "slug": "dog-cleaning-potty" },
           { "label": "Health & Hygiene", "label_ar": "صحة ونظافة", "slug": "dog-health-hygiene" },
           { "label": "Training", "label_ar": "تدريب", "slug": "dog-training" },
-          { "label": "Toys", "label_ar": "ألعاب", "slug": "dog-toys" }
+          { "label": "Tethering", "label_ar": "ربط", "slug": "dog-tethering" },
+          { "label": "Stain & Odour Remover", "label_ar": "مزيل بقع وروائح", "slug": "dog-cat-stain-odour-remover" },
+          { "label": "Diapers & Wraps", "label_ar": "حفاضات ولفائف", "slug": "dog-diapers-wraps" },
+          { "label": "Poop Bag", "label_ar": "أكياس براز", "slug": "poop-bag" }
+        ]},
+        { "label": "Toys", "label_ar": "ألعاب", "items": [
+          { "label": "Rubber Toys", "label_ar": "ألعاب مطاطية", "slug": "dog-rubber-toys" },
+          { "label": "Tug & Rope Toys", "label_ar": "ألعاب شد وحبال", "slug": "tug-rope-toys" },
+          { "label": "Plush & Fabric Toys", "label_ar": "ألعاب قماش وفرو", "slug": "plush-fabric-toys" },
+          { "label": "Chew Toys", "label_ar": "ألعاب قضم", "slug": "chew-toys" },
+          { "label": "Tennis Balls", "label_ar": "كرات التنس", "slug": "tennis-ball" }
         ]}
       ]
     },
@@ -91,16 +101,16 @@
           { "label": "Frozen Food", "label_ar": "طعام مجمد", "slug": "fish-frozen-food" },
           { "label": "Dry Food", "label_ar": "طعام جاف", "slug": "fish-dry-food" },
           { "label": "Brine Shrimp", "label_ar": "روبيان الملح", "slug": "brine-shrimp" },
-          { "label": "Betta", "label_ar": "سمك الماكريل", "slug": "betta" },
-          { "label": "Cichild", "label_ar": "سمك الزعانف", "slug": "cichild" },
+          { "label": "Betta", "label_ar": "سمك البتا", "slug": "betta" },
+          { "label": "Cichlid", "label_ar": "سمك الزعانف", "slug": "cichild" },
           { "label": "Koi & Pond Fish", "label_ar": "سمك الكoi والبركين", "slug": "koi-pond-fish" },
           { "label": "Turtle", "label_ar": "سلحفاة", "slug": "turtle-food" }
         ]},
         { "label": "Supplies", "label_ar": "الإمدات", "items": [
           { "label": "Aquarium Supplies", "label_ar": "مستلزمات أكواريوم", "slug": "aquarium-supplies" },
           { "label": "Saltwater Minerals", "label_ar": "معادن مياه مالحة", "slug": "salt-water" },
-          { "label": "Led Lighting", "label_ar": "إضاءة LED", "slug": "led-lighting" },
-          { "label": "Water Filteration", "label_ar": "تصفية الماء", "slug": "water-filters" }
+          { "label": "LED Lighting", "label_ar": "إضاءة LED", "slug": "led-lighting" },
+          { "label": "Water Filtration", "label_ar": "تصفية الماء", "slug": "water-filters" }
         ]}
       ]
     },

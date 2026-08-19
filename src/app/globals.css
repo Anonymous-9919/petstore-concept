@@ -26,16 +26,16 @@
   --color-bg-alt: #fff7ed;
   --color-bg-card: #ffffff;
   --color-bg-header: #f97316;
-  --color-bg-footer: #7c2d12;
-  --color-bg-announcement: #ea580c;
+  --color-bg-footer: #050505;
+  --color-bg-announcement: #ffffff;
 
-  --color-text: #1e293b;
+  --color-text: #050505;
   --color-text-secondary: #64748b;
   --color-text-muted: #94a3b8;
   --color-text-inverse: #ffffff;
   --color-text-link: #f97316;
 
-  --color-border: #e2e8f0;
+  --color-border: #eae5e5;
   --color-border-light: #f1f5f9;
 
   --color-sale: #ef4444;
@@ -57,13 +57,19 @@
   --radius-xl: 1rem;
   --radius-full: 9999px;
 
-  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Poppins', 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-ar: 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', system-ui, sans-serif;
 
-  /* PetCentral-style mega menu */
-  --mega-menu-width: 640px;
-  --mega-menu-height: 320px;
-  --nav-underline-height: 2px;
+  /* PetCentral-accurate measurements */
+  --page-max-width: 1590px;
+  --page-padding: 20px;
+  --hero-height: 479px;
+  --hero-height-mobile: 200px;
+  --announcement-height: 41px;
+  --header-main-height: 110px;
+  --nav-height: 42px;
+  --product-card-width: 241px;
+  --product-card-height: 453px;
 }
 
 /* ============================================
@@ -98,13 +104,206 @@ body {
 }
 
 /* ============================================
-   PETCENTRAL-STYLE NAVIGATION
+   PAGE WIDTH - PetCentral: max-width 1590px, padding 20px
    ============================================ */
-.nav-underline {
-  position: relative;
+.page-container {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
 }
 
-.nav-underline::after {
+/* ============================================
+   ANNOUNCEMENT BAR - PetCentral style
+   ~41px height, no bg, rotating text with pipe separators
+   ============================================ */
+.announcement-bar {
+  width: 100%;
+  height: var(--announcement-height);
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  background-color: var(--color-bg-announcement);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.announcement-bar-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.announcement-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   HEADER - PetCentral style
+   Orange bg, white text, ~151px total
+   ============================================ */
+.site-header {
+  background-color: var(--color-bg-header);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-main {
+  height: var(--header-main-height);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-text-inverse);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.header-search {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.header-search input {
+  width: 100%;
+  height: 46px;
+  padding: 0 45px 0 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  color: var(--color-text);
+  background: #ffffff;
+  transition: box-shadow 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.header-search input::placeholder {
+  color: #94a3b8;
+}
+
+.header-search input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.header-search button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 46px;
+  width: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-action-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--color-text-inverse);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.header-action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.header-phone:hover {
+  opacity: 0.9;
+}
+
+/* ============================================
+   NAVIGATION BAR - PetCentral style
+   Dark bg for nav, white text, underline on hover
+   ============================================ */
+.nav-bar {
+  background-color: var(--color-text);
+  height: var(--nav-height);
+}
+
+.nav-bar-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 100%;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -115,205 +314,861 @@ body {
   transition: width 0.3s ease;
 }
 
-.nav-underline:hover::after {
+.nav-item:hover::after {
   width: 100%;
 }
 
-.nav-underline-active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-primary);
-}
-
-/* Mega menu dropdown - PetCentral style */
-.mega-menu-dropdown {
+/* ============================================
+   MEGA MENU - PetCentral pixel-perfect
+   Full width, white bg, shadow, 4 cols + image
+   ============================================ */
+.mega-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  width: var(--mega-menu-width);
+  right: 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   background: #ffffff;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--color-border);
-  border-radius: 0 0 8px 8px;
+  box-shadow: rgba(22, 19, 69, 0.13) 0px 4px 20px 0px;
   z-index: 100;
   animation: fadeIn 0.2s ease-out;
+  padding: 2px 0 27px;
 }
 
-.mega-menu-sidebar {
-  width: 320px;
-  padding: 20px 16px;
+.mega-menu-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  display: flex;
 }
 
-.mega-menu-sidebar .mega-group {
-  margin-bottom: 24px;
+.mega-menu-columns {
+  flex: 1;
+  display: flex;
+  gap: 0;
 }
 
-.mega-menu-sidebar .mega-group:last-child {
-  margin-bottom: 0;
+.mega-menu-col {
+  flex: 0 0 20%;
+  padding: 0 10px;
 }
 
-.mega-group-title {
-  font-size: 13px;
+.mega-menu-col-title {
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #1e293b;
-  margin-bottom: 10px;
-}
-
-.mega-group-items {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.mega-group-link {
+  color: var(--color-text);
+  margin-top: 18px;
+  margin-bottom: 0;
+  padding-bottom: 0;
   display: block;
-  padding: 4px 0;
-  font-size: 14px;
-  color: #475569;
   text-decoration: none;
+  line-height: 1.3;
+}
+
+.mega-menu-col-title:hover {
+  color: var(--color-primary);
+}
+
+.mega-menu-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-menu-col li {
+  margin: 0;
+}
+
+.mega-menu-col li a {
+  display: block;
+  padding: 11px 0 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-text);
+  text-decoration: none;
+  line-height: 1.3;
   transition: color 0.2s ease;
 }
 
-.mega-group-link:hover {
+.mega-menu-col li a:hover {
   color: var(--color-primary);
 }
 
 .mega-menu-image {
-  width: 280px;
-  height: 280px;
-  object-fit: contain;
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
+  gap: 12px;
+}
+
+.mega-menu-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.mega-menu-image .mega-shop-now {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  background: var(--color-primary);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.mega-menu-image .mega-shop-now:hover {
+  background: var(--color-primary-dark);
 }
 
 /* ============================================
-   COMPONENT STYLES
+   HERO SLIDER - PetCentral style
+   479px height, full-width, image-only, dot pagination
    ============================================ */
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
-  padding: 0.625rem 1.5rem;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-outline {
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  padding: 0.625rem 1.5rem;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
-}
-
-.card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.badge-sale {
-  background-color: var(--color-badge-sale);
-  color: white;
-}
-
-.badge-new {
-  background-color: var(--color-badge-new);
-  color: white;
-}
-
-.badge-hot {
-  background-color: var(--color-badge-hot);
-  color: white;
-}
-
-/* ============================================
-   CATEGORY CARD - Orange overlay style
-   ============================================ */
-.category-card {
+.hero-slider {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all 0.3s ease;
+  height: var(--hero-height);
 }
 
-.category-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.category-card-overlay {
+.hero-slide {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 40%);
+  transition: opacity 0.7s ease;
 }
 
-.category-card-label {
+.hero-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-slide-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 16px;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot.active {
+  width: 24px;
+  border-radius: 5px;
+}
+
+.hero-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.hero-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: var(--hero-height-mobile);
+  }
+}
+
+/* ============================================
+   TRUST BADGES - PetCentral style
+   Horizontal scrollable carousel
+   ============================================ */
+.trust-badges {
+  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+  background: #ffffff;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.trust-badge-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.trust-badge-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.trust-badge-desc {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+/* ============================================
+   BRANDS CAROUSEL - PetCentral style
+   Clean logos, no headings, circular
+   ============================================ */
+.brands-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding: 16px 0;
+  scrollbar-width: none;
+  align-items: center;
+}
+
+.brands-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-logo {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 8px 12px;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: translateY(-2px);
+}
+
+.brand-logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.brand-logo:hover .brand-logo-text {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   PROMO BANNER - PetCentral style
+   ============================================ */
+.promo-banner {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.promo-banner:hover {
+  transform: translateY(-2px);
+}
+
+.promo-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.promo-banner:hover .promo-banner-img {
+  transform: scale(1.03);
+}
+
+.promo-banner-text {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
   color: white;
-  text-align: center;
+  padding: 20px 16px 12px;
 }
 
-.category-card-label h3 {
+.promo-banner-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.promo-banner-text p {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ============================================
+   CATEGORY GRID - PetCentral style
+   6 cards in a row, circular images
+   ============================================ */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.category-card {
+  position: relative;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
+.category-card-circle {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.category-card:hover .category-card-circle {
+  border-color: var(--color-primary);
+}
+
+.category-card-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-card-circle img {
+  transform: scale(1.1);
+}
+
+.category-card-label {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   PRODUCT CAROUSEL - PetCentral style
+   Horizontal scrollable grid
+   ============================================ */
+.product-carousel-section {
+  padding: 24px 0;
+}
+
+.product-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.product-carousel-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.product-carousel-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.product-carousel-link:hover {
+  text-decoration: underline;
+}
+
+.product-carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.product-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.product-carousel-item {
+  flex-shrink: 0;
+  width: var(--product-card-width);
+}
+
+/* ============================================
+   PRODUCT CARD - PetCentral style
+   ============================================ */
+.product-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: var(--product-card-height);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.product-card-badges {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-card-wishlist {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-card-wishlist:hover {
+  background: white;
+}
+
+.product-card-image {
+  position: relative;
+  aspect-ratio: 600 / 600;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 12px;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card-image img {
+  transform: scale(1.05);
+}
+
+.product-card-content {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-category {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.product-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-name:hover {
+  color: var(--color-primary);
+}
+
+.product-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.product-card-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.product-card-price-current {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.product-card-price-original {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.product-card-cart-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.product-card-cart-btn:hover {
+  opacity: 0.9;
+}
+
+/* ============================================
+   BADGES - Product card badges
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.badge-sale {
+  background: var(--color-badge-sale);
+  color: white;
+}
+
+.badge-new {
+  background: var(--color-badge-new);
+  color: white;
+}
+
+.badge-hot {
+  background: var(--color-badge-hot);
+  color: white;
+}
+
+/* ============================================
+   AGE BANNER ROW - PetCentral style
+   3-column grid, 235px height
+   ============================================ */
+.age-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.age-banner-grid .promo-banner {
+  height: 235px;
+}
+
+.age-banner-grid .promo-banner-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .age-banner-grid {
+    grid-template-columns: 1fr;
+  }
+  .age-banner-grid .promo-banner {
+    height: 180px;
+  }
+}
+
+/* ============================================
+   ACCESSORY BANNERS - PetCentral style
+   2-column grid, 253px height
+   ============================================ */
+.accessory-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.accessory-banner-grid .promo-banner {
+  height: 253px;
+}
+
+.accessory-banner-grid .promo-banner-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .accessory-banner-grid {
+    grid-template-columns: 1fr;
+  }
+  .accessory-banner-grid .promo-banner {
+    height: 180px;
+  }
+}
+
+/* ============================================
+   FOOTER - PetCentral style
+   Near-black bg, multi-column
+   ============================================ */
+.site-footer {
+  background-color: var(--color-bg-footer);
+  color: var(--color-text-inverse);
+}
+
+.footer-newsletter {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-newsletter-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 32px var(--page-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  width: 400px;
+}
+
+.footer-newsletter-input {
+  flex: 1;
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text);
+  background: white;
+}
+
+.footer-newsletter-input:focus {
+  outline: none;
+}
+
+.footer-newsletter-btn {
+  height: 44px;
+  padding: 0 24px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-newsletter-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.footer-main {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 40px var(--page-padding);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-about {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer-about-text {
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.footer-social a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-column h4 {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
 }
 
-.category-card-label p {
-  font-size: 11px;
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  font-size: 14px;
   opacity: 0.8;
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.2s ease;
+}
+
+.footer-column a:hover {
+  opacity: 1;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 16px var(--page-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-newsletter-form {
+    width: 100%;
+  }
+  .footer-newsletter-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================
@@ -341,7 +1196,6 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* RTL WhatsApp position */
 [dir="rtl"] .whatsapp-float {
   right: 24px;
   left: auto;
@@ -433,111 +1287,104 @@ body {
 }
 
 /* ============================================
-   HERO SLIDER - PetCentral style
+   PURPLE→ORANGE FILTER
+   Shifts purple branding from PetCentral to orange
    ============================================ */
-.hero-slider {
-  position: relative;
-  overflow: hidden;
-  height: 280px;
+.filter-purple-to-orange {
+  filter: hue-rotate(-240deg) saturate(1.3);
 }
 
-.hero-slide-img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  object-position: center;
-}
-
+/* ============================================
+   MOBILE RESPONSIVE - Comprehensive breakpoints
+   ============================================ */
 @media (max-width: 768px) {
-  .hero-slider {
-    height: 200px;
+  /* Header mobile */
+  .header-main {
+    height: 64px;
+    gap: 8px;
   }
-  .hero-slide-img {
-    height: 200px;
+
+  .header-logo-text {
+    font-size: 18px;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .header-action-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Announcement mobile */
+  .announcement-bar {
+    height: 36px;
+    font-size: 12px;
+  }
+
+  .announcement-text {
+    font-size: 12px;
+  }
+
+  /* Trust badges mobile */
+  .trust-badge-item {
+    padding: 10px 12px;
+    min-width: max-content;
+  }
+
+  .trust-badge-desc {
+    display: none;
+  }
+
+  /* Product cards mobile - allow smaller */
+  .product-carousel-item {
+    width: 200px;
+  }
+
+  /* Product card mobile sizing */
+  .product-card {
+    height: auto;
+    min-height: 380px;
+  }
+
+  .product-card-image {
+    aspect-ratio: 1;
+  }
+
+  /* Promo banner mobile */
+  .promo-banner {
+    border-radius: 8px;
+  }
+
+  /* Footer mobile */
+  .footer-copyright-inner {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  /* Brands carousel mobile */
+  .brands-carousel {
+    gap: 16px;
+    padding: 12px 0;
   }
 }
 
-/* ============================================
-   BRANDS CAROUSEL - PetCentral style
-   ============================================ */
-.brands-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 32px;
-  padding: 8px 0;
-  scrollbar-width: none;
-}
+@media (max-width: 480px) {
+  .header-main {
+    height: 56px;
+  }
 
-.brands-carousel::-webkit-scrollbar {
-  display: none;
-}
+  .header-logo-text {
+    font-size: 16px;
+  }
 
-.brand-logo {
-  flex-shrink: 0;
-  text-align: center;
-  padding: 8px 12px;
-  transition: transform 0.2s ease;
-}
+  .product-carousel-item {
+    width: 170px;
+  }
 
-.brand-logo:hover {
-  transform: translateY(-2px);
-}
-
-.brand-logo-text {
-  font-size: 18px;
-  font-weight: 600;
-  color: #64748b;
-  white-space: nowrap;
-  opacity: 0.7;
-}
-
-.brand-logo:hover .brand-logo-text {
-  opacity: 1;
-  color: var(--color-primary);
-}
-
-/* ============================================
-   PROMO BANNER
-   ============================================ */
-.promo-banner {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.2s ease;
-}
-
-.promo-banner:hover {
-  transform: translateY(-2px);
-}
-
-.promo-banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.promo-banner:hover .promo-banner-img {
-  transform: scale(1.03);
-}
-
-.promo-banner-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-  color: white;
-  padding: 20px 16px 12px;
-}
-
-.promo-banner-text h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.promo-banner-text p {
-  font-size: 12px;
-  opacity: 0.8;
+  .product-card {
+    min-height: 340px;
+  }
 }

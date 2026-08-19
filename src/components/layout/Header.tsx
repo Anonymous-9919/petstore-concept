@@ -9,6 +9,7 @@ import {
   Heart,
   Menu,
   X,
+  Phone,
 } from "lucide-react";
 import { useLanguageStore, useCartStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
@@ -66,12 +67,13 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50" style={{ backgroundColor: "var(--color-bg-header)" }}>
-        <div className="max-w-7xl mx-auto px-3 md:px-6">
-          <div className="flex items-center justify-between h-12 md:h-14 gap-3">
+      <header className="site-header">
+        {/* Main Header Row - Orange bg with logo, search, icons */}
+        <div className="page-container">
+          <div className="header-main">
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden text-[var(--color-text-inverse)] p-1"
+              className="md:hidden p-2 text-white"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
@@ -79,153 +81,145 @@ export function Header() {
             </button>
 
             {/* Logo - left side */}
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <img
-                src={store.logo || "/assets/logo.png"}
-                alt={store.name}
-                className="h-10 w-auto object-contain"
-              />
+            <Link href="/" className="header-logo">
+              <span className="header-logo-text">PET STORE</span>
             </Link>
 
-            {/* Search bar - middle */}
-            <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-4">
-              <div className="flex w-full">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search products, brands..."}
-                  className="flex-1 px-4 py-2 rounded-l-lg text-sm text-gray-900 bg-white border-0 focus:outline-none focus:ring-0"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-white/20 hover:bg-white/30 text-[var(--color-text-inverse)] rounded-r-lg transition-colors"
-                  aria-label="Search"
-                >
-                  <Search size={18} />
-                </button>
-              </div>
+            {/* Search bar - center, pill-shaped */}
+            <form onSubmit={handleSearch} className="header-search hidden md:block relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search......."}
+              />
+              <button type="submit" aria-label="Search">
+                <Search size={20} />
+              </button>
             </form>
 
             {/* Actions - right side */}
-            <div className="flex items-center gap-1 md:gap-3">
+            <div className="header-actions">
               {/* Language toggle */}
               <button
                 onClick={() => setLang(lang === "en" ? "ar" : "en")}
-                className="text-[var(--color-text-inverse)] text-xs font-semibold px-2 py-1 rounded border border-white/30 hover:bg-white/20 transition-colors"
+                className="text-xs font-semibold px-2 py-1 rounded border border-white/30 text-white hover:bg-white/20 transition-colors"
               >
                 {lang === "en" ? "عربي" : "EN"}
               </button>
 
               {/* Mobile search */}
               <button
-                className="md:hidden text-[var(--color-text-inverse)] p-1"
+                className="md:hidden header-action-btn"
                 aria-label="Search"
                 onClick={() => router.push("/search")}
               >
-                <Search size={22} />
+                <Search size={20} />
               </button>
 
               {/* Wishlist */}
-              <Link
-                href="/wishlist"
-                className="text-[var(--color-text-inverse)] p-1 relative"
-                aria-label="Wishlist"
-              >
-                <Heart size={22} />
+              <Link href="/wishlist" className="header-action-btn" aria-label="Wishlist">
+                <Heart size={20} />
               </Link>
 
               {/* Cart */}
-              <Link
-                href="/cart"
-                className="text-[var(--color-text-inverse)] p-1 relative"
-                aria-label="Cart"
-              >
-                <ShoppingCart size={22} />
+              <Link href="/cart" className="header-action-btn relative" aria-label="Cart">
+                <ShoppingCart size={20} />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-white text-[var(--color-primary)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}
               </Link>
+
+              {/* Phone - desktop */}
+              <a href="tel:+96598805010" className="header-phone hidden lg:flex">
+                <Phone size={16} />
+                <span>{store.phone}</span>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Desktop Mega Menu Navigation */}
-        {navData.length > 0 && (
-          <nav className="hidden md:block border-t border-white/20">
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="flex items-center gap-0">
-                {navData.map((item) => (
-                  <div
-                    key={item.slug}
-                    className="relative group"
-                    onMouseEnter={() => handleMouseEnter(item.slug)}
-                    onMouseLeave={handleMouseLeave}
+        {/* Navigation Bar - Dark bg with white text, hidden on mobile */}
+        <div className="nav-bar hidden md:block">
+          <div className="nav-bar-inner">
+            <div className="nav-items">
+              {navData.map((item) => (
+                <div
+                  key={item.slug}
+                  className="relative h-full"
+                  onMouseEnter={() => handleMouseEnter(item.slug)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link
+                    href={`/${item.slug}`}
+                    className="nav-item"
                   >
-                    <Link
-                      href={`/${item.slug}`}
-                      className={`flex items-center gap-1 px-3 lg:px-4 py-2.5 text-[var(--color-text-inverse)] text-sm font-medium hover:bg-white/10 transition-all nav-underline`}
-                    >
-                      {lang === "ar" ? item.label_ar : item.label}
-                    </Link>
+                    {lang === "ar" ? item.label_ar : item.label}
+                  </Link>
 
-                    {/* Mega Menu Dropdown - PetCentral style */}
-                    {activeMenu === item.slug && activeMegaData && (
-                      <div className="absolute left-0 top-full bg-white shadow-xl border border-gray-100 animate-fade-in" style={{ width: "640px" }}>
-                        <div className="flex">
-                          {/* Subcategories sidebar */}
-                          <div className="w-3/5 p-6">
-                            <div className="grid grid-cols-3 gap-6">
-                              {activeMegaData.subcategories.slice(0, 6).map((sub) => (
-                                <div key={sub.label} className="mega-menu-sidebar">
-                                  <h4 className="mega-group-title">{lang === "ar" ? sub.label_ar : sub.label}</h4>
-                                  <div className="mega-group-items">
-                                    {sub.items.map((subItem) => (
-                                      <Link
-                                        key={subItem.slug}
-                                        href={`/category/${subItem.slug}`}
-                                        className="mega-group-link"
-                                        onClick={() => setActiveMenu(null)}
-                                      >
-                                        {lang === "ar" ? subItem.label_ar : subItem.label}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
+                  {/* Mega Menu Dropdown - PetCentral pixel-perfect */}
+                  {activeMenu === item.slug && activeMegaData && (
+                    <div className="mega-menu">
+                      <div className="mega-menu-inner">
+                        {/* 4/5 columns area */}
+                        <div className="mega-menu-columns">
+                          {activeMegaData.subcategories.slice(0, 4).map((sub) => (
+                            <div key={sub.label} className="mega-menu-col">
+                              <Link
+                                href={`/category/${sub.items[0]?.slug || activeMegaData.slug}`}
+                                className="mega-menu-col-title"
+                                onClick={() => setActiveMenu(null)}
+                              >
+                                {lang === "ar" ? sub.label_ar : sub.label}
+                              </Link>
+                              <ul>
+                                {sub.items.map((subItem) => (
+                                  <li key={subItem.slug}>
+                                    <Link
+                                      href={`/category/${subItem.slug}`}
+                                      onClick={() => setActiveMenu(null)}
+                                    >
+                                      {lang === "ar" ? subItem.label_ar : subItem.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
-                            <Link
-                              href={`/category/${activeMegaData.slug}`}
-                              className="mt-4 text-sm font-semibold flex items-center gap-1 transition-colors"
-                              style={{ color: "var(--color-primary)" }}
-                              onClick={() => setActiveMenu(null)}
-                            >
-                              {t("home.view_all", lang)} {lang === "ar" ? activeMegaData.label_ar : activeMegaData.label}
-                            </Link>
-                          </div>
+                          ))}
+                        </div>
 
-                          {/* Image area */}
-                          <div className="w-2/5 flex items-center justify-center p-6 bg-gradient-to-br from-gray-50 to-white">
+                        {/* 1/5 image area */}
+                          <div className="mega-menu-image">
                             <img
-                              src={item.image || "/assets/mega-default.png"}
+                              src={item.image || `/assets/mega-${item.id}.png`}
                               alt={lang === "ar" ? item.label_ar : item.label}
-                              className="mega-menu-image"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).src = "/assets/placeholder-pet.png";
-                              }}
                             />
-                          </div>
+                          <Link
+                            href={`/category/${activeMegaData.slug}`}
+                            className="mega-shop-now"
+                            onClick={() => setActiveMenu(null)}
+                          >
+                            {t("general.shop_now", lang)}!
+                          </Link>
                         </div>
                       </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {/* Extra nav items */}
+              <Link href="/category" className="nav-item">
+                {lang === "ar" ? "تسوق حسب البراند" : "Shop by brand"}
+              </Link>
+              <Link href="/category" className="nav-item">
+                {lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}
+              </Link>
             </div>
-          </nav>
-        )}
+          </div>
+        </div>
       </header>
 
       {/* Mobile Slide-out Menu */}

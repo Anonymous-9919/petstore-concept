@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguageStore } from "@/lib/store";
-import { t } from "@/lib/i18n";
 
 interface BannerConfig {
   id: string;
@@ -33,19 +32,18 @@ export function MainBanner() {
   if (!banner) return null;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 py-6">
-      <Link href={banner.href} className="block">
-        <div className="promo-banner">
-          <img
-            src={banner.image}
-            alt={lang === "ar" ? banner.title_ar : banner.title_en}
-            className="promo-banner-img"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "/assets/placeholder-banner.jpg";
-            }}
-          />
-        </div>
-      </Link>
+    <section className="py-4">
+      <div className="page-container">
+        <Link href={banner.href} className="block">
+          <div className="promo-banner">
+            <img
+              src={banner.image}
+              alt={lang === "ar" ? banner.title_ar : banner.title_en}
+              className={`promo-banner-img${banner.image.includes("/assets/pc-") ? " filter-purple-to-orange" : ""}`}
+            />
+          </div>
+        </Link>
+      </div>
     </section>
   );
 }

@@ -1,12 +1,12 @@
 {
   "brands": [
-    { "id": 1, "name": "Royal Canin", "slug": "royal-canin" },
-    { "id": 2, "name": "Purina Pro Plan", "slug": "purina-pro-plan" },
-    { "id": 3, "name": "Hills", "slug": "hills" },
-    { "id": 4, "name": "Orijen", "slug": "orijen" },
-    { "id": 5, "name": "Acana", "slug": "acana" },
+    { "id": 1, "name": "Nulo", "slug": "nulo" },
+    { "id": 2, "name": "Royal Canin", "slug": "royal-canin" },
+    { "id": 3, "name": "Primal", "slug": "primal" },
+    { "id": 4, "name": "Purina Pro Plan", "slug": "purina-pro-plan" },
+    { "id": 5, "name": "Stella & Chewy's", "slug": "stella-chewys" },
     { "id": 6, "name": "Taste of the Wild", "slug": "taste-of-the-wild" },
-    { "id": 7, "name": "Blue Buffalo", "slug": "blue-buffalo" },
-    { "id": 8, "name": "Pedigree", "slug": "pedigree" }
+    { "id": 7, "name": "Inaba", "slug": "inaba" },
+    { "id": 8, "name": "Intersand", "slug": "intersand" }
   ]
 }

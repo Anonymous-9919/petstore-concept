@@ -46,47 +46,47 @@ export function ProductCarousel({ titleKey, collectionSlug, productCount = 8 }: 
   if (products.length === 0) return null;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg md:text-xl font-bold text-gray-900">
-          {t(titleKey, lang)}
-        </h2>
-        <Link
-          href={`/collections/${collectionSlug}`}
-          className="text-sm font-semibold flex items-center gap-1 hover:underline"
-          style={{ color: "var(--color-primary)" }}
-        >
-          {t("home.view_all", lang)} →
-        </Link>
-      </div>
-
-      <div className="relative">
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-2"
-          style={{ scrollbarWidth: "none" }}
-        >
-          {products.map((product) => (
-            <div key={product.id} className="min-w-[calc(25%-1rem)] md:min-w-[calc(20%-1rem)] lg:min-w-[calc(16.666%-1rem)]">
-              <ProductCard product={product} />
-            </div>
-          ))}
+    <section className="product-carousel-section">
+      <div className="page-container">
+        <div className="product-carousel-header">
+          <h2 className="product-carousel-title">
+            {t(titleKey, lang)}
+          </h2>
+          <Link
+            href={`/collections/${collectionSlug}`}
+            className="product-carousel-link"
+          >
+            {t("home.view_all", lang)} →
+          </Link>
         </div>
 
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all z-10"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft size={16} />
-        </button>
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all z-10"
-          aria-label="Scroll right"
-        >
-          <ChevronRight size={16} />
-        </button>
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="product-carousel-track"
+          >
+            {products.map((product) => (
+              <div key={product.id} className="product-carousel-item">
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all z-10"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all z-10"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
       </div>
     </section>
   );

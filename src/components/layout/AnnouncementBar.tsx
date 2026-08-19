@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Phone, Truck, Shield } from "lucide-react";
 import { useLanguageStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
 
@@ -19,50 +18,14 @@ export function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="w-full text-sm text-white bg-orange-600">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-3 py-1.5">
-        {/* Trust info - desktop */}
-        <div className="hidden md:flex items-center gap-6 text-xs">
-          <span className="flex items-center gap-1">
-            <Phone size={14} />
-            <span>+965 98805010</span>
-          </span>
-          <span className="flex items-center gap-1">
-            <Truck size={14} />
-            <span>Free delivery on orders over KD 10</span>
-          </span>
-          <span className="flex items-center gap-1">
-            <Shield size={14} />
-            <span>Secure Payment</span>
-          </span>
-        </div>
-
-        {/* Rotating text - mobile */}
-        <div className="md:hidden flex-1 text-center font-medium">
-          <span key={current}>
-            {t(announcements[current], lang)}
-          </span>
-        </div>
-
-        {/* Arrow navigation */}
-        <div className="flex items-center gap-1 ml-auto">
-          <button
-            onClick={() => setCurrent((prev) => (prev - 1 + announcements.length) % announcements.length)}
-            className="p-0.5 hover:bg-white/20 rounded transition-colors"
-            aria-label="Previous"
-          >
-            <ChevronLeft size={14} />
-          </button>
-          <span className="text-[10px] opacity-70">
-            {current + 1}/{announcements.length}
-          </span>
-          <button
-            onClick={() => setCurrent((prev) => (prev + 1) % announcements.length)}
-            className="p-0.5 hover:bg-white/20 rounded transition-colors"
-            aria-label="Next"
-          >
-            <ChevronRight size={14} />
-          </button>
+    <div className="announcement-bar">
+      <div className="announcement-bar-inner">
+        <div className="announcement-text flex items-center gap-3">
+          <span>{t(announcements[current], lang)}</span>
+          <span className="opacity-30">|</span>
+          <span className="font-semibold">{lang === "ar" ? "توصيل مجاني" : "Free shipping on orders above KD 10!"}</span>
+          <span className="opacity-30">|</span>
+          <span>{lang === "ar" ? "عروض حصرية" : "Exclusive deals on top pet brands!"}</span>
         </div>
       </div>
     </div>

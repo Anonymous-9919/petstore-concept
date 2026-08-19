@@ -18,23 +18,14 @@ export function CategoryCard({ name, name_ar, slug, image, count }: CategoryCard
   return (
     <Link href={`/category/${slug}`} className="group">
       <div className="category-card">
-        <img
-          src={image}
-          alt={displayName}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = "/assets/placeholder-pet.png";
-          }}
-        />
-        <div className="category-card-overlay" />
-        <div className="category-card-label">
-          <h3 className="font-bold text-sm">{displayName}</h3>
-          {count !== undefined && (
-            <p className="text-[10px] opacity-80">
-              {count} {lang === "ar" ? "منتج" : "products"}
-            </p>
-          )}
+        <div className="category-card-circle">
+          <img
+            src={image}
+            alt={displayName}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          />
         </div>
+        <p className="category-card-label">{displayName}</p>
       </div>
     </Link>
   );

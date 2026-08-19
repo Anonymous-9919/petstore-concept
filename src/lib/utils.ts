@@ -51,7 +51,7 @@ export function getBestPrice(product: { price: string; regular_price: string; sa
 
 export function getProductImage(product: { images: { src: string; alt: string }[] }): string {
   if (product.images && product.images.length > 0) return product.images[0].src;
-  return "/assets/placeholder.png";
+  return "/assets/f3065c4d794b.jpg";
 }
 
 export function sortProducts<T extends { name: string; price: string; date_created: string; featured: boolean }>(

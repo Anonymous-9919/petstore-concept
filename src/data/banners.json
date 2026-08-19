@@ -2,84 +2,84 @@
   "hero_slides": [
     {
       "id": 1,
-      "title_en": "Premium Pet Food & Accessories",
-      "title_ar": "طعام وإكسسوارات حيوانات فاخرة",
-      "subtitle_en": "Shop top brands for your furry friends",
-      "subtitle_ar": "تسوق أفضل العلامات التجارية لأصدقائك",
-      "cta_en": "Shop Now",
-      "cta_ar": "تسوق الآن",
+      "title_en": "",
+      "title_ar": "",
+      "subtitle_en": "",
+      "subtitle_ar": "",
+      "cta_en": "",
+      "cta_ar": "",
       "href": "/collections/dog-dry-food",
-      "image": "/assets/banner-hero-1.jpg",
+      "image": "/assets/4793a03ddec0.jpg",
       "button_bg": "bg-orange-600"
     },
     {
       "id": 2,
-      "title_en": "Fresh Arrival",
-      "title_ar": "وصل حديثاً",
-      "subtitle_en": "Discover the latest in pet supplies",
-      "subtitle_ar": "اكتشف أحدث مستلزمات الحيوانات",
-      "cta_en": "Explore",
-      "cta_ar": "استكشف",
-      "href": "/collections/cat",
-      "image": "/assets/banner-hero-2.jpg",
+      "title_en": "",
+      "title_ar": "",
+      "subtitle_en": "",
+      "subtitle_ar": "",
+      "cta_en": "",
+      "cta_ar": "",
+      "href": "/collections/cat-dry-food",
+      "image": "/assets/79f168f27db9.jpg",
       "button_bg": "bg-orange-600"
     },
     {
       "id": 3,
-      "title_en": "Exclusive Offers",
-      "title_ar": "عروض خاصة",
-      "subtitle_en": "Save big on your pet's favorites",
-      "subtitle_ar": "وفضلك على مفضلات حيوانك",
-      "cta_en": "View Deals",
-      "cta_ar": "عرض العروض",
+      "title_en": "",
+      "title_ar": "",
+      "subtitle_en": "",
+      "subtitle_ar": "",
+      "cta_en": "",
+      "cta_ar": "",
       "href": "/collections/special-offer",
-      "image": "/assets/banner-hero-3.jpg",
+      "image": "/assets/b2083b95d9cc.jpg",
       "button_bg": "bg-orange-600"
     },
     {
       "id": 4,
-      "title_en": "Cat Food Collection",
-      "title_ar": "مجموعة طعام القطط",
-      "subtitle_en": "Premium nutrition for your feline friends",
-      "subtitle_ar": "تغذية فاخرة لأصدقائك القطط",
-      "cta_en": "Shop Cat Food",
-      "cta_ar": "تسوق طعام القطط",
-      "href": "/collections/cat-dry-food",
-      "image": "/assets/banner-hero-4.jpg",
+      "title_en": "",
+      "title_ar": "",
+      "subtitle_en": "",
+      "subtitle_ar": "",
+      "cta_en": "",
+      "cta_ar": "",
+      "href": "/collections/dog-dry-food",
+      "image": "/assets/c5e96f119ab5.jpg",
       "button_bg": "bg-orange-600"
     }
   ],
   "main_banner": {
     "id": "main",
-    "href": "/collections/dog-dry-food",
-    "image": "/assets/banner-main.jpg",
-    "title_en": "Premium Dog Food",
-    "title_ar": "طعام كلاب فاخر"
+    "href": "/collections/nulo",
+    "image": "/assets/pc-promo-banner.jpg",
+    "title_en": "Nulo Summer Sale",
+    "title_ar": "تخفيضات نولو الصيفية"
   },
   "category_banners": [
-    { "id": "cat1", "title_en": "Dog Food", "title_ar": "طعام الكلاب", "slug": "dog-dry-food", "image": "/assets/banner-dog-food.jpg" },
-    { "id": "cat2", "title_en": "Dog Treats", "title_ar": "مكافآت الكلاب", "slug": "dog-treats", "image": "/assets/banner-dog-treats.jpg" },
-    { "id": "cat3", "title_en": "Cat Food", "title_ar": "طعام القطط", "slug": "cat-dry-food", "image": "/assets/banner-cat-food.jpg" },
-    { "id": "cat4", "title_en": "Cat Treats", "title_ar": "مكافآت القطط", "slug": "cat-treats", "image": "/assets/banner-cat-treats.jpg" },
-    { "id": "cat5", "title_en": "Cat Litter", "title_ar": "تراب القطط", "slug": "cat-litter-and-boxes", "image": "/assets/banner-cat-litter.jpg" },
-    { "id": "cat6", "title_en": "Special Offers", "title_ar": "عروض خاصة", "slug": "special-offer", "image": "/assets/banner-offers.jpg" }
+    { "id": "cat1", "title_en": "Dog Food", "title_ar": "طعام الكلاب", "slug": "dog-dry-food", "image": "/assets/f3065c4d794b.jpg" },
+    { "id": "cat2", "title_en": "Dog Treats", "title_ar": "مكافآت الكلاب", "slug": "dog-treats", "image": "/assets/ae41631e64c8.jpg" },
+    { "id": "cat3", "title_en": "Cat Food", "title_ar": "طعام القطط", "slug": "cat-dry-food", "image": "/assets/c7fd71bf4b74.jpg" },
+    { "id": "cat4", "title_en": "Cat Treats", "title_ar": "مكافآت القطط", "slug": "cat-treats", "image": "/assets/4c833de33386.jpg" },
+    { "id": "cat5", "title_en": "Cat Litter", "title_ar": "تراب القطط", "slug": "cat-litter-and-boxes", "image": "/assets/2d36fa870d4a.jpg" },
+    { "id": "cat6", "title_en": "Special Offers", "title_ar": "عروض خاصة", "slug": "special-offer", "image": "/assets/d656136dadd3.jpg" }
   ],
   "two_promo_banners": [
-    { "id": "promo1", "title_en": "Pet Beds & Houses", "title_ar": "أسرّة وبيوت", "href": "/collections/pet-beds-houses", "image": "/assets/banner-promo-1.jpg" },
-    { "id": "promo2", "title_en": "Pet Supplies", "title_ar": "إمدادات الحيوانات", "href": "/collections/pet-supplies", "image": "/assets/banner-promo-2.jpg" }
+    { "id": "promo1", "title_en": "Stella & Chewy's", "title_ar": "ستيلا آند تشويس", "href": "/collections/stella-chewys", "image": "/assets/pc-promo-stella.jpg" },
+    { "id": "promo2", "title_en": "Royal Canin", "title_ar": "رويال كانين", "href": "/collections/royal-canin", "image": "/assets/pc-promo-royal.jpg" }
   ],
   "age_banners_dog": [
-    { "id": "puppy", "title_en": "Puppy", "title_ar": "جرو", "href": "/collections/puppy-dog-food", "image": "/assets/banner-puppy.jpg" },
-    { "id": "adult-dog", "title_en": "Adult", "title_ar": "بالغ", "href": "/collections/adult-dog-food", "image": "/assets/banner-adult-dog.jpg" },
-    { "id": "senior-dog", "title_en": "Senior", "title_ar": "مسن", "href": "/collections/senior-dog-food", "image": "/assets/banner-senior-dog.jpg" }
+    { "id": "puppy", "title_en": "Puppy Food", "title_ar": "طعام الجراء", "href": "/collections/puppy-dog-food", "image": "/assets/pc-puppy-dog.jpg" },
+    { "id": "adult-dog", "title_en": "Adult Dog Food", "title_ar": "طعام الكلاب البالغة", "href": "/collections/adult-dog-food", "image": "/assets/pc-adult-dog.jpg" },
+    { "id": "senior-dog", "title_en": "Senior Dog Food", "title_ar": "طعام الكلاب المسنة", "href": "/collections/senior-dog-food", "image": "/assets/pc-senior-dog.jpg" }
   ],
   "age_banners_cat": [
-    { "id": "kitten", "title_en": "Kitten", "title_ar": "قط جرى", "href": "/collections/kitten-cat-food", "image": "/assets/banner-kitten.jpg" },
-    { "id": "adult-cat", "title_en": "Adult", "title_ar": "بالغ", "href": "/collections/adult-cat-food", "image": "/assets/banner-adult-cat.jpg" },
-    { "id": "senior-cat", "title_en": "Senior", "title_ar": "مسن", "href": "/collections/senior-cat-food", "image": "/assets/banner-senior-cat.jpg" }
+    { "id": "kitten", "title_en": "Kitten Food", "title_ar": "طعام القطط الصغيرة", "href": "/collections/kitten-cat-food", "image": "/assets/pc-kitten-cat.jpg" },
+    { "id": "adult-cat", "title_en": "Adult Cat Food", "title_ar": "طعام القطط البالغة", "href": "/collections/adult-cat-food", "image": "/assets/pc-adult-cat.jpg" },
+    { "id": "senior-cat", "title_en": "Senior Cat Food", "title_ar": "طعام القطط المسنة", "href": "/collections/senior-cat-food", "image": "/assets/pc-senior-cat.jpg" }
   ],
   "accessory_banners": [
-    { "id": "beds", "title_en": "Dog Beds", "title_ar": "أسرّة الكلاب", "href": "/collections/dog-beds", "image": "/assets/banner-dog-beds.jpg" },
-    { "id": "supplies", "title_en": "Dog Supplies", "title_ar": "إمدادات الكلاب", "href": "/collections/dog-supplies", "image": "/assets/banner-dog-supplies.jpg" }
+    { "id": "beds", "title_en": "Dog Beds", "title_ar": "أسرّة الكلاب", "href": "/collections/dog-beds", "image": "/assets/pc-beds.jpg" },
+    { "id": "supplies", "title_en": "Dog Supplies", "title_ar": "إمدادات الكلاب", "href": "/collections/dog-supplies", "image": "/assets/pc-supplies.jpg" }
   ]
 }

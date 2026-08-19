@@ -16,19 +16,20 @@ export function TrustBadges() {
   const lang = useLanguageStore((s) => s.lang);
 
   return (
-    <div className="bg-[var(--color-bg-alt)] border-y border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+    <div className="trust-badges">
+      <div className="page-container">
+        <div className="flex overflow-x-auto" style={{ scrollbarWidth: "none" }}>
           {badges.map((badge) => (
-            <div key={badge.title} className="flex items-center gap-2 justify-center md:justify-start">
+            <div key={badge.title} className="trust-badge-item flex-shrink-0">
               <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                className="trust-badge-icon"
                 style={{ backgroundColor: "var(--color-primary-50)" }}
               >
-                <badge.icon size={18} style={{ color: "var(--color-primary)" }} />
+                <badge.icon size={24} style={{ color: "var(--color-primary)" }} />
               </div>
               <div>
-                <p className="text-xs font-semibold text-gray-800 leading-tight">{t(badge.title, lang)}</p>
+                <p className="trust-badge-text">{t(badge.title, lang)}</p>
+                <p className="trust-badge-desc">{t(badge.desc, lang)}</p>
               </div>
             </div>
           ))}
