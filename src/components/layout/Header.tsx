@@ -102,14 +102,20 @@ export function Header() {
               </button>
             </form>
 
-            {/* Mobile search - right side */}
-            <button
-              className="md:hidden header-action-btn"
-              aria-label="Search"
-              onClick={() => router.push("/search")}
-            >
-              <Search size={20} />
-            </button>
+            {/* Mobile search - full width search bar below header on mobile */}
+            <div className="md:hidden mobile-search-bar">
+              <form onSubmit={handleSearch} className="header-search relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search......."}
+                />
+                <button type="submit" aria-label="Search">
+                  <Search size={20} />
+                </button>
+              </form>
+            </div>
 
             {/* Actions - right side */}
             <div className="header-actions">
