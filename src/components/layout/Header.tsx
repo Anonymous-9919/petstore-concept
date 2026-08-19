@@ -100,10 +100,10 @@ export function Header() {
 
             {/* Actions - right side */}
             <div className="header-actions">
-              {/* Language toggle */}
+              {/* Language toggle - hidden on mobile */}
               <button
                 onClick={() => setLang(lang === "en" ? "ar" : "en")}
-                className="text-xs font-semibold px-2 py-1 rounded border border-white/30 text-white hover:bg-white/20 transition-colors"
+                className="hidden md:inline-flex text-xs font-semibold px-2 py-1 rounded border border-white/30 text-white hover:bg-white/20 transition-colors"
               >
                 {lang === "en" ? "عربي" : "EN"}
               </button>
@@ -141,14 +141,14 @@ export function Header() {
           </div>
         </div>
 
-        {/* Navigation Bar - Same orange bg, white text, hidden on mobile */}
+        {/* Navigation Bar - hidden on mobile */}
         <div className="nav-bar hidden md:block">
           <div className="nav-bar-inner">
             <div className="nav-items">
               {navData.map((item) => (
                 <div
                   key={item.slug}
-                  className="relative h-full"
+                  className="nav-item-wrapper"
                   onMouseEnter={() => handleMouseEnter(item.slug)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -158,55 +158,6 @@ export function Header() {
                   >
                     {lang === "ar" ? item.label_ar : item.label}
                   </Link>
-
-                  {/* Mega Menu Dropdown - PetCentral pixel-perfect */}
-                  {activeMenu === item.slug && activeMegaData && (
-                    <div className="mega-menu">
-                      <div className="mega-menu-inner">
-                        {/* 4/5 columns area */}
-                        <div className="mega-menu-columns">
-                          {activeMegaData.subcategories.slice(0, 4).map((sub) => (
-                            <div key={sub.label} className="mega-menu-col">
-                              <Link
-                                href={`/category/${sub.items[0]?.slug || activeMegaData.slug}`}
-                                className="mega-menu-col-title"
-                                onClick={() => setActiveMenu(null)}
-                              >
-                                {lang === "ar" ? sub.label_ar : sub.label}
-                              </Link>
-                              <ul>
-                                {sub.items.map((subItem) => (
-                                  <li key={subItem.slug}>
-                                    <Link
-                                      href={`/category/${subItem.slug}`}
-                                      onClick={() => setActiveMenu(null)}
-                                    >
-                                      {lang === "ar" ? subItem.label_ar : subItem.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* 1/5 image area */}
-                          <div className="mega-menu-image">
-                            <img
-                              src={item.image || `/assets/mega-${item.id}.png`}
-                              alt={lang === "ar" ? item.label_ar : item.label}
-                            />
-                          <Link
-                            href={`/category/${activeMegaData.slug}`}
-                            className="mega-shop-now"
-                            onClick={() => setActiveMenu(null)}
-                          >
-                            {t("general.shop_now", lang)}!
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))}
 
@@ -219,6 +170,53 @@ export function Header() {
               </Link>
             </div>
           </div>
+
+          {/* Mega Menu - positioned relative to .nav-bar (full width) */}
+          {activeMenu && activeMegaData && (
+            <div className="mega-menu">
+              <div className="mega-menu-inner">
+                <div className="mega-menu-columns">
+                  {activeMegaData.subcategories.slice(0, 4).map((sub) => (
+                    <div key={sub.label} className="mega-menu-col">
+                      <Link
+                        href={`/category/${sub.items[0]?.slug || activeMegaData.slug}`}
+                        className="mega-menu-col-title"
+                        onClick={() => setActiveMenu(null)}
+                      >
+                        {lang === "ar" ? sub.label_ar : sub.label}
+                      </Link>
+                      <ul>
+                        {sub.items.map((subItem) => (
+                          <li key={subItem.slug}>
+                            <Link
+                              href={`/category/${subItem.slug}`}
+                              onClick={() => setActiveMenu(null)}
+                            >
+                              {lang === "ar" ? subItem.label_ar : subItem.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mega-menu-image">
+                  <img
+                    src={activeMegaData.image || `/assets/mega-${activeMegaData.id}.png`}
+                    alt={lang === "ar" ? activeMegaData.label_ar : activeMegaData.label}
+                  />
+                  <Link
+                    href={`/category/${activeMegaData.slug}`}
+                    className="mega-shop-now"
+                    onClick={() => setActiveMenu(null)}
+                  >
+                    {t("general.shop_now", lang)}!
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 

@@ -109,13 +109,13 @@
     { "id": "promo2", "title_en": "Royal Canin", "title_ar": "رويال كانين", "href": "/collections/royal-canin", "image": "/assets/promo-royalcanin.jpg" }
   ],
   "age_banners_dog": [
-    { "id": "puppy", "title_en": "Puppy Food", "title_ar": "طعام الجراء", "href": "/collections/puppy-dog-food", "image": "/assets/pc-puppy-dog.jpg" },
-    { "id": "adult-dog", "title_en": "Adult Dog Food", "title_ar": "طعام الكلاب البالغة", "href": "/collections/adult-dog-food", "image": "/assets/pc-adult-dog.jpg" },
-    { "id": "senior-dog", "title_en": "Senior Dog Food", "title_ar": "طعام الكلاب المسنة", "href": "/collections/senior-dog-food", "image": "/assets/pc-senior-dog.jpg" }
+    { "id": "puppy", "title_en": "Puppy Food", "title_ar": "طعام الجراء", "href": "/collections/puppy-dog-food", "image": "/assets/age-puppy-dog.jpg" },
+    { "id": "adult-dog", "title_en": "Adult Dog Food", "title_ar": "طعام الكلاب البالغة", "href": "/collections/adult-dog-food", "image": "/assets/age-adult-dog.jpg" },
+    { "id": "senior-dog", "title_en": "Senior Dog Food", "title_ar": "طعام الكلاب المسنة", "href": "/collections/senior-dog-food", "image": "/assets/age-senior-dog.jpg" }
   ],
   "age_banners_cat": [
-    { "id": "kitten", "title_en": "Kitten Food", "title_ar": "طعام القطط الصغيرة", "href": "/collections/kitten-cat-food", "image": "/assets/age-kitten.jpg" },
-    { "id": "adult-cat", "title_en": "Adult Cat Food", "title_ar": "طعام القطط البالغة", "href": "/collections/adult-cat-food", "image": "/assets/pc-adult-cat.jpg" },
+    { "id": "kitten", "title_en": "Kitten Food", "title_ar": "طعام القطط الصغيرة", "href": "/collections/kitten-cat-food", "image": "/assets/age-kitten-cat.jpg" },
+    { "id": "adult-cat", "title_en": "Adult Cat Food", "title_ar": "طعام القطط البالغة", "href": "/collections/adult-cat-food", "image": "/assets/age-adult-cat.jpg" },
     { "id": "senior-cat", "title_en": "Senior Cat Food", "title_ar": "طعام القطط المسنة", "href": "/collections/senior-cat-food", "image": "/assets/age-senior-cat.jpg" }
   ],
   "accessory_banners": [

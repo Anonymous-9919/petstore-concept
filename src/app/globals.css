@@ -256,6 +256,7 @@ body {
   background-color: var(--color-bg-header);
   height: var(--nav-height);
   border-top: 1px solid rgba(255,255,255,0.2);
+  position: relative;
 }
 
 .nav-bar-inner {
@@ -274,6 +275,15 @@ body {
   height: 100%;
 }
 
+/* Wrapper around each nav-item link for hover detection */
+.nav-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
 .nav-item {
   position: relative;
   display: flex;
@@ -287,7 +297,10 @@ body {
   transition: background-color 0.2s ease;
   white-space: nowrap;
 }
-.nav-item:hover { background-color: rgba(255,255,255,0.1); }
+.nav-item-wrapper:hover .nav-item {
+  background-color: rgba(255,255,255,0.1);
+}
+/* White underline on hover like PetCentral */
 .nav-item::after {
   content: "";
   position: absolute;
@@ -295,13 +308,16 @@ body {
   left: 0;
   width: 0;
   height: 3px;
-  background-color: var(--color-primary);
+  background-color: var(--color-text-inverse);
   transition: width 0.3s ease;
 }
-.nav-item:hover::after { width: 100%; }
+.nav-item-wrapper:hover .nav-item::after {
+  width: 100%;
+}
 
 /* ============================================
-   MEGA MENU - PetCentral pixel-perfect
+   MEGA MENU - Positioned relative to .nav-bar
+   Full viewport width, centered via left:50% + translateX(-50%)
    ============================================ */
 .mega-menu {
   position: absolute;
@@ -425,7 +441,7 @@ body {
 .brand-logo-image {
   width: 176px;
   height: 176px;
-  border-radius: 50%;
+  border-radius: 10px;
   overflow: hidden;
   background: #ffffff;
   border: 1px solid var(--color-border-light);
@@ -562,14 +578,16 @@ body {
   overflow: visible;
   border-radius: 10px;
   transition: transform 0.3s ease;
+  aspect-ratio: 2.57;
 }
 .age-banner-grid .promo-banner:hover {
   transform: translateY(-4px);
 }
 .age-banner-grid .promo-banner-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
   border-radius: 10px;
   transition: transform 0.4s ease;
 }
@@ -966,6 +984,7 @@ body {
 
 @media (max-width: 768px) {
   .header-main { height: 64px; gap: 8px; }
+  .header-main .header-logo { flex: 1; justify-content: center; }
   .header-logo-text { font-size: 18px; }
   .header-actions { gap: 4px; }
   .header-action-btn { width: 36px; height: 36px; }

@@ -41,7 +41,7 @@ export function HeroSlider() {
 
   if (slides.length === 0) {
     return (
-      <div className="page-container py-4">
+      <div className="page-container pt-[40px] pb-4">
         <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
           <div className="absolute inset-0 flex items-center justify-center text-gray-400">
             Loading...
@@ -52,7 +52,7 @@ export function HeroSlider() {
   }
 
   return (
-    <div className="page-container py-4">
+    <div className="page-container pt-[40px] pb-4">
       <div className="hero-slider">
         {slides.map((s, idx) => (
           <div
