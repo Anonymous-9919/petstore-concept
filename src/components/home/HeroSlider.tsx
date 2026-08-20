@@ -41,44 +41,48 @@ export function HeroSlider() {
 
   if (slides.length === 0) {
     return (
-    <div className="page-container pt-[160px] pb-4">
-        <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-            Loading...
+      <section className="section-spacing-small">
+        <div className="page-container">
+          <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+              Loading...
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="page-container pt-[40px] pb-4">
-      <div className="hero-slider">
-        {slides.map((s, idx) => (
-          <div
-            key={s.id}
-            className={`hero-slide ${idx === current ? "active" : ""}`}
-          >
-            <img
-              src={s.image}
-              alt={s.title_en || `Slide ${s.id}`}
-              className="hero-slide-img"
-            />
-          </div>
-        ))}
-
-        {/* Dots - bottom center */}
-        <div className="hero-dots">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              className={`hero-dot ${idx === current ? "active" : ""}`}
-              onClick={() => setCurrent(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
+    <section className="section-spacing-small">
+      <div className="page-container">
+        <div className="hero-slider">
+          {slides.map((s, idx) => (
+            <div
+              key={s.id}
+              className={`hero-slide ${idx === current ? "active" : ""}`}
+            >
+              <img
+                src={s.image}
+                alt={s.title_en || `Slide ${s.id}`}
+                className="hero-slide-img"
+              />
+            </div>
           ))}
+
+          {/* Dots - bottom center */}
+          <div className="hero-dots">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                className={`hero-dot ${idx === current ? "active" : ""}`}
+                onClick={() => setCurrent(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -39,23 +39,25 @@ export function ShopByBrands() {
             {lang === "ar" ? "تسوق حسب البراندات الشهيرة" : "Shop by popular brands"}
           </h2>
         </div>
-        <div ref={scrollRef} className="brands-carousel">
-          {brands.map((brand) => (
-            <Link
-              key={brand.id}
-              href={`/collections/${brand.slug}`}
-              className="brand-logo-item"
-            >
-              <div className="brand-logo-image">
-                {brand.image ? (
-                  <img src={brand.image} alt={brand.name} />
-                ) : (
-                  <span className="brand-logo-text">{brand.name}</span>
-                )}
-              </div>
-              <p className="brand-logo-name">{brand.name}</p>
-            </Link>
-          ))}
+        <div className="brands-carousel-outer">
+          <div ref={scrollRef} className="brands-carousel">
+            {brands.map((brand) => (
+              <Link
+                key={brand.id}
+                href={`/collections/${brand.slug}`}
+                className="brand-logo-item"
+              >
+                <div className="brand-logo-image">
+                  {brand.image ? (
+                    <img src={brand.image} alt={brand.name} />
+                  ) : (
+                    <span className="brand-logo-text">{brand.name}</span>
+                  )}
+                </div>
+                <p className="brand-logo-name">{brand.name}</p>
+              </Link>
+            ))}
+          </div>
         </div>
         <div className="section-btn-container">
           <Link href="/category" className="btn-small">

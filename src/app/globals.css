@@ -486,15 +486,41 @@ body {
 
 /* ============================================
    BRANDS CAROUSEL - PetCentral style
+   Breaks out of page-container so the last
+   visible card is never clipped by padding.
    ============================================ */
+
+/* Wrapper that escapes the page-container clip */
+.brands-carousel-outer {
+  position: relative;
+  /* Stretch from left edge to right edge of viewport */
+  width: 100vw;
+  /* Pull left to align with page content */
+  margin-left: calc(-1 * var(--page-padding));
+}
+
+/* Gradient fade on right edge hinting at more items */
+.brands-carousel-outer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--color-bg));
+  pointer-events: none;
+  z-index: 2;
+}
+
 .brands-carousel {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  padding: 12px 0 12px 4px;
-  padding-right: calc(16px + 4px + 20px);
+  /* Left padding = page-padding so first card aligns with content */
+  padding: 12px var(--page-padding) 16px var(--page-padding);
   scrollbar-width: none;
-  scroll-padding-right: 36px;
+  /* scroll-padding-right leaves room to see next card */
+  scroll-padding-right: calc(var(--page-padding) + 80px);
 }
 .brands-carousel::-webkit-scrollbar { display: none; }
 
@@ -699,7 +725,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .product-carousel-title {
@@ -1063,7 +1089,7 @@ body {
   .age-banner-grid { grid-template-columns: 1fr; }
   .accessory-banner-grid { grid-template-columns: 1fr; }
   .category-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .brands-carousel { gap: 16px; padding: 12px 0; }
+  .brands-carousel { gap: 12px; padding: 12px var(--page-padding) 12px var(--page-padding); }
   .brand-logo-item { width: 140px; }
   .brand-logo-image { width: 140px; height: 140px; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -1114,7 +1140,7 @@ body {
   .product-carousel-item { width: 170px; }
   
   /* Extra small mobile adjustments */
-  .brands-carousel { padding: 8px 0; }
+  .brands-carousel { padding: 8px var(--page-padding); }
   .brand-logo-item { width: 120px; }
   .brand-logo-image { width: 120px; height: 120px; }
 }
