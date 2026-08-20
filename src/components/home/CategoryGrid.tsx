@@ -33,7 +33,7 @@ export function CategoryGrid() {
   if (categories.length === 0) return null;
 
   return (
-    <section className="section-spacing-small">
+    <section className="section-spacing-medium">
       <div className="page-container">
         <div className="section-heading-container">
           <h2 className="section-heading">

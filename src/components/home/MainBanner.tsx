@@ -32,7 +32,7 @@ export function MainBanner() {
   if (!banner) return null;
 
   return (
-    <section className="section-spacing-small">
+    <section className="section-spacing-medium">
       <div className="page-container">
         <Link href={banner.href} className="block main-banner">
           <div className="promo-banner">

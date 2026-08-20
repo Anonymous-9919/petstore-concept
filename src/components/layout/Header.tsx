@@ -102,21 +102,6 @@ export function Header() {
               </button>
             </form>
 
-            {/* Mobile search - full width search bar below header on mobile */}
-            <div className="md:hidden mobile-search-bar">
-              <form onSubmit={handleSearch} className="header-search relative">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search......."}
-                />
-                <button type="submit" aria-label="Search">
-                  <Search size={20} />
-                </button>
-              </form>
-            </div>
-
             {/* Actions - right side */}
             <div className="header-actions">
               {/* Language toggle - hidden on mobile */}
@@ -127,13 +112,13 @@ export function Header() {
                 {lang === "en" ? "عربي" : "EN"}
               </button>
 
-              {/* Wishlist - desktop */}
-              <Link href="/wishlist" className="hidden md:flex items-center justify-center header-action-btn" aria-label="Wishlist">
+              {/* Wishlist - desktop + mobile */}
+              <Link href="/wishlist" className="flex items-center justify-center header-action-btn" aria-label="Wishlist">
                 <Heart size={20} />
               </Link>
 
-              {/* Cart - desktop */}
-              <Link href="/cart" className="hidden md:flex items-center justify-center header-action-btn relative" aria-label="Cart">
+              {/* Cart - desktop + mobile */}
+              <Link href="/cart" className="flex items-center justify-center header-action-btn relative" aria-label="Cart">
                 <ShoppingCart size={20} />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-white text-[var(--color-primary)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -145,6 +130,21 @@ export function Header() {
               {/* Phone - desktop (REMOVED) */}
 
             </div>
+          </div>
+
+          {/* Mobile search - full width search bar below header row on mobile (PetCentral .opened-search) */}
+          <div className="md:hidden mobile-search-bar">
+            <form onSubmit={handleSearch} className="header-search relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search......."}
+              />
+              <button type="submit" aria-label="Search">
+                <Search size={20} />
+              </button>
+            </form>
           </div>
         </div>
 

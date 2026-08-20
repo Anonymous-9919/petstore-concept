@@ -34,12 +34,13 @@ export function Footer() {
       {/* Main Footer */}
       <div className="footer-main">
         <div className="footer-grid">
-          {/* About */}
-          <div>
+          {/* About + Social */}
+          <div className="footer-block-1">
             <div className="footer-about">
               <span className="text-xl font-extrabold tracking-tight">PET STORE</span>
             </div>
             <p className="footer-about-text">{t("footer.about_text", lang)}</p>
+            <p className="footer-social-heading">{t("footer.follow_us", lang)}</p>
             <div className="footer-social">
               <a
                 href="https://www.instagram.com/petstore.kw"
@@ -77,7 +78,7 @@ export function Footer() {
           </div>
 
           {/* Pet Food Categories */}
-          <div className="footer-column">
+          <div className="footer-column footer-block-2">
             <h4>{lang === "ar" ? "فئات طعام الحيوانات" : "Pet Food Category"}</h4>
             <ul>
               {[
@@ -96,7 +97,7 @@ export function Footer() {
           </div>
 
           {/* Useful Links */}
-          <div className="footer-column">
+          <div className="footer-column footer-block-3">
             <h4>{lang === "ar" ? "روابط مفيدة" : "Useful Links"}</h4>
             <ul>
               {[
@@ -114,7 +115,7 @@ export function Footer() {
           </div>
 
           {/* Our Services */}
-          <div className="footer-column">
+          <div className="footer-column footer-block-4">
             <h4>{lang === "ar" ? "خدماتنا" : "Our Services"}</h4>
             <ul>
               {[
@@ -129,29 +130,42 @@ export function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Got Question? Call Us + Newsletter */}
+          <div className="footer-block-5">
+            <h4>{lang === "ar" ? "لديك سؤال؟ اتصل بنا" : "Got Question? Call Us!"}</h4>
+            <a href="tel:+96598805010" className="footer-contact-link">
+              <Phone size={14} /> +965 98805010
+            </a>
+            <a href="mailto:petstorekw@gmail.com" className="footer-contact-link">
+              <Mail size={14} /> petstorekw@gmail.com
+            </a>
+            <div className="footer-newsletter">
+              <p className="footer-newsletter-text">{t("footer.newsletter", lang)}</p>
+              <form className="footer-newsletter-form">
+                <input
+                  type="email"
+                  placeholder={t("footer.email_placeholder", lang)}
+                  className="footer-newsletter-input"
+                />
+                <button type="submit" className="footer-newsletter-btn" aria-label={t("footer.subscribe", lang)}>
+                  <Send size={14} />
+                  {t("footer.subscribe", lang)}
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
 
-        {/* Contact & Questions */}
+        {/* Payment methods */}
         <div className="mt-8 pt-6 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
-              <h4 className="font-bold text-sm mb-2">{lang === "ar" ? "لديك سؤال؟ اتصل بنا" : "Got Question? Call Us!"}</h4>
-              <div className="flex flex-wrap gap-4 text-sm opacity-80">
-                <a href="tel:+96598805010" className="flex items-center gap-1 hover:underline">
-                  <Phone size={14} /> +965 98805010
-                </a>
-                <a href="mailto:petstorekw@gmail.com" className="flex items-center gap-1 hover:underline">
-                  <Mail size={14} /> petstorekw@gmail.com
-                </a>
-              </div>
-            </div>
-            {/* Payment methods */}
-            <div className="flex items-center gap-3">
               <span className="text-xs opacity-60">{lang === "ar" ? "طرق الدفع:" : "We Accept:"}</span>
-              <div className="flex gap-2">
-                <div className="bg-white rounded px-2 py-1 text-[10px] font-bold text-blue-900">VISA</div>
-                <div className="bg-white rounded px-2 py-1 text-[10px] font-bold text-red-600">Mastercard</div>
-              </div>
+            </div>
+            <div className="flex gap-2">
+              <div className="bg-white rounded px-2 py-1 text-[10px] font-bold text-blue-900">VISA</div>
+              <div className="bg-white rounded px-2 py-1 text-[10px] font-bold text-red-600">Mastercard</div>
             </div>
           </div>
         </div>

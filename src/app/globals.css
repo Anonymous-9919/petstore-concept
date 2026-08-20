@@ -124,7 +124,7 @@ body {
 .announcement-bar {
   width: 100%;
   height: var(--announcement-height);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
   background-color: #fef5dc;
   color: #050505;
@@ -266,7 +266,7 @@ body {
 .nav-bar {
   background-color: var(--color-bg-header);
   height: var(--nav-height);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
   position: relative;
 }
 
@@ -570,17 +570,21 @@ body {
 }
 
 /* ============================================
-   MAIN BANNER - Full width in page-container
+   MAIN BANNER - Full width promo strip 7.2:1
    ============================================ */
 .main-banner {
   display: block;
   overflow: hidden;
   border-radius: 8px;
 }
+.main-banner .promo-banner {
+  aspect-ratio: 7.2;
+}
 .main-banner .promo-banner-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 .main-banner:hover .promo-banner-img {
@@ -599,7 +603,7 @@ body {
 .two-promo-grid .promo-banner {
   overflow: hidden;
   border-radius: 8px;
-  aspect-ratio: 2.57;
+  aspect-ratio: 3.587;
 }
 .two-promo-grid .promo-banner-img {
   width: 100%;
@@ -671,9 +675,9 @@ body {
 
 .age-banner-grid .promo-banner {
   overflow: visible;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: transform 0.3s ease;
-  aspect-ratio: 2.57;
+  aspect-ratio: 2.569;
 }
 .age-banner-grid .promo-banner:hover {
   transform: translateY(-4px);
@@ -683,7 +687,7 @@ body {
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: transform 0.4s ease;
 }
 .age-banner-grid .promo-banner:hover .promo-banner-img {
@@ -701,15 +705,15 @@ body {
 
 .accessory-banner-grid .promo-banner {
   overflow: hidden;
-  border-radius: 10px;
-  aspect-ratio: 2.57;
+  border-radius: 8px;
+  aspect-ratio: 3.587;
 }
 .accessory-banner-grid .promo-banner-img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: transform 0.4s ease;
 }
 .accessory-banner-grid .promo-banner:hover .promo-banner-img {
@@ -914,16 +918,12 @@ body {
 }
 
 .footer-newsletter {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-top: 16px;
 }
-.footer-newsletter-inner {
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  padding: 32px var(--page-padding);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+.footer-newsletter-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 10px;
 }
 .footer-newsletter-form { display: flex; gap: 8px; }
 .footer-newsletter-input {
@@ -933,7 +933,8 @@ body {
   background: transparent;
   color: white;
   font-size: 14px;
-  min-width: 280px;
+  min-width: 0;
+  flex: 1;
 }
 .footer-newsletter-input::placeholder { color: rgba(255,255,255,0.5); }
 .footer-newsletter-btn {
@@ -958,8 +959,8 @@ body {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 24% 11% 11% 11% 26%;
+  gap: 20px;
 }
 
 .footer-about {
@@ -973,6 +974,12 @@ body {
   line-height: 1.6;
   opacity: 0.8;
   margin-bottom: 16px;
+}
+
+.footer-social-heading {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 10px;
 }
 
 .footer-social {
@@ -993,7 +1000,8 @@ body {
 }
 .footer-social a:hover { background: var(--color-primary); }
 
-.footer-column h4 {
+.footer-column h4,
+.footer-block-5 h4 {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -1008,6 +1016,22 @@ body {
   transition: color 0.2s ease;
 }
 .footer-column a:hover { color: white; }
+
+.footer-block-5 {
+  display: flex;
+  flex-direction: column;
+}
+.footer-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+.footer-contact-link:hover { color: white; }
 
 .footer-copyright {
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -1070,6 +1094,15 @@ body {
 @media (max-width: 1024px) {
   .category-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid .footer-block-1,
+  .footer-grid .footer-block-5 { grid-column: span 2; }
+}
+
+/* PetCentral mobile section spacing */
+@media (max-width: 768px) {
+  .section-spacing-normal { padding: 30px 0; }
+  .section-spacing-medium { padding: 50px 0; }
+  .section-spacing-small { padding: 35px 0; }
 }
 
 @media (max-width: 768px) {
@@ -1086,15 +1119,20 @@ body {
   .product-carousel-item { width: 200px; }
   .product-card { overflow: hidden; }
   .two-promo-grid { grid-template-columns: 1fr; }
-  .age-banner-grid { grid-template-columns: 1fr; }
+  .age-banner-grid { grid-template-columns: repeat(2, 1fr); }
   .accessory-banner-grid { grid-template-columns: 1fr; }
-  .category-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .brands-carousel { gap: 12px; padding: 12px var(--page-padding) 12px var(--page-padding); }
   .brand-logo-item { width: 140px; }
   .brand-logo-image { width: 140px; height: 140px; }
   .footer-grid { grid-template-columns: 1fr; }
-  .footer-newsletter-inner { flex-direction: column; text-align: center; }
   .footer-copyright-inner { flex-direction: column; gap: 4px; text-align: center; }
+
+  /* Mobile: Banner aspect ratios (PetCentral mobile ratios) */
+  .main-banner .promo-banner { aspect-ratio: 2.998; }
+  .two-promo-grid .promo-banner,
+  .accessory-banner-grid .promo-banner { aspect-ratio: 2.021; }
+  .age-banner-grid .promo-banner { aspect-ratio: 2.021; }
   
   /* Mobile: Prevent overflow on all carousels and grids */
   .brands-carousel,
