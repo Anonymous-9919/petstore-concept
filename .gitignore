@@ -41,7 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # temp files
-*.png
+!public/assets/*.png
 *.md
 !README.md
 !PLAN.md
