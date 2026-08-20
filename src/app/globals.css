@@ -84,19 +84,19 @@ body {
 /* SECTION HEADING - Centered, large, like PetCentral */
 .section-heading-container {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 50px;
 }
 
 .section-heading {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: 700;
   color: var(--color-text);
   margin: 0;
 }
 
-.section-spacing-normal { padding: 90px 0; }
-.section-spacing-medium { padding: 70px 0; }
-.section-spacing-small { padding: 40px 0; }
+.section-spacing-normal { margin-top: 90px; }
+.section-spacing-medium { margin-top: 70px; }
+.section-spacing-small { margin-top: 40px; }
 
 .section-btn-container {
   text-align: center;
@@ -119,18 +119,17 @@ body {
 
 /* ============================================
    ANNOUNCEMENT BAR - PetCentral exact
-   41px, white bg, centered text, no arrows
+   bg #f15f22, text #050505, heading font,
+   font-size 13px, min-height 40px
    ============================================ */
 .announcement-bar {
   width: 100%;
-  height: var(--announcement-height);
+  min-height: 40px;
   font-size: 13px;
-  font-weight: 400;
-  background-color: #fef5dc;
+  font-weight: 600;
+  background-color: #f15f22;
   color: #050505;
-  border-bottom: 1px solid var(--color-border);
   overflow: hidden;
-  letter-spacing: 0.2px;
 }
 
 .announcement-bar-inner {
@@ -149,6 +148,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: var(--font-sans);
+  font-weight: 600;
 }
 
 /* ============================================
@@ -294,7 +294,7 @@ body {
 .nav-items {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 25px;
   height: 100%;
 }
 
@@ -309,34 +309,31 @@ body {
 
 .nav-item {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 100%;
-  padding: 0 16px;
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text-inverse);
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
   white-space: nowrap;
 }
 .nav-item-wrapper:hover .nav-item {
-  background-color: rgba(255,255,255,0.1);
+  color: var(--color-text-inverse);
 }
-/* White underline on hover like PetCentral - floating in middle, not at bottom */
+/* White underline on hover like PetCentral - 2px, directly below text, full item width */
 .nav-item::after {
   content: "";
   position: absolute;
-  bottom: 8px;
-  left: 16px;
-  right: 16px;
+  left: 0;
+  top: 100%;
   width: 0;
-  height: 3px;
+  height: 2px;
   background-color: var(--color-text-inverse);
-  transition: width 0.3s ease;
+  transition: width var(--duration-medium, 0.3s) ease;
 }
 .nav-item-wrapper:hover .nav-item::after {
-  width: calc(100% - 32px);
+  width: 100%;
 }
 
 /* ============================================
@@ -555,14 +552,14 @@ body {
 }
 
 .brand-logo-name {
-  margin-top: 10px;
-  font-size: 13px;
+  margin-top: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-text);
 }
 
 .brand-logo-text {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-text);
   text-align: center;
@@ -572,6 +569,9 @@ body {
 /* ============================================
    MAIN BANNER - Full width promo strip 7.2:1
    ============================================ */
+.filter-purple-to-orange {
+  filter: hue-rotate(115deg) saturate(1.2);
+}
 .main-banner {
   display: block;
   overflow: hidden;
@@ -658,8 +658,8 @@ body {
 }
 
 .category-card-label {
-  margin-top: 10px;
-  font-size: 13px;
+  margin-top: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-text);
 }
@@ -733,8 +733,8 @@ body {
 }
 
 .product-carousel-title {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: 700;
   color: var(--color-text);
 }
 
@@ -751,6 +751,7 @@ body {
   gap: 32px;
   overflow-x: auto;
   padding-bottom: 8px;
+  align-items: stretch;
   scrollbar-width: none;
 }
 .product-carousel-track::-webkit-scrollbar { display: none; }
@@ -758,6 +759,14 @@ body {
 .product-carousel-item {
   flex-shrink: 0;
   width: var(--product-card-width);
+  display: flex;
+  align-items: stretch;
+}
+.product-carousel-item > .product-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* ============================================
@@ -863,7 +872,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: auto;
+  margin-bottom: 8px;
 }
 
 .product-card-price-current {
@@ -1089,6 +1098,29 @@ body {
 .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
 /* ============================================
+   RESPONSIVE TYPOGRAPHY - PetCentral breakpoints
+   ============================================ */
+@media (max-width: 1399px) {
+  .section-heading, .product-carousel-title { font-size: 25px; }
+  .brand-logo-name, .brand-logo-text, .category-card-label { font-size: 16px; }
+}
+@media (max-width: 990px) {
+  .section-heading, .product-carousel-title { font-size: 24px; }
+  .brand-logo-name, .brand-logo-text, .category-card-label { font-size: 17px; }
+}
+@media (max-width: 768px) {
+  .section-heading, .product-carousel-title { font-size: 22px; }
+  .brand-logo-name, .brand-logo-text, .category-card-label { font-size: 16px; }
+}
+@media (max-width: 576px) {
+  .section-heading, .product-carousel-title { font-size: 20px; }
+  .brand-logo-name, .brand-logo-text, .category-card-label { font-size: 15px; }
+}
+@media (max-width: 460px) {
+  .brand-logo-name, .brand-logo-text, .category-card-label { font-size: 10px; }
+}
+
+/* ============================================
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -1100,9 +1132,9 @@ body {
 
 /* PetCentral mobile section spacing */
 @media (max-width: 768px) {
-  .section-spacing-normal { padding: 30px 0; }
-  .section-spacing-medium { padding: 50px 0; }
-  .section-spacing-small { padding: 35px 0; }
+  .section-spacing-normal { margin-top: 30px; }
+  .section-spacing-medium { margin-top: 50px; }
+  .section-spacing-small { margin-top: 35px; }
 }
 
 @media (max-width: 768px) {
@@ -1111,16 +1143,15 @@ body {
   .header-logo-img { height: 36px; }
   .header-actions { gap: 4px; }
   .header-action-btn { width: 36px; height: 36px; }
-  .announcement-bar { height: 36px; font-size: 12px; }
-  .announcement-text { font-size: 12px; }
+  .announcement-bar { min-height: 40px; font-size: 13px; }
+  .announcement-text { font-size: 13px; }
   .nav-bar { display: none; }
-  .hero-slider { aspect-ratio: 1.901; border-radius: 0; }
-  .section-heading { font-size: 18px; }
+  .hero-slider { border-radius: 0; }
+  .section-heading { font-size: 22px; }
+  .product-carousel-title { font-size: 22px; }
   .product-carousel-item { width: 200px; }
   .product-card { overflow: hidden; }
-  .two-promo-grid { grid-template-columns: 1fr; }
   .age-banner-grid { grid-template-columns: repeat(2, 1fr); }
-  .accessory-banner-grid { grid-template-columns: 1fr; }
   .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .brands-carousel { gap: 12px; padding: 12px var(--page-padding) 12px var(--page-padding); }
   .brand-logo-item { width: 140px; }
@@ -1128,12 +1159,6 @@ body {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-copyright-inner { flex-direction: column; gap: 4px; text-align: center; }
 
-  /* Mobile: Banner aspect ratios (PetCentral mobile ratios) */
-  .main-banner .promo-banner { aspect-ratio: 2.998; }
-  .two-promo-grid .promo-banner,
-  .accessory-banner-grid .promo-banner { aspect-ratio: 2.021; }
-  .age-banner-grid .promo-banner { aspect-ratio: 2.021; }
-  
   /* Mobile: Prevent overflow on all carousels and grids */
   .brands-carousel,
   .product-carousel-track {
@@ -1169,6 +1194,30 @@ body {
   /* Mobile: Product carousel track */
   .product-carousel-track {
     padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Banner aspect ratios swap at 992px to match the <picture> image swap */
+  .main-banner .promo-banner { aspect-ratio: 2.998; }
+  .two-promo-grid .promo-banner,
+  .accessory-banner-grid .promo-banner,
+  .age-banner-grid .promo-banner { aspect-ratio: 2.021; }
+  .hero-slider { aspect-ratio: 1.901; }
+  .two-promo-grid .promo-banner,
+  .accessory-banner-grid .promo-banner,
+  .age-banner-grid .promo-banner,
+  .main-banner .promo-banner,
+  .hero-slider {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Staggered mobile collage look for 2-col banner rows (matches image-banner__mobile-margin) */
+  .two-promo-grid > *:not(:first-child),
+  .accessory-banner-grid > *:not(:first-child) {
+    margin-top: 60px;
   }
 }
 

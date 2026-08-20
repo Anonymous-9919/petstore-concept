@@ -9,7 +9,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/nulo",
-      "image": "/assets/hero-slide1.jpg"
+      "image": "/assets/hero-slide1.jpg",
+      "image_mobile": "/assets/hero-slide1-mobile.jpg"
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/inaba",
-      "image": "/assets/hero-slide2.jpg"
+      "image": "/assets/hero-slide2.jpg",
+      "image_mobile": "/assets/hero-slide2-mobile.jpg"
     },
     {
       "id": 3,
@@ -31,7 +33,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/nulo",
-      "image": "/assets/hero-slide3.jpg"
+      "image": "/assets/hero-slide3.jpg",
+      "image_mobile": "/assets/hero-slide3-mobile.jpg"
     },
     {
       "id": 4,
@@ -42,7 +45,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/intersand",
-      "image": "/assets/hero-slide4.jpg"
+      "image": "/assets/hero-slide4.jpg",
+      "image_mobile": "/assets/hero-slide4-mobile.jpg"
     },
     {
       "id": 5,
@@ -53,7 +57,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/stella-chewys",
-      "image": "/assets/hero-slide5.jpg"
+      "image": "/assets/hero-slide5.jpg",
+      "image_mobile": "/assets/hero-slide5-mobile.jpg"
     },
     {
       "id": 6,
@@ -64,7 +69,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/",
-      "image": "/assets/hero-slide6.jpg"
+      "image": "/assets/hero-slide6.jpg",
+      "image_mobile": "/assets/hero-slide6-mobile.jpg"
     },
     {
       "id": 7,
@@ -75,7 +81,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/royal-canin",
-      "image": "/assets/hero-slide7.jpg"
+      "image": "/assets/hero-slide7.jpg",
+      "image_mobile": "/assets/hero-slide7-mobile.jpg"
     },
     {
       "id": 8,
@@ -86,13 +93,15 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/primal",
-      "image": "/assets/hero-slide8.jpg"
+      "image": "/assets/hero-slide8.jpg",
+      "image_mobile": "/assets/hero-slide8-mobile.jpg"
     }
   ],
   "main_banner": {
     "id": "main",
     "href": "/collections/nulo",
     "image": "/assets/pc-promo-banner.jpg",
+    "image_mobile": "/assets/pc-promo-banner-mobile.jpg",
     "title_en": "Nulo Summer Sale",
     "title_ar": "تخفيضات نولو الصيفية"
   },
@@ -105,21 +114,21 @@
     { "id": "cat6", "title_en": "Special Offers", "title_ar": "عروض خاصة", "slug": "special-offer", "image": "/assets/cat-offers.png" }
   ],
   "two_promo_banners": [
-    { "id": "promo1", "title_en": "Stella & Chewy's", "title_ar": "ستيلا آند تشويس", "href": "/collections/stella-chewys", "image": "/assets/promo-stella.jpg" },
-    { "id": "promo2", "title_en": "Royal Canin", "title_ar": "رويال كانين", "href": "/collections/royal-canin", "image": "/assets/promo-royalcanin.jpg" }
+    { "id": "promo1", "title_en": "Stella & Chewy's", "title_ar": "ستيلا آند تشويس", "href": "/collections/stella-chewys", "image": "/assets/promo-stella.jpg", "image_mobile": "/assets/promo-stella-mobile.jpg" },
+    { "id": "promo2", "title_en": "Royal Canin", "title_ar": "رويال كانين", "href": "/collections/royal-canin", "image": "/assets/promo-royalcanin.jpg", "image_mobile": "/assets/promo-royalcanin-mobile.jpg" }
   ],
   "age_banners_dog": [
-    { "id": "puppy", "title_en": "Puppy Food", "title_ar": "طعام الجراء", "href": "/collections/puppy-dog-food", "image": "/assets/age-puppy-dog.jpg" },
-    { "id": "adult-dog", "title_en": "Adult Dog Food", "title_ar": "طعام الكلاب البالغة", "href": "/collections/adult-dog-food", "image": "/assets/age-adult-dog.jpg" },
-    { "id": "senior-dog", "title_en": "Senior Dog Food", "title_ar": "طعام الكلاب المسنة", "href": "/collections/senior-dog-food", "image": "/assets/age-senior-dog.jpg" }
+    { "id": "puppy", "title_en": "Puppy Food", "title_ar": "طعام الجراء", "href": "/collections/puppy-dog-food", "image": "/assets/age-puppy-dog.jpg", "image_mobile": "/assets/age-puppy-dog-mobile.jpg" },
+    { "id": "adult-dog", "title_en": "Adult Dog Food", "title_ar": "طعام الكلاب البالغة", "href": "/collections/adult-dog-food", "image": "/assets/age-adult-dog.jpg", "image_mobile": "/assets/age-adult-dog-mobile.jpg" },
+    { "id": "senior-dog", "title_en": "Senior Dog Food", "title_ar": "طعام الكلاب المسنة", "href": "/collections/senior-dog-food", "image": "/assets/age-senior-dog.jpg", "image_mobile": "/assets/age-senior-dog-mobile.jpg" }
   ],
   "age_banners_cat": [
-    { "id": "kitten", "title_en": "Kitten Food", "title_ar": "طعام القطط الصغيرة", "href": "/collections/kitten-cat-food", "image": "/assets/age-kitten-cat.jpg" },
-    { "id": "adult-cat", "title_en": "Adult Cat Food", "title_ar": "طعام القطط البالغة", "href": "/collections/adult-cat-food", "image": "/assets/age-adult-cat.jpg" },
-    { "id": "senior-cat", "title_en": "Senior Cat Food", "title_ar": "طعام القطط المسنة", "href": "/collections/senior-cat-food", "image": "/assets/age-senior-cat.jpg" }
+    { "id": "kitten", "title_en": "Kitten Food", "title_ar": "طعام القطط الصغيرة", "href": "/collections/kitten-cat-food", "image": "/assets/age-kitten-cat.jpg", "image_mobile": "/assets/age-kitten-cat-mobile.jpg" },
+    { "id": "adult-cat", "title_en": "Adult Cat Food", "title_ar": "طعام القطط البالغة", "href": "/collections/adult-cat-food", "image": "/assets/age-adult-cat.jpg", "image_mobile": "/assets/age-adult-cat-mobile.jpg" },
+    { "id": "senior-cat", "title_en": "Senior Cat Food", "title_ar": "طعام القطط المسنة", "href": "/collections/senior-cat-food", "image": "/assets/age-senior-cat.jpg", "image_mobile": "/assets/age-senior-cat-mobile.jpg" }
   ],
   "accessory_banners": [
-    { "id": "beds", "title_en": "Dog Beds", "title_ar": "أسرّة الكلاب", "href": "/collections/dog-beds", "image": "/assets/accessory-dogbeds.jpg" },
-    { "id": "supplies", "title_en": "Shop Essentials", "title_ar": "مستلزمات المتجر", "href": "/collections/dog-supplies", "image": "/assets/accessory-essentials.jpg" }
+    { "id": "beds", "title_en": "Dog Beds", "title_ar": "أسرّة الكلاب", "href": "/collections/dog-beds", "image": "/assets/accessory-dogbeds.jpg", "image_mobile": "/assets/accessory-dogbeds-mobile.jpg" },
+    { "id": "supplies", "title_en": "Shop Essentials", "title_ar": "مستلزمات المتجر", "href": "/collections/dog-supplies", "image": "/assets/accessory-essentials.jpg", "image_mobile": "/assets/accessory-essentials-mobile.jpg" }
   ]
 }

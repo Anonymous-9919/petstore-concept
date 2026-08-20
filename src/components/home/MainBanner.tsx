@@ -8,6 +8,7 @@ interface BannerConfig {
   id: string;
   href: string;
   image: string;
+  image_mobile: string;
   title_en: string;
   title_ar: string;
 }
@@ -36,11 +37,14 @@ export function MainBanner() {
       <div className="page-container">
         <Link href={banner.href} className="block main-banner">
           <div className="promo-banner">
-            <img
-              src={banner.image}
-              alt={lang === "ar" ? banner.title_ar : banner.title_en}
-              className={`promo-banner-img${banner.image.includes("/assets/pc-") ? " filter-purple-to-orange" : ""}`}
-            />
+            <picture>
+              <source media="(max-width: 992px)" srcSet={banner.image_mobile} />
+              <img
+                src={banner.image}
+                alt={lang === "ar" ? banner.title_ar : banner.title_en}
+                className={`promo-banner-img${banner.image.includes("/assets/pc-") ? " filter-purple-to-orange" : ""}`}
+              />
+            </picture>
           </div>
         </Link>
       </div>

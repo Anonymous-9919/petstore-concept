@@ -10,6 +10,7 @@ interface PromoBanner {
   title_ar: string;
   href: string;
   image: string;
+  image_mobile: string;
 }
 
 let cachedBanners: PromoBanner[] | null = null;
@@ -34,15 +35,18 @@ export function TwoBannerRow() {
   return (
     <section className="section-spacing-small">
       <div className="page-container">
-        <div className="two-promo-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="two-promo-grid">
           {banners.map((banner) => (
             <Link key={banner.id} href={banner.href} className="block">
               <div className="promo-banner">
-                <img
-                  src={banner.image}
-                  alt={lang === "ar" ? banner.title_ar : banner.title_en}
-                  className={`promo-banner-img${banner.image.includes("/assets/pc-") ? " filter-purple-to-orange" : ""}`}
-                />
+                <picture>
+                  <source media="(max-width: 992px)" srcSet={banner.image_mobile} />
+                  <img
+                    src={banner.image}
+                    alt={lang === "ar" ? banner.title_ar : banner.title_en}
+                    className={`promo-banner-img${banner.image.includes("/assets/pc-") ? " filter-purple-to-orange" : ""}`}
+                  />
+                </picture>
               </div>
             </Link>
           ))}

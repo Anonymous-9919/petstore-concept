@@ -29,7 +29,7 @@ export function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="whatsapp-float animate-pulse"
+      className="whatsapp-float"
       aria-label="WhatsApp"
     >
       <svg

@@ -10,6 +10,7 @@ interface AgeBanner {
   title_ar: string;
   href: string;
   image: string;
+  image_mobile: string;
 }
 
 interface AgeBannerRowProps {
@@ -46,11 +47,14 @@ export function AgeBannerRow({ type }: AgeBannerRowProps) {
           {banners.map((banner) => (
             <Link key={banner.id} href={banner.href} className="block">
               <div className="promo-banner">
-                <img
-                  src={banner.image}
-                  alt={lang === "ar" ? banner.title_ar : banner.title_en}
-                  className="promo-banner-img"
-                />
+                <picture>
+                  <source media="(max-width: 992px)" srcSet={banner.image_mobile} />
+                  <img
+                    src={banner.image}
+                    alt={lang === "ar" ? banner.title_ar : banner.title_en}
+                    className="promo-banner-img filter-purple-to-orange"
+                  />
+                </picture>
               </div>
             </Link>
           ))}

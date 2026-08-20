@@ -12,6 +12,7 @@ interface Slide {
   cta_ar: string;
   href: string;
   image: string;
+  image_mobile: string;
 }
 
 let cachedSlides: Slide[] | null = null;
@@ -62,11 +63,14 @@ export function HeroSlider() {
               key={s.id}
               className={`hero-slide ${idx === current ? "active" : ""}`}
             >
-              <img
-                src={s.image}
-                alt={s.title_en || `Slide ${s.id}`}
-                className="hero-slide-img"
-              />
+              <picture>
+                <source media="(max-width: 992px)" srcSet={s.image_mobile} />
+                <img
+                  src={s.image}
+                  alt={s.title_en || `Slide ${s.id}`}
+                  className="hero-slide-img"
+                />
+              </picture>
             </div>
           ))}
 

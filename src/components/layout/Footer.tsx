@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, Instagram, Send } from "lucide-react";
+import { Phone, Mail, Instagram } from "lucide-react";
 import { useLanguageStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
 
@@ -10,27 +10,6 @@ export function Footer() {
 
   return (
     <footer className="site-footer">
-      {/* Newsletter */}
-      <div className="footer-newsletter">
-        <div className="footer-newsletter-inner">
-          <div>
-            <h3 className="font-bold text-lg mb-1">{t("footer.newsletter", lang)}</h3>
-            <p className="text-sm opacity-80">{t("footer.newsletter_text", lang)}</p>
-          </div>
-          <form className="footer-newsletter-form">
-            <input
-              type="email"
-              placeholder={t("footer.email_placeholder", lang)}
-              className="footer-newsletter-input"
-            />
-            <button type="submit" className="footer-newsletter-btn">
-              <Send size={14} />
-              {t("footer.subscribe", lang)}
-            </button>
-          </form>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="footer-main">
         <div className="footer-grid">
@@ -140,20 +119,6 @@ export function Footer() {
             <a href="mailto:petstorekw@gmail.com" className="footer-contact-link">
               <Mail size={14} /> petstorekw@gmail.com
             </a>
-            <div className="footer-newsletter">
-              <p className="footer-newsletter-text">{t("footer.newsletter", lang)}</p>
-              <form className="footer-newsletter-form">
-                <input
-                  type="email"
-                  placeholder={t("footer.email_placeholder", lang)}
-                  className="footer-newsletter-input"
-                />
-                <button type="submit" className="footer-newsletter-btn" aria-label={t("footer.subscribe", lang)}>
-                  <Send size={14} />
-                  {t("footer.subscribe", lang)}
-                </button>
-              </form>
-            </div>
           </div>
         </div>
 
