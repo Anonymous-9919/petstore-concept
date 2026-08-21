@@ -499,14 +499,26 @@ body {
 .hero-slide:not(.active) { opacity: 0; z-index: 1; }
 
 .hero-slide-img {
-  /* Absolutely pinned to the slide: physically cannot overflow the box */
+  /* Absolutely pinned to the slide: physically cannot overflow the box.
+     object-fit contain = the WHOLE image is always fully displayed,
+     never zoom-cropped (ratios match, so no letterbox in practice). */
   position: absolute;
   inset: 0;
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* Mobile image: below 993px (matches the 992px banner breakpoint) */
+.hero-slide-img--mobile { display: block; }
+/* Desktop image: from 993px up */
+.hero-slide-img--desktop { display: none; }
+@media (min-width: 993px) {
+  .hero-slide-img--mobile { display: none; }
+  .hero-slide-img--desktop { display: block; }
 }
 
 /* Hero Dots - bottom center */

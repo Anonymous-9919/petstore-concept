@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Slide {
   id: number;
@@ -27,6 +27,8 @@ async function loadSlides(): Promise<Slide[]> {
 export function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [slides, setSlides] = useState<Slide[]>([]);
+  const touchStartX = useRef<number | null>(null);
+  const pausedRef = useRef(false);
 
   useEffect(() => {
     loadSlides().then(setSlides);
@@ -35,10 +37,32 @@ export function HeroSlider() {
   useEffect(() => {
     if (slides.length === 0) return;
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+      if (!pausedRef.current) {
+        setCurrent((prev) => (prev + 1) % slides.length);
+      }
     }, 5000);
     return () => clearInterval(timer);
   }, [slides]);
+
+  const goTo = (idx: number) => setCurrent((idx + slides.length) % slides.length);
+
+  // Touch swipe support
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    pausedRef.current = true;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || slides.length < 2) return;
+    const delta = e.touches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 50) {
+      goTo(current + (delta < 0 ? 1 : -1));
+      touchStartX.current = e.touches[0].clientX; // allow continuous swipes
+    }
+  };
+  const onTouchEnd = () => {
+    touchStartX.current = null;
+    setTimeout(() => { pausedRef.current = false; }, 300);
+  };
 
   if (slides.length === 0) {
     return (
@@ -57,20 +81,32 @@ export function HeroSlider() {
   return (
     <section className="hero-section section-spacing-small">
       <div className="page-container">
-        <div className="hero-slider">
+        <div
+          className="hero-slider"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {slides.map((s, idx) => (
             <div
               key={s.id}
               className={`hero-slide ${idx === current ? "active" : ""}`}
             >
-              <picture>
-                <source media="(max-width: 992px)" srcSet={s.image_mobile} />
-                <img
-                  src={s.image}
-                  alt={s.title_en || `Slide ${s.id}`}
-                  className="hero-slide-img"
-                />
-              </picture>
+              {/* Mobile image - shown below 993px via CSS (deterministic, no <picture> algorithm) */}
+              <img
+                src={s.image_mobile}
+                alt={s.title_en || `Slide ${s.id}`}
+                className="hero-slide-img hero-slide-img--mobile"
+                draggable={false}
+              />
+              {/* Desktop image - shown from 993px up */}
+              <img
+                src={s.image}
+                alt=""
+                aria-hidden="true"
+                className="hero-slide-img hero-slide-img--desktop"
+                draggable={false}
+              />
             </div>
           ))}
 
