@@ -500,25 +500,17 @@ body {
 
 .hero-slide-img {
   /* Absolutely pinned to the slide: physically cannot overflow the box.
-     object-fit contain = the WHOLE image is always fully displayed,
-     never zoom-cropped (ratios match, so no letterbox in practice). */
+     Box ratio == art ratio (3.226), so cover fills every corner
+     with the WHOLE design visible - official-site behavior. */
   position: absolute;
   inset: 0;
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   user-select: none;
   -webkit-user-drag: none;
-}
-/* Mobile image: below 993px (matches the 992px banner breakpoint) */
-.hero-slide-img--mobile { display: block; }
-/* Desktop image: from 993px up */
-.hero-slide-img--desktop { display: none; }
-@media (min-width: 993px) {
-  .hero-slide-img--mobile { display: none; }
-  .hero-slide-img--desktop { display: block; }
 }
 
 /* Hero Dots - bottom center */
@@ -1335,12 +1327,13 @@ body {
 }
 
 @media (max-width: 992px) {
-  /* Banner aspect ratios swap at 992px to match the <picture> image swap */
+  /* Banner aspect ratios swap at 992px to match the <picture> image swap.
+     Hero keeps the artwork's true 3.226 ratio at ALL widths so the full
+     design fills the banner on mobile with zero crop. */
   .main-banner .promo-banner { aspect-ratio: 2.998; }
   .two-promo-grid .promo-banner,
   .accessory-banner-grid .promo-banner,
   .age-banner-grid .promo-banner { aspect-ratio: 2.021; }
-  .hero-slider { aspect-ratio: 1.901; }
   .two-promo-grid .promo-banner,
   .accessory-banner-grid .promo-banner,
   .age-banner-grid .promo-banner,

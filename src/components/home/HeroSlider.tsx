@@ -92,19 +92,12 @@ export function HeroSlider() {
               key={s.id}
               className={`hero-slide ${idx === current ? "active" : ""}`}
             >
-              {/* Mobile image - shown below 993px via CSS (deterministic, no <picture> algorithm) */}
-              <img
-                src={s.image_mobile}
-                alt={s.title_en || `Slide ${s.id}`}
-                className="hero-slide-img hero-slide-img--mobile"
-                draggable={false}
-              />
-              {/* Desktop image - shown from 993px up */}
+              {/* Full artwork on all viewports - box matches the art ratio,
+                  so it fills every corner with zero crop (official-site behavior) */}
               <img
                 src={s.image}
-                alt=""
-                aria-hidden="true"
-                className="hero-slide-img hero-slide-img--desktop"
+                alt={s.title_en || `Slide ${s.id}`}
+                className="hero-slide-img"
                 draggable={false}
               />
             </div>
