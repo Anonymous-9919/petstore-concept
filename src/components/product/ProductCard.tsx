@@ -13,7 +13,10 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const lang = useLanguageStore((s) => s.lang);
+  const items = useCartStore((s) => s.items);
   const addItem = useCartStore((s) => s.addItem);
+  const updateQuantity = useCartStore((s) => s.updateQuantity);
+  const removeItem = useCartStore((s) => s.removeItem);
   const { addItem: addWishlist, removeItem: removeWishlist, isInWishlist } = useWishlistStore();
   const wishlisted = isInWishlist(product.id);
 
@@ -23,12 +26,19 @@ export function ProductCard({ product }: ProductCardProps) {
     : null;
   const discount = originalPrice ? calcDiscount(parseFloat(bestPrice), parseFloat(originalPrice)) : 0;
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const cartKey = `${product.id}-default`;
+  const cartItem = items.find((i) => i.key === cartKey);
+  const inCart = !!cartItem && product.stock_status !== "outofstock";
+
+  const stop = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    const key = `${product.id}-default`;
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    stop(e);
     addItem({
-      key,
+      key: cartKey,
       product_id: product.id,
       variation_id: 0,
       quantity: 1,
@@ -36,6 +46,21 @@ export function ProductCard({ product }: ProductCardProps) {
       price: bestPrice,
       image: getProductImage(product),
     });
+  };
+
+  const handleIncrease = (e: React.MouseEvent) => {
+    stop(e);
+    if (cartItem) updateQuantity(cartKey, cartItem.quantity + 1);
+  };
+
+  const handleDecrease = (e: React.MouseEvent) => {
+    stop(e);
+    if (!cartItem) return;
+    if (cartItem.quantity <= 1) {
+      removeItem(cartKey);
+    } else {
+      updateQuantity(cartKey, cartItem.quantity - 1);
+    }
   };
 
   const handleWishlist = (e: React.MouseEvent) => {
@@ -131,20 +156,40 @@ export function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
 
-          {/* Add to Cart - Orange button matching PetCentral */}
-          <button
-            onClick={handleAddToCart}
-            className="product-card-cart-btn mt-auto"
-            style={{
-              backgroundColor: "var(--color-primary)",
-              color: "var(--color-text-inverse)",
-            }}
-          >
-            <ShoppingCart size={14} />
-            {product.stock_status === "outofstock"
-              ? t("product.out_of_stock", lang)
-              : t("product.add_to_cart", lang)}
-          </button>
+          {/* Add to Cart / Quantity selector - Orange, matching PetCentral */}
+          {inCart ? (
+            <div className="product-card-qty mt-auto" onClick={stop}>
+              <button
+                onClick={handleDecrease}
+                aria-label="Decrease quantity"
+                className="product-card-qty-btn"
+              >
+                −
+              </button>
+              <span className="product-card-qty-value">{cartItem!.quantity}</span>
+              <button
+                onClick={handleIncrease}
+                aria-label="Increase quantity"
+                className="product-card-qty-btn"
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="product-card-cart-btn mt-auto"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                color: "var(--color-text-inverse)",
+              }}
+            >
+              <ShoppingCart size={14} />
+              {product.stock_status === "outofstock"
+                ? t("product.out_of_stock", lang)
+                : t("product.add_to_cart", lang)}
+            </button>
+          )}
         </div>
       </div>
     </Link>

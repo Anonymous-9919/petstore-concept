@@ -154,7 +154,6 @@ body {
 }
 
 .announcement-text {
-  display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
@@ -167,6 +166,14 @@ body {
   font-weight: 700;
   color: #050505;
   line-height: var(--announcement-height);
+}
+/* Desktop row: all messages - visible >= 768px */
+.announcement-text-desktop { display: none; }
+/* Mobile row: single rotating message */
+.announcement-text-mobile { display: flex; }
+@media (min-width: 768px) {
+  .announcement-text-desktop { display: flex; }
+  .announcement-text-mobile { display: none; }
 }
 .announcement-text .announcement-sep {
   opacity: 0.4;
@@ -364,9 +371,10 @@ body {
 .mega-menu {
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
+  /* Full-bleed: stretch past the page padding on both sides
+     (avoids 100vw scrollbar overflow) */
+  left: calc(-1 * var(--page-padding));
+  right: calc(-1 * var(--page-padding));
   background: #ffffff;
   box-shadow: rgba(22,19,69,0.13) 0px 4px 20px 0px;
   z-index: 100;
@@ -473,7 +481,7 @@ body {
 
 /* ============================================
    HERO SLIDER - PetCentral zoom-out effect
-   Contained in page-width, scale 3→1 on transition
+   Contained in page-width, simple crossfade between slides (PetCentral image-show--fadein)
    ============================================ */
 .hero-slider {
   position: relative;
@@ -485,10 +493,10 @@ body {
 .hero-slide {
   position: absolute;
   inset: 0;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
-.hero-slide.active { opacity: 1; z-index: 2; transform: scale(1); }
-.hero-slide:not(.active) { opacity: 0; z-index: 1; transform: scale(3); }
+.hero-slide.active { opacity: 1; z-index: 2; }
+.hero-slide:not(.active) { opacity: 0; z-index: 1; }
 
 .hero-slide-img {
   width: 100%;
@@ -530,13 +538,12 @@ body {
    visible card is never clipped by padding.
    ============================================ */
 
-/* Wrapper that escapes the page-container clip */
+/* Wrapper that escapes the page-container clip
+   (negative insets instead of 100vw to avoid scrollbar overflow) */
 .brands-carousel-outer {
   position: relative;
-  /* Stretch from left edge to right edge of viewport */
-  width: 100vw;
-  /* Pull left to align with page content */
   margin-left: calc(-1 * var(--page-padding));
+  margin-right: calc(-1 * var(--page-padding));
 }
 
 /* Gradient fade on right edge hinting at more items */
@@ -950,6 +957,43 @@ body {
 }
 .product-card-cart-btn:hover { opacity: 0.9; }
 
+/* Quantity selector shown in place of Add to Cart once item is in the cart */
+.product-card-qty {
+  width: 100%;
+  margin-top: 10px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+.product-card-qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-text-inverse);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.product-card-qty-btn:hover { background: rgba(255, 255, 255, 0.32); }
+.product-card-qty-value {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+}
+
 /* BADGES */
 .badge {
   display: inline-flex;
@@ -1192,9 +1236,8 @@ body {
   .announcement-bar { min-height: 40px; font-size: 13px; }
   .announcement-text { font-size: 13px; }
   .nav-bar { display: none; }
-  /* Hero slider: full-bleed like the official mobile site */
-  .hero-slider { border-radius: 0; }
-  .hero-section .page-container { padding-left: 0; padding-right: 0; }
+  /* Hero slider: contained like source (page padding + 8px radius kept on mobile),
+     correct 1.901 aspect ratio */
   .section-heading { font-size: 22px; }
   .product-carousel-title { font-size: 22px; }
   .product-carousel-item { width: 200px; }
@@ -1298,10 +1341,10 @@ body {
 }
 
 @media (max-width: 576px) {
-  /* Staggered mobile collage look for 2-col banner rows (matches image-banner__mobile-margin) */
-  .two-promo-grid > *:not(:first-child),
-  .accessory-banner-grid > *:not(:first-child) {
-    margin-top: 60px;
+  /* 2-col banner rows stay level side-by-side on mobile (no stagger) */
+  .two-promo-grid > *,
+  .accessory-banner-grid > * {
+    margin-top: 0;
   }
 }
 

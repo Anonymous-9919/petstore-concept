@@ -18,23 +18,23 @@ export function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="announcement-bar">
-      <div className="announcement-bar-inner">
-        {/* Desktop: all messages in one centered line, separated by | (PetCentral) */}
-        <div className="announcement-text hidden md:flex">
-          {announcements.map((key, i) => (
-            <span key={key} className="flex items-center whitespace-nowrap">
-              {i > 0 && <span className="announcement-sep mx-3">|</span>}
-              <span>{t(key, lang)}</span>
-            </span>
-          ))}
-        </div>
+      <div className="announcement-bar">
+        <div className="announcement-bar-inner">
+          {/* Desktop: all messages in one centered line, separated by | (PetCentral) */}
+          <div className="announcement-text announcement-text-desktop">
+            {announcements.map((key, i) => (
+              <span key={key} className="flex items-center whitespace-nowrap">
+                {i > 0 && <span className="announcement-sep mx-3">|</span>}
+                <span>{t(key, lang)}</span>
+              </span>
+            ))}
+          </div>
 
-        {/* Mobile: one rotating message at a time */}
-        <div className="announcement-text md:hidden justify-center text-center">
-          <span className="truncate">{t(announcements[current], lang)}</span>
+          {/* Mobile: one rotating message at a time */}
+          <div className="announcement-text announcement-text-mobile justify-center text-center">
+            <span className="truncate">{t(announcements[current], lang)}</span>
+          </div>
         </div>
       </div>
-    </div>
   );
 }
