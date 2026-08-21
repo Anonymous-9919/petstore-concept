@@ -9,8 +9,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/nulo",
-      "image": "/assets/hero-slide1.jpg",
-      "image_mobile": "/assets/hero-slide1-mobile-v2.jpg"
+      "image": "/assets/hero-slide1-v2.jpg",
+      "image_mobile": "/assets/hero-slide1-mobile-v4.jpg"
     },
     {
       "id": 2,
@@ -21,8 +21,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/inaba",
-      "image": "/assets/hero-slide2.jpg",
-      "image_mobile": "/assets/hero-slide2-mobile-v2.jpg"
+      "image": "/assets/hero-slide2-v2.jpg",
+      "image_mobile": "/assets/hero-slide2-mobile-v4.jpg"
     },
     {
       "id": 3,
@@ -33,8 +33,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/nulo",
-      "image": "/assets/hero-slide3.jpg",
-      "image_mobile": "/assets/hero-slide3-mobile-v2.jpg"
+      "image": "/assets/hero-slide3-v2.jpg",
+      "image_mobile": "/assets/hero-slide3-mobile-v4.jpg"
     },
     {
       "id": 4,
@@ -45,8 +45,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/intersand",
-      "image": "/assets/hero-slide4.jpg",
-      "image_mobile": "/assets/hero-slide4-mobile-v2.jpg"
+      "image": "/assets/hero-slide4-v2.jpg",
+      "image_mobile": "/assets/hero-slide4-mobile-v4.jpg"
     },
     {
       "id": 5,
@@ -57,8 +57,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/stella-chewys",
-      "image": "/assets/hero-slide5.jpg",
-      "image_mobile": "/assets/hero-slide5-mobile-v2.jpg"
+      "image": "/assets/hero-slide5-v2.jpg",
+      "image_mobile": "/assets/hero-slide5-mobile-v4.jpg"
     },
     {
       "id": 6,
@@ -69,8 +69,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/",
-      "image": "/assets/hero-slide6.jpg",
-      "image_mobile": "/assets/hero-slide6-mobile-v2.jpg"
+      "image": "/assets/hero-slide6-v2.jpg",
+      "image_mobile": "/assets/hero-slide6-mobile-v4.jpg"
     },
     {
       "id": 7,
@@ -81,8 +81,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/royal-canin",
-      "image": "/assets/hero-slide7.jpg",
-      "image_mobile": "/assets/hero-slide7-mobile-v2.jpg"
+      "image": "/assets/hero-slide7-v2.jpg",
+      "image_mobile": "/assets/hero-slide7-mobile-v4.jpg"
     },
     {
       "id": 8,
@@ -93,8 +93,8 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/primal",
-      "image": "/assets/hero-slide8.jpg",
-      "image_mobile": "/assets/hero-slide8-mobile-v2.jpg"
+      "image": "/assets/hero-slide8-v2.jpg",
+      "image_mobile": "/assets/hero-slide8-mobile-v4.jpg"
     }
   ],
   "main_banner": {

@@ -10,10 +10,17 @@ import {
   Menu,
   X,
   Phone,
+  ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import { useLanguageStore, useCartStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import type { NavItem } from "@/lib/types";
+
+type MenuView =
+  | { type: "root" }
+  | { type: "cat"; slug: string }
+  | { type: "sub"; slug: string; subIdx: number };
 import storeData from "@/data/store.json";
 
 let navDataCache: NavItem[] | null = null;
@@ -35,6 +42,7 @@ export function Header() {
   const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuStack, setMenuStack] = useState<MenuView[]>([{ type: "root" }]);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [navData, setNavData] = useState<NavItem[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -86,7 +94,7 @@ export function Header() {
 
             {/* Logo - center on mobile, left on desktop */}
             <Link href="/" className="header-logo">
-              <img src="/assets/logo.jpg" alt="Pet Store" className="header-logo-img" />
+              <img src="/assets/logo-v3.png" alt="Pet Store" className="header-logo-img" />
             </Link>
 
             {/* Search bar - center, pill-shaped, hidden on mobile */}
@@ -169,12 +177,16 @@ export function Header() {
               ))}
 
               {/* Extra nav items */}
-              <Link href="/category" className="nav-item">
-                {lang === "ar" ? "تسوق حسب البراند" : "Shop by brand"}
-              </Link>
-              <Link href="/category" className="nav-item">
-                {lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}
-              </Link>
+              <div className="nav-item-wrapper">
+                <Link href="/category" className="nav-item">
+                  {lang === "ar" ? "تسوق حسب الفئة" : "Shop by Category"}
+                </Link>
+              </div>
+              <div className="nav-item-wrapper">
+                <Link href="/category" className="nav-item">
+                  {lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}
+                </Link>
+              </div>
             </div>
 
             {/* Phone number on nav bar - right side on desktop */}
@@ -237,61 +249,122 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Slide-out Menu */}
-      <div className={`fixed inset-0 z-50 md:hidden transition-transform duration-300 ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}>
-        <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-        <div className="absolute inset-y-0 right-0 w-80 bg-white shadow-xl overflow-y-auto animate-slide-in-right">
-          <div className="p-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="font-bold text-lg">Menu</h2>
-              <button onClick={() => setMobileOpen(false)}>
-                <X size={24} />
-              </button>
-            </div>
+      {/* Mobile Slide-out Menu - PetCentral-style drill-down drawer */}
+      <div className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+        <div className="absolute inset-0 bg-black/50" onClick={() => { setMobileOpen(false); setMenuStack([{ type: "root" }]); }} />
+        <div className="absolute inset-y-0 right-0 w-[85%] max-w-[360px] bg-[#fdf9fe] shadow-xl overflow-hidden flex flex-col">
+          {/* Drawer header */}
+          <div className="flex items-center justify-between px-5 h-14 border-b border-black/5">
+            <span className="font-bold text-[15px] text-gray-900">{lang === "ar" ? "القائمة" : "Menu"}</span>
+            <button
+              onClick={() => { setMobileOpen(false); setMenuStack([{ type: "root" }]); }}
+              aria-label="Close menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
 
-            {/* Language toggle in mobile */}
-            <div className="flex gap-2 mb-4">
-              <button
-                onClick={() => setLang(lang === "en" ? "ar" : "en")}
-                className="text-sm border rounded px-3 py-1 font-semibold flex-1"
-              >
-                {lang === "en" ? "عربي" : "EN"}
-              </button>
-            </div>
+          {/* Sliding panels */}
+          <div className="flex-1 relative overflow-hidden">
+            <div
+              className="absolute inset-0 flex transition-transform duration-300 ease-out"
+              style={{ width: `${menuStack.length * 100}%`, transform: `translateX(${lang === "ar" ? "" : "-"}${(menuStack.length - 1) * (100 / menuStack.length)}%)` }}
+              dir={undefined}
+            >
+              {menuStack.map((view, depth) => (
+                <div key={depth} className="w-full h-full overflow-y-auto" style={{ width: `${100 / menuStack.length}%` }}>
+                  {/* ROOT */}
+                  {view.type === "root" && (
+                    <div className="py-2">
+                      {navData.map((item) => (
+                        <button
+                          key={item.slug}
+                          className="mobile-menu-row strong"
+                          onClick={() => setMenuStack([...menuStack, { type: "cat", slug: item.slug }])}
+                        >
+                          <span>{lang === "ar" ? item.label_ar : item.label}</span>
+                          <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
+                        </button>
+                      ))}
+                      <Link href="/category" className="mobile-menu-row body2" onClick={() => { setMobileOpen(false); }}>
+                        <span>{lang === "ar" ? "تسوق حسب الفئة" : "Shop by Category"}</span>
+                        <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
+                      </Link>
+                      <Link href="/category" className="mobile-menu-row body2" onClick={() => { setMobileOpen(false); }}>
+                        <span>{lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}</span>
+                        <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
+                      </Link>
 
-            {/* Mobile menu categories */}
-            {navData.map((item) => (
-              <div key={item.slug} className="border-b border-gray-100">
-                <Link
-                  href={item.href || `/${item.slug}`}
-                  className="block py-3 font-semibold text-gray-800"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {lang === "ar" ? item.label_ar : item.label}
-                </Link>
-                {item.subcategories && (
-                  <div className="pl-4 pb-2">
-                    {item.subcategories.map((sub, subIdx) => (
-                      <div key={`${item.slug}-${subIdx}`} className="mb-2">
-                        <div className="text-xs font-semibold text-gray-500 uppercase mb-1">
-                          {lang === "ar" ? sub.label_ar : sub.label}
+                      {/* Language toggle */}
+                      <div className="px-5 pt-6">
+                        <button
+                          onClick={() => setLang(lang === "en" ? "ar" : "en")}
+                          className="w-full text-sm border border-black/10 rounded-lg px-3 py-2.5 font-semibold"
+                        >
+                          {lang === "en" ? "العربية" : "English"}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* CATEGORY LEVEL */}
+                  {view.type === "cat" && (() => {
+                    const cat = navData.find((c) => c.slug === view.slug);
+                    if (!cat) return null;
+                    return (
+                      <div>
+                        <button className="mobile-menu-back" onClick={() => setMenuStack(menuStack.slice(0, -1))}>
+                          <ChevronLeft size={18} className="rtl:rotate-180" />
+                          <span>{lang === "ar" ? "القائمة" : "Menu"}</span>
+                        </button>
+                        <div className="px-5 pt-4 pb-2">
+                          <h3 className="text-[19px] font-bold text-gray-900">{lang === "ar" ? cat.label_ar : cat.label}</h3>
+                        </div>
+                        {(cat.subcategories || []).map((sub, idx) => (
+                          <button
+                            key={idx}
+                            className="mobile-menu-row body2"
+                            onClick={() => setMenuStack([...menuStack, { type: "sub", slug: cat.slug, subIdx: idx }])}
+                          >
+                            <span>{lang === "ar" ? sub.label_ar : sub.label}</span>
+                            <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
+                          </button>
+                        ))}
+                      </div>
+                    );
+                  })()}
+
+                  {/* SUBCATEGORY LEVEL */}
+                  {view.type === "sub" && (() => {
+                    const cat = navData.find((c) => c.slug === view.slug);
+                    const sub = cat?.subcategories?.[view.subIdx];
+                    if (!cat || !sub) return null;
+                    return (
+                      <div>
+                        <button className="mobile-menu-back" onClick={() => setMenuStack(menuStack.slice(0, -1))}>
+                          <ChevronLeft size={18} className="rtl:rotate-180" />
+                          <span>{lang === "ar" ? cat.label_ar : cat.label}</span>
+                        </button>
+                        <div className="px-5 pt-4 pb-2">
+                          <h3 className="text-[19px] font-bold text-gray-900">{lang === "ar" ? sub.label_ar : sub.label}</h3>
                         </div>
                         {sub.items.map((subItem) => (
                           <Link
                             key={subItem.slug}
                             href={`/category/${subItem.slug}`}
-                            className="block py-1 text-sm text-gray-600 hover:text-orange-600"
-                            onClick={() => setMobileOpen(false)}
+                            className="mobile-menu-row body2"
+                            onClick={() => { setMobileOpen(false); setMenuStack([{ type: "root" }]); }}
                           >
-                            {lang === "ar" ? subItem.label_ar : subItem.label}
+                            <span>{lang === "ar" ? subItem.label_ar : subItem.label}</span>
+                            <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
                           </Link>
                         ))}
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                    );
+                  })()}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

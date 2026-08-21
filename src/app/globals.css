@@ -20,7 +20,7 @@
   --color-bg-alt: #fff7ed;
   --color-bg-card: #ffffff;
   --color-bg-header: #f97316;
-  --color-bg-footer: #050505;
+  --color-bg-footer: #fbe3d2;
   --color-bg-announcement: #ffffff;
 
   --color-text: #050505;
@@ -138,8 +138,8 @@ body {
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 700;
-  background-color: #f15f22;
-  color: #050505;
+  background-color: #ffe9d6;
+  color: #7c3a12;
   overflow: hidden;
 }
 
@@ -204,7 +204,7 @@ body {
 }
 
 .header-logo-img {
-  height: 40px;
+  height: 58px;
   width: auto;
   display: block;
 }
@@ -500,17 +500,26 @@ body {
 
 .hero-slide-img {
   /* Absolutely pinned to the slide: physically cannot overflow the box.
-     Box ratio == art ratio (3.226), so cover fills every corner
-     with the WHOLE design visible - official-site behavior. */
+     Each image ratio == its box ratio (mobile art 1.9 in 1.901 box,
+     desktop art 3.226 in 3.226 box) so cover fills every corner
+     with the whole design visible - official-site behavior. */
   position: absolute;
   inset: 0;
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   user-select: none;
   -webkit-user-drag: none;
+}
+/* Dedicated mobile art: below 993px */
+.hero-slide-img--mobile { display: block; }
+/* Desktop art: from 993px up */
+.hero-slide-img--desktop { display: none; }
+@media (min-width: 993px) {
+  .hero-slide-img--mobile { display: none; }
+  .hero-slide-img--desktop { display: block; }
 }
 
 /* Hero Dots - bottom center */
@@ -1021,7 +1030,14 @@ body {
    ============================================ */
 .site-footer {
   background-color: var(--color-bg-footer);
-  color: var(--color-text-inverse);
+  color: #241a12;
+}
+
+/* Footer logo (replaces the old "PET STORE" wordmark) */
+.footer-logo-img {
+  height: 64px;
+  width: auto;
+  display: block;
 }
 
 .footer-newsletter {
@@ -1029,21 +1045,21 @@ body {
 }
 .footer-newsletter-text {
   font-size: 13px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.7);
   margin-bottom: 10px;
 }
 .footer-newsletter-form { display: flex; gap: 8px; }
 .footer-newsletter-input {
   padding: 10px 16px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(0,0,0,0.25);
   border-radius: 8px;
   background: transparent;
-  color: white;
+  color: #241a12;
   font-size: 14px;
   min-width: 0;
   flex: 1;
 }
-.footer-newsletter-input::placeholder { color: rgba(255,255,255,0.5); }
+.footer-newsletter-input::placeholder { color: rgba(0,0,0,0.5); }
 .footer-newsletter-btn {
   padding: 10px 20px;
   background: var(--color-primary);
@@ -1084,10 +1100,10 @@ body {
 }
 
 .footer-social-heading {
-  font-size: 13px;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 10px;
-}
+    font-size: 13px;
+    color: rgba(0,0,0,0.7);
+    margin-bottom: 10px;
+  }
 
 .footer-social {
   display: flex;
@@ -1100,12 +1116,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.08);
   border-radius: 50%;
-  color: white;
+  color: #241a12;
   transition: background-color 0.2s ease;
 }
-.footer-social a:hover { background: var(--color-primary); }
+.footer-social a:hover { background: var(--color-primary); color: white; }
 
 .footer-column h4,
 .footer-block-5 h4 {
@@ -1118,11 +1134,11 @@ body {
 .footer-column li { margin-bottom: 8px; }
 .footer-column a {
   font-size: 14px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.7);
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.footer-column a:hover { color: white; }
+.footer-column a:hover { color: var(--color-primary); }
 
 .footer-block-5 {
   display: flex;
@@ -1133,15 +1149,15 @@ body {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.7);
   text-decoration: none;
   margin-bottom: 8px;
   transition: color 0.2s ease;
 }
-.footer-contact-link:hover { color: white; }
+.footer-contact-link:hover { color: var(--color-primary); }
 
 .footer-copyright {
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(0,0,0,0.12);
   padding: 16px 0;
 }
 .footer-copyright-inner {
@@ -1238,7 +1254,7 @@ body {
 @media (max-width: 768px) {
   .header-main { height: 64px; gap: 8px; }
   .header-main .header-logo { flex: 1; justify-content: center; }
-  .header-logo-img { height: 36px; }
+  .header-logo-img { height: 48px; }
   .header-actions { gap: 4px; }
   .header-action-btn { width: 36px; height: 36px; }
   .announcement-bar { min-height: 40px; font-size: 13px; }
@@ -1327,13 +1343,14 @@ body {
 }
 
 @media (max-width: 992px) {
-  /* Banner aspect ratios swap at 992px to match the <picture> image swap.
-     Hero keeps the artwork's true 3.226 ratio at ALL widths so the full
-     design fills the banner on mobile with zero crop. */
+  /* Banner aspect ratios swap at 992px to match the image swap.
+     Hero uses the dedicated mobile art's 1.901 ratio on phones/tablets
+     (official-site proportions) and 3.226 desktop art above. */
   .main-banner .promo-banner { aspect-ratio: 2.998; }
   .two-promo-grid .promo-banner,
   .accessory-banner-grid .promo-banner,
   .age-banner-grid .promo-banner { aspect-ratio: 2.021; }
+  .hero-slider { aspect-ratio: 1.901; }
   .two-promo-grid .promo-banner,
   .accessory-banner-grid .promo-banner,
   .age-banner-grid .promo-banner,
@@ -1353,11 +1370,221 @@ body {
 
 @media (max-width: 480px) {
   .header-main { height: 56px; }
-  .header-logo-img { height: 32px; }
+  .header-logo-img { height: 44px; }
   .product-carousel-item { width: 170px; }
-  
+
   /* Extra small mobile adjustments */
   .brands-carousel { padding: 8px var(--page-padding); }
   .brand-logo-item { width: 120px; }
   .brand-logo-image { width: 120px; height: 120px; }
+}
+
+/* ============================================
+   INFO PAGES (About / Delivery / Privacy / Terms)
+   On-brand orange & warm design system
+   ============================================ */
+.about-hero {
+  background: linear-gradient(135deg, #f97316 0%, var(--color-primary) 55%, #d94f0e 100%);
+  color: white;
+  padding: 56px 0 48px;
+}
+.about-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.about-hero-title {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.about-hero-sub {
+  max-width: 640px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.92);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 16px;
+  margin-top: -34px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 30px rgba(20,20,20,0.08);
+}
+.about-stat { text-align: center; }
+.about-stat-n {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.about-stat-l { font-size: 13px; color: #6b7280; margin-top: 2px; }
+
+.about-story { padding-top: 36px; }
+.about-story-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(20,20,20,0.06);
+}
+.about-card-icon { color: var(--color-primary); margin-bottom: 10px; }
+.about-h2 {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #17181a;
+}
+.about-p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+.about-value-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 22px;
+  box-shadow: 0 4px 24px rgba(20,20,20,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.about-value-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(249,115,22,0.16);
+}
+.about-value-card h3 {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 700;
+  color: #17181a;
+  margin-bottom: 8px;
+}
+.about-value-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b7280;
+}
+@media (min-width: 993px) {
+  .about-values { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .about-values { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); row-gap: 18px; }
+}
+
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 18px 0 26px;
+}
+.about-step {
+  background: #fff7f2;
+  border: 1px solid #ffe1cd;
+  border-radius: 14px;
+  padding: 24px 22px;
+  text-align: center;
+}
+.about-step-n {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-step h3 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: #17181a;
+  margin-bottom: 6px;
+}
+.about-step p { font-size: 14px; line-height: 1.65; color: #6b7280; }
+@media (max-width: 768px) {
+  .about-steps { grid-template-columns: 1fr; }
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.about-list li {
+  position: relative;
+  padding-inline-start: 22px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+.about-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+[dir="rtl"] .about-hero-inner,
+[dir="rtl"] .about-story-card,
+[dir="rtl"] .about-value-card,
+[dir="rtl"] .about-step { direction: rtl; }
+
+/* ============================================
+   MOBILE MENU DRAWER - PetCentral drill-down
+   ============================================ */
+.mobile-menu-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 20px;
+  text-align: start;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  color: #17181a;
+  transition: background-color 0.15s ease;
+}
+.mobile-menu-row:hover { background: rgba(0,0,0,0.03); }
+.mobile-menu-row.strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+.mobile-menu-row.body2 {
+  font-size: 14.5px;
+  font-weight: 500;
+}
+.mobile-menu-back {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }

@@ -16,7 +16,7 @@ export function Footer() {
           {/* About + Social */}
           <div className="footer-block-1">
             <div className="footer-about">
-              <span className="text-xl font-extrabold tracking-tight">PET STORE</span>
+              <img src="/assets/logo-v3.png" alt="Pet Store" className="footer-logo-img" />
             </div>
             <p className="footer-about-text">{t("footer.about_text", lang)}</p>
             <p className="footer-social-heading">{t("footer.follow_us", lang)}</p>
@@ -84,7 +84,6 @@ export function Footer() {
                 { label: lang === "ar" ? "قائمة الأمنيات" : "My Wishlist", href: "/wishlist" },
                 { label: lang === "ar" ? "من نحن" : "About Us", href: "/about" },
                 { label: lang === "ar" ? "اتصل بنا" : "Contact Us", href: "/contact" },
-                { label: "Sitemap", href: "/sitemap.xml" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>{link.label}</Link>
