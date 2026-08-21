@@ -189,10 +189,13 @@ export function Header() {
               </div>
             </div>
 
-            {/* Phone number on nav bar - right side on desktop */}
+            {/* Phone number on nav bar - right side on desktop.
+                dir=ltr so the number reads correctly in Arabic RTL mode */}
             <a href="tel:+96598805010" className="nav-phone">
               <Phone size={14} />
-              <span>{store.phone}</span>
+              <span dir="ltr" style={{ display: "inline-block", unicodeBidi: "isolate" }}>
+                {store.phone}
+              </span>
             </a>
           </div>
 
