@@ -42,7 +42,7 @@ export function HeroSlider() {
 
   if (slides.length === 0) {
     return (
-      <section className="section-spacing-small">
+      <section className="hero-section section-spacing-small">
         <div className="page-container">
           <div className="hero-slider" style={{ backgroundColor: "#f3f4f6" }}>
             <div className="absolute inset-0 flex items-center justify-center text-gray-400">
@@ -55,7 +55,7 @@ export function HeroSlider() {
   }
 
   return (
-    <section className="section-spacing-small">
+    <section className="hero-section section-spacing-small">
       <div className="page-container">
         <div className="hero-slider">
           {slides.map((s, idx) => (

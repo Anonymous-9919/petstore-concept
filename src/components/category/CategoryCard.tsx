@@ -22,7 +22,7 @@ export function CategoryCard({ name, name_ar, slug, image, count }: CategoryCard
           <img
             src={image}
             alt={displayName}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            className="w-full h-full object-cover"
           />
         </div>
         <p className="category-card-label">{displayName}</p>

@@ -31,7 +31,7 @@ export function AccessoryBanners() {
   if (banners.length === 0) return null;
 
   return (
-    <section className="section-spacing-small">
+    <section className="section-spacing-small section-bottom-spacing">
       <div className="page-container">
         <div className="accessory-banner-grid">
           {banners.map((banner) => (
@@ -42,7 +42,7 @@ export function AccessoryBanners() {
 <img
                     src={banner.image}
                     alt={lang === "ar" ? banner.title_ar : banner.title_en}
-                    className="promo-banner-img filter-purple-to-orange"
+                    className="promo-banner-img"
                   />
                 </picture>
               </div>

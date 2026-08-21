@@ -42,7 +42,7 @@ export function MainBanner() {
               <img
                 src={banner.image}
                 alt={lang === "ar" ? banner.title_ar : banner.title_en}
-                className={`promo-banner-img${banner.image.includes("/assets/pc-") ? " filter-purple-to-orange" : ""}`}
+                className="promo-banner-img"
               />
             </picture>
           </div>

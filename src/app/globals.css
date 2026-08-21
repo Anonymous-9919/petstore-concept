@@ -98,6 +98,12 @@ body {
 .section-spacing-medium { margin-top: 70px; }
 .section-spacing-small { margin-top: 40px; }
 
+/* Bottom gap after the last homepage banner, like the official site */
+.section-bottom-spacing { margin-bottom: 90px; }
+@media (max-width: 768px) {
+  .section-bottom-spacing { margin-bottom: 30px; }
+}
+
 .section-btn-container {
   text-align: center;
   margin-top: 32px;
@@ -119,14 +125,19 @@ body {
 
 /* ============================================
    ANNOUNCEMENT BAR - PetCentral exact
-   bg #f15f22, text #050505, heading font,
-   font-size 13px, min-height 40px
+   bg #f15f22, text #050505 bold 700, Poppins
+   font-size 13px, min-height 40px,
+   content centered horizontally + vertically
    ============================================ */
 .announcement-bar {
   width: 100%;
-  min-height: 40px;
+  min-height: var(--announcement-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   background-color: #f15f22;
   color: #050505;
   overflow: hidden;
@@ -136,19 +147,29 @@ body {
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 var(--page-padding);
-  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-text {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-}
-
-.announcement-text {
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  color: #050505;
+  line-height: var(--announcement-height);
+}
+.announcement-text .announcement-sep {
+  opacity: 0.4;
 }
 
 /* ============================================
@@ -361,28 +382,35 @@ body {
 
 .mega-menu-columns { flex: 1; display: flex; gap: 0; }
 
-.mega-menu-col { flex: 0 0 20%; padding: 0 10px; }
+.mega-menu-col {
+  flex: 0 0 20%;
+  padding: 0 10px;
+  text-align: center;
+}
 
+/* Column title - same font family/size as the rest of the menu,
+   underline identical to .nav-item (2px, grows from left, below text) */
 .mega-menu-col-title {
   position: relative;
-  font-size: 16px;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--color-text);
   margin-top: 18px;
-  margin-bottom: 0;
-  display: block;
+  margin-bottom: 8px;
   text-decoration: none;
 }
 .mega-menu-col-title::after {
   content: "";
   position: absolute;
-  bottom: 4px;
   left: 0;
+  top: 100%;
   width: 0;
   height: 2px;
   background-color: var(--color-primary);
-  transition: width 0.3s ease;
+  transition: width var(--duration-medium, 0.3s) ease;
 }
 .mega-menu-col-title:hover { color: var(--color-primary); }
 .mega-menu-col-title:hover::after {
@@ -391,16 +419,31 @@ body {
 
 .mega-menu-col ul { list-style: none; padding: 0; margin: 0; }
 
+/* Menu links - centered, same font/size as titles,
+   same hover underline as .nav-item */
 .mega-menu-col li a {
-  display: block;
-  padding: 11px 0 0;
+  position: relative;
+  display: inline-block;
+  padding: 11px 0 2px;
+  font-family: var(--font-sans);
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
+.mega-menu-col li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--duration-medium, 0.3s) ease;
+}
 .mega-menu-col li a:hover { color: var(--color-primary); }
+.mega-menu-col li a:hover::after { width: 100%; }
 
 .mega-menu-image {
   flex: 0 0 20%;
@@ -569,9 +612,6 @@ body {
 /* ============================================
    MAIN BANNER - Full width promo strip 7.2:1
    ============================================ */
-.filter-purple-to-orange {
-  filter: hue-rotate(115deg) saturate(1.2);
-}
 .main-banner {
   display: block;
   overflow: hidden;
@@ -598,6 +638,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  align-items: start;
 }
 
 .two-promo-grid .promo-banner {
@@ -618,7 +659,11 @@ body {
 
 /* ============================================
    CATEGORY GRID - PetCentral style
-   6 cards, circular images, overflow on hover
+   6 cards desktop; mobile = slider--phone:
+   horizontal snap scroll, 3 visible at a time.
+   Images are NOT clipped - they may extend
+   outside their frame (PetCentral
+   .image-hover-scaling behaviour)
    ============================================ */
 .category-grid {
   display: grid;
@@ -629,43 +674,43 @@ body {
 .category-card {
   position: relative;
   text-align: center;
-  overflow: visible;
+  min-width: 0;
 }
 
+/* Frame: PetCentral border__radius (8px), no clipping */
 .category-card-circle {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 50%;
-  overflow: visible;
+  border-radius: var(--radius-md);
   background: var(--color-bg-alt);
-  border: 3px solid transparent;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.category-card:hover .category-card-circle {
-  transform: translateY(-4px);
-  border-color: var(--color-primary);
+  transition: background-color 0.3s ease;
 }
 
 .category-card-circle img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  transition: transform 0.4s ease;
+  border-radius: var(--radius-md);
+  transition: transform var(--duration-medium, 0.3s) var(--zoom-animation-bezier, ease);
+}
+.category-card:hover .category-card-circle {
+  background: transparent;
 }
 .category-card:hover .category-card-circle img {
-  transform: scale(1.12);
+  transform: scale(1.08); /* image grows beyond the frame */
 }
 
 .category-card-label {
   margin-top: 15px;
-  font-size: 18px;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 18px; /* PetCentral --h5 */
+  font-weight: 700;
   color: var(--color-text);
 }
 
 /* ============================================
-   AGE BANNER ROW - 3-col, overflow on hover
+   AGE BANNER ROW - 3 across desktop; mobile =
+   slider showing 2 banners + swipe for the 3rd
    ============================================ */
 .age-banner-grid {
   display: grid;
@@ -701,6 +746,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  align-items: start;
 }
 
 .accessory-banner-grid .promo-banner {
@@ -1146,13 +1192,51 @@ body {
   .announcement-bar { min-height: 40px; font-size: 13px; }
   .announcement-text { font-size: 13px; }
   .nav-bar { display: none; }
+  /* Hero slider: full-bleed like the official mobile site */
   .hero-slider { border-radius: 0; }
+  .hero-section .page-container { padding-left: 0; padding-right: 0; }
   .section-heading { font-size: 22px; }
   .product-carousel-title { font-size: 22px; }
   .product-carousel-item { width: 200px; }
   .product-card { overflow: hidden; }
-  .age-banner-grid { grid-template-columns: repeat(2, 1fr); }
-  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  /* Mobile age banners: PetCentral slider--phone - exactly 2 visible,
+     swipe horizontally (scroll-snap) to reveal the 3rd banner */
+  .age-banner-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .age-banner-grid::-webkit-scrollbar { display: none; }
+  .age-banner-grid > * {
+    flex: 0 0 calc((100% - 10px) / 2);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+  /* Mobile categories: PetCentral slider--phone - exactly 3 visible,
+     swipe horizontally (scroll-snap) to see the rest */
+  .category-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .category-grid::-webkit-scrollbar { display: none; }
+  .category-grid > * {
+    flex: 0 0 calc((100% - 20px) / 3);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
   .brands-carousel { gap: 12px; padding: 12px var(--page-padding) 12px var(--page-padding); }
   .brand-logo-item { width: 140px; }
   .brand-logo-image { width: 140px; height: 140px; }

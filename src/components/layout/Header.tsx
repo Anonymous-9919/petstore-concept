@@ -25,7 +25,7 @@ async function loadNavData(): Promise<NavItem[]> {
   return navDataCache;
 }
 
-const store: any = storeData;
+const store = storeData;
 
 export function Header() {
   const lang = useLanguageStore((s) => s.lang);

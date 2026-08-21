@@ -20,12 +20,19 @@ export function AnnouncementBar() {
   return (
     <div className="announcement-bar">
       <div className="announcement-bar-inner">
-        <div className="announcement-text flex items-center gap-3">
-          <span>{t(announcements[current], lang)}</span>
-          <span className="opacity-30">|</span>
-          <span className="font-semibold">{lang === "ar" ? "توصيل مجاني" : "Free shipping on orders above KD 10!"}</span>
-          <span className="opacity-30">|</span>
-          <span>{lang === "ar" ? "عروض حصرية" : "Exclusive deals on top pet brands!"}</span>
+        {/* Desktop: all messages in one centered line, separated by | (PetCentral) */}
+        <div className="announcement-text hidden md:flex">
+          {announcements.map((key, i) => (
+            <span key={key} className="flex items-center whitespace-nowrap">
+              {i > 0 && <span className="announcement-sep mx-3">|</span>}
+              <span>{t(key, lang)}</span>
+            </span>
+          ))}
+        </div>
+
+        {/* Mobile: one rotating message at a time */}
+        <div className="announcement-text md:hidden justify-center text-center">
+          <span className="truncate">{t(announcements[current], lang)}</span>
         </div>
       </div>
     </div>
