@@ -183,7 +183,7 @@ export function Header() {
                 </Link>
               </div>
               <div className="nav-item-wrapper">
-                <Link href="/category" className="nav-item">
+                <Link href="/best-sellers" className="nav-item">
                   {lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}
                 </Link>
               </div>

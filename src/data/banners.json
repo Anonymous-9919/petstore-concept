@@ -45,7 +45,7 @@
       "cta_en": "",
       "cta_ar": "",
       "href": "/collections/intersand",
-      "image": "/assets/hero-slide4-v2.jpg",
+      "image": "/assets/hero-slide4-v3.jpg",
       "image_mobile": "/assets/hero-slide4-mobile-v4.jpg"
     },
     {
@@ -128,7 +128,7 @@
     { "id": "senior-cat", "title_en": "Senior Cat Food", "title_ar": "طعام القطط المسنة", "href": "/collections/senior-cat-food", "image": "/assets/age-senior-cat-v2.jpg", "image_mobile": "/assets/age-senior-cat-mobile-v2.jpg" }
   ],
   "accessory_banners": [
-    { "id": "beds", "title_en": "Dog Beds", "title_ar": "أسرّة الكلاب", "href": "/collections/dog-beds", "image": "/assets/accessory-dogbeds-v2.jpg", "image_mobile": "/assets/accessory-dogbeds-mobile-v2.jpg" },
-    { "id": "supplies", "title_en": "Shop Essentials", "title_ar": "مستلزمات المتجر", "href": "/collections/dog-supplies", "image": "/assets/accessory-essentials-v2.jpg", "image_mobile": "/assets/accessory-essentials-mobile-v2.jpg" }
+    { "id": "beds", "title_en": "Dog Beds", "title_ar": "أسرّة الكلاب", "href": "/category/pet-beds-houses", "image": "/assets/accessory-dogbeds-v2.jpg", "image_mobile": "/assets/accessory-dogbeds-mobile-v2.jpg" },
+    { "id": "supplies", "title_en": "Shop Essentials", "title_ar": "مستلزمات المتجر", "href": "/category/dog-accessories", "image": "/assets/accessory-essentials-v2.jpg", "image_mobile": "/assets/accessory-essentials-mobile-v2.jpg" }
   ]
 }

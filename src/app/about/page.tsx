@@ -85,7 +85,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="page-container">
+        <section className="page-container pb-14">
           <div className="about-values">
             {T.values.map((v, i) => (
               <div key={i} className="about-value-card">
@@ -94,15 +94,6 @@ export default function AboutPage() {
                 <p>{lang === "ar" ? v.ar[1] : v.en[1]}</p>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="page-container pb-14">
-          <div className="about-cta">
-            <h2>{t(T.ctaTitle)}</h2>
-            <p>{t(T.ctaText)}</p>
-            <Link href="/" className="about-cta-btn">{t(T.ctaBtn)}</Link>
           </div>
         </section>
       </main>

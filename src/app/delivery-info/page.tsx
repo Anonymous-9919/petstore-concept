@@ -71,7 +71,7 @@ export default function DeliveryInfoPage() {
         </section>
 
         {/* Steps */}
-        <section className="page-container pt-4">
+        <section className="page-container pt-16">
           <h2 className="about-h2 text-center">{t(T.stepsTitle)}</h2>
           <div className="about-steps">
             {T.steps.map((s, i) => (
