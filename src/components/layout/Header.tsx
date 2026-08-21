@@ -160,7 +160,7 @@ export function Header() {
                   onMouseLeave={handleMouseLeave}
                 >
                   <Link
-                    href={`/${item.slug}`}
+                    href={item.href || `/${item.slug}`}
                     className="nav-item"
                   >
                     {lang === "ar" ? item.label_ar : item.label}
@@ -263,7 +263,7 @@ export function Header() {
             {navData.map((item) => (
               <div key={item.slug} className="border-b border-gray-100">
                 <Link
-                  href={`/${item.slug}`}
+                  href={item.href || `/${item.slug}`}
                   className="block py-3 font-semibold text-gray-800"
                   onClick={() => setMobileOpen(false)}
                 >

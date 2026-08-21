@@ -93,6 +93,7 @@ export interface NavItem {
   label: string;
   label_ar: string;
   slug: string;
+  href?: string;
   image?: string;
   image_alt?: string;
   subcategories: {

@@ -8,45 +8,182 @@
       "image": "/assets/mega-dog.png",
       "image_alt": "Dog",
       "subcategories": [
-        { "label": "Food", "label_ar": "الطعام", "items": [
-          { "label": "Dry Food", "label_ar": "طعام جاف", "slug": "dog-dry-food" },
-          { "label": "Wet Food", "label_ar": "طعام رطب", "slug": "dog-wet-food" },
-          { "label": "Freeze Dried Raw", "label_ar": "مجمد جاف", "slug": "dog-freeze-dried-food" },
-          { "label": "Meal Topper", "label_ar": "إضافة وجبة", "slug": "dog-meal-topper" },
-          { "label": "Air Dried Food", "label_ar": "طعام مجفف بالهواء", "slug": "dog-air-dried-food" }
-        ]},
-        { "label": "Treats", "label_ar": "المكافآت", "items": [
-          { "label": "Dental Treats", "label_ar": "مكافآت علاجية", "slug": "dog-dental-treat" },
-          { "label": "Lickable Treats", "label_ar": "مكافآت لزيقة", "slug": "dog-lickable-treats" },
-          { "label": "Chewable Treats", "label_ar": "مكافآت قابلة للقضم", "slug": "dog-chewy-treats" },
-          { "label": "Freeze Dried Treats", "label_ar": "مكافآت مجمدة", "slug": "dog-freeze-dried-treats" },
-          { "label": "Training Treats", "label_ar": "مكافآت تدريب", "slug": "dog-training-treats" },
-          { "label": "Air Dried Treat", "label_ar": "مكافأة مجففة بالهواء", "slug": "dog-air-dried-treat" },
-          { "label": "Functional Treats", "label_ar": "مكافآت وظيفية", "slug": "dog-functional-treats" }
-        ]},
-        { "label": "Supplies", "label_ar": "الإمدات", "items": [
-          { "label": "Bowl & Feeders", "label_ar": "أواني وموقدات", "slug": "dog-bowl-feeders" },
-          { "label": "Beds", "label_ar": "أسرّة", "slug": "dog-beds" },
-          { "label": "Collar & Leashes", "label_ar": "رهنات وحبال", "slug": "dog-collar-leashes" },
-          { "label": "Grooming", "label_ar": "العناية", "slug": "dog-grooming" },
-          { "label": "Carrier & Travel", "label_ar": "حقائب سفر", "slug": "dog-carrier-travel" },
-          { "label": "Dog Calming", "label_ar": "تهدئة", "slug": "dog-calming" },
-          { "label": "Cleaning & Potty", "label_ar": "نظافة وتدريب", "slug": "dog-cleaning-potty" },
-          { "label": "Health & Hygiene", "label_ar": "صحة ونظافة", "slug": "dog-health-hygiene" },
-          { "label": "Training", "label_ar": "تدريب", "slug": "dog-training" },
-          { "label": "Tethering", "label_ar": "ربط", "slug": "dog-tethering" },
-          { "label": "Stain & Odour Remover", "label_ar": "مزيل بقع وروائح", "slug": "dog-cat-stain-odour-remover" },
-          { "label": "Diapers & Wraps", "label_ar": "حفاضات ولفائف", "slug": "dog-diapers-wraps" },
-          { "label": "Poop Bag", "label_ar": "أكياس براز", "slug": "poop-bag" }
-        ]},
-        { "label": "Toys", "label_ar": "ألعاب", "items": [
-          { "label": "Rubber Toys", "label_ar": "ألعاب مطاطية", "slug": "dog-rubber-toys" },
-          { "label": "Tug & Rope Toys", "label_ar": "ألعاب شد وحبال", "slug": "tug-rope-toys" },
-          { "label": "Plush & Fabric Toys", "label_ar": "ألعاب قماش وفرو", "slug": "plush-fabric-toys" },
-          { "label": "Chew Toys", "label_ar": "ألعاب قضم", "slug": "chew-toys" },
-          { "label": "Tennis Balls", "label_ar": "كرات التنس", "slug": "tennis-ball" }
-        ]}
-      ]
+        {
+          "label": "Food",
+          "label_ar": "الطعام",
+          "items": [
+            {
+              "label": "Dry Food",
+              "label_ar": "طعام جاف",
+              "slug": "dog-dry-food"
+            },
+            {
+              "label": "Wet Food",
+              "label_ar": "طعام رطب",
+              "slug": "dog-wet-food"
+            },
+            {
+              "label": "Freeze Dried Raw",
+              "label_ar": "مجمد جاف",
+              "slug": "dog-freeze-dried-food"
+            },
+            {
+              "label": "Meal Topper",
+              "label_ar": "إضافة وجبة",
+              "slug": "dog-meal-topper"
+            },
+            {
+              "label": "Air Dried Food",
+              "label_ar": "طعام مجفف بالهواء",
+              "slug": "dog-air-dried-food"
+            }
+          ]
+        },
+        {
+          "label": "Treats",
+          "label_ar": "المكافآت",
+          "items": [
+            {
+              "label": "Dental Treats",
+              "label_ar": "مكافآت علاجية",
+              "slug": "dog-dental-treat"
+            },
+            {
+              "label": "Lickable Treats",
+              "label_ar": "مكافآت لزيقة",
+              "slug": "dog-lickable-treats"
+            },
+            {
+              "label": "Chewable Treats",
+              "label_ar": "مكافآت قابلة للقضم",
+              "slug": "dog-chewy-treats"
+            },
+            {
+              "label": "Freeze Dried Treats",
+              "label_ar": "مكافآت مجمدة",
+              "slug": "dog-freeze-dried-treats"
+            },
+            {
+              "label": "Training Treats",
+              "label_ar": "مكافآت تدريب",
+              "slug": "dog-training-treats"
+            },
+            {
+              "label": "Air Dried Treat",
+              "label_ar": "مكافأة مجففة بالهواء",
+              "slug": "dog-air-dried-treat"
+            },
+            {
+              "label": "Functional Treats",
+              "label_ar": "مكافآت وظيفية",
+              "slug": "dog-functional-treats"
+            }
+          ]
+        },
+        {
+          "label": "Supplies",
+          "label_ar": "الإمدات",
+          "items": [
+            {
+              "label": "Bowl & Feeders",
+              "label_ar": "أواني وموقدات",
+              "slug": "dog-bowl-feeders"
+            },
+            {
+              "label": "Beds",
+              "label_ar": "أسرّة",
+              "slug": "dog-beds"
+            },
+            {
+              "label": "Collar & Leashes",
+              "label_ar": "رهنات وحبال",
+              "slug": "dog-collar-leashes"
+            },
+            {
+              "label": "Grooming",
+              "label_ar": "العناية",
+              "slug": "dog-grooming"
+            },
+            {
+              "label": "Carrier & Travel",
+              "label_ar": "حقائب سفر",
+              "slug": "dog-carrier-travel"
+            },
+            {
+              "label": "Dog Calming",
+              "label_ar": "تهدئة",
+              "slug": "dog-calming"
+            },
+            {
+              "label": "Cleaning & Potty",
+              "label_ar": "نظافة وتدريب",
+              "slug": "dog-cleaning-potty"
+            },
+            {
+              "label": "Health & Hygiene",
+              "label_ar": "صحة ونظافة",
+              "slug": "dog-health-hygiene"
+            },
+            {
+              "label": "Training",
+              "label_ar": "تدريب",
+              "slug": "dog-training"
+            },
+            {
+              "label": "Tethering",
+              "label_ar": "ربط",
+              "slug": "dog-tethering"
+            },
+            {
+              "label": "Stain & Odour Remover",
+              "label_ar": "مزيل بقع وروائح",
+              "slug": "dog-cat-stain-odour-remover"
+            },
+            {
+              "label": "Diapers & Wraps",
+              "label_ar": "حفاضات ولفائف",
+              "slug": "dog-diapers-wraps"
+            },
+            {
+              "label": "Poop Bag",
+              "label_ar": "أكياس براز",
+              "slug": "poop-bag"
+            }
+          ]
+        },
+        {
+          "label": "Toys",
+          "label_ar": "ألعاب",
+          "items": [
+            {
+              "label": "Rubber Toys",
+              "label_ar": "ألعاب مطاطية",
+              "slug": "dog-rubber-toys"
+            },
+            {
+              "label": "Tug & Rope Toys",
+              "label_ar": "ألعاب شد وحبال",
+              "slug": "tug-rope-toys"
+            },
+            {
+              "label": "Plush & Fabric Toys",
+              "label_ar": "ألعاب قماش وفرو",
+              "slug": "plush-fabric-toys"
+            },
+            {
+              "label": "Chew Toys",
+              "label_ar": "ألعاب قضم",
+              "slug": "chew-toys"
+            },
+            {
+              "label": "Tennis Balls",
+              "label_ar": "كرات التنس",
+              "slug": "tennis-ball"
+            }
+          ]
+        }
+      ],
+      "href": "/category/dog-dry-food"
     },
     {
       "id": "cat",
@@ -56,38 +193,147 @@
       "image": "/assets/mega-cat.png",
       "image_alt": "Cat",
       "subcategories": [
-        { "label": "Food", "label_ar": "الطعام", "items": [
-          { "label": "Dry Food", "label_ar": "طعام جاف", "slug": "cat-dry-food" },
-          { "label": "Wet Food", "label_ar": "طعام رطب", "slug": "cat-wet-food" },
-          { "label": "Freeze Dried Food", "label_ar": "مجمد جاف", "slug": "cat-freeze-dried-food" },
-          { "label": "Meal Topper", "label_ar": "إضافة وجبة", "slug": "cat-meal-topper" },
-          { "label": "Air Dried Food", "label_ar": "طعام مجفف بالهواء", "slug": "cat-air-dried-food" }
-        ]},
-        { "label": "Treats", "label_ar": "المكافآت", "items": [
-          { "label": "Lickable Treats", "label_ar": "مكافآت لزيقة", "slug": "cat-lickable-treats" },
-          { "label": "Chewable Treats", "label_ar": "مكافآت قابلة للقضم", "slug": "cat-chewable-treats" },
-          { "label": "Freeze Dried Treats", "label_ar": "مكافآت مجمدة", "slug": "cat-freeze-dried-treats" },
-          { "label": "Functional Treats", "label_ar": "مكافآت وظيفية", "slug": "cat-functional-treats" },
-          { "label": "Soft Treats", "label_ar": "مكافآت ناعمة", "slug": "cat-soft-treats" },
-          { "label": "Grilled Fillet Treats", "label_ar": "مكافآت مشوية", "slug": "cat-grilled-fillet-treats" }
-        ]},
-        { "label": "Litter", "label_ar": "التراب", "items": [
-          { "label": "Clumping Litter", "label_ar": "تراب متماثل", "slug": "cat-clumping-litter" },
-          { "label": "Unscented", "label_ar": "غير مُعطر", "slug": "cat-unscented-litter" },
-          { "label": "Scented", "label_ar": "معطر", "slug": "cat-scented-litter" },
-          { "label": "Silica Gel", "label_ar": "جل كريستالي", "slug": "cat-silica-gel" },
-          { "label": "Dust Free", "label_ar": "خالٍ من الغبار", "slug": "cat-dust-free-litter" }
-        ]},
-        { "label": "Supplies", "label_ar": "الإمدات", "items": [
-          { "label": "Cat Beds", "label_ar": "أسرّة قطط", "slug": "cat-beds" },
-          { "label": "Cat Bowl & Feeders", "label_ar": "أواني وموقدات قطط", "slug": "cat-bowl-feeders" },
-          { "label": "Cat Grooming", "label_ar": "تجميل قطط", "slug": "cat-grooming" },
-          { "label": "Cat Health & Hygiene", "label_ar": "صحة ونظافة قطط", "slug": "cat-health-hygiene" },
-          { "label": "Cat Carrier", "label_ar": "حقيبة نقل قطط", "slug": "cat-carrier" },
-          { "label": "Cat Scratchers", "label_ar": "خداشات قطط", "slug": "cat-scratchers" },
-          { "label": "Cat Toys", "label_ar": "ألعاب قطط", "slug": "cat-toys" }
-        ]}
-      ]
+        {
+          "label": "Food",
+          "label_ar": "الطعام",
+          "items": [
+            {
+              "label": "Dry Food",
+              "label_ar": "طعام جاف",
+              "slug": "cat-dry-food"
+            },
+            {
+              "label": "Wet Food",
+              "label_ar": "طعام رطب",
+              "slug": "cat-wet-food"
+            },
+            {
+              "label": "Freeze Dried Food",
+              "label_ar": "مجمد جاف",
+              "slug": "cat-freeze-dried-food"
+            },
+            {
+              "label": "Meal Topper",
+              "label_ar": "إضافة وجبة",
+              "slug": "cat-meal-topper"
+            },
+            {
+              "label": "Air Dried Food",
+              "label_ar": "طعام مجفف بالهواء",
+              "slug": "cat-air-dried-food"
+            }
+          ]
+        },
+        {
+          "label": "Treats",
+          "label_ar": "المكافآت",
+          "items": [
+            {
+              "label": "Lickable Treats",
+              "label_ar": "مكافآت لزيقة",
+              "slug": "cat-lickable-treats"
+            },
+            {
+              "label": "Chewable Treats",
+              "label_ar": "مكافآت قابلة للقضم",
+              "slug": "cat-chewable-treats"
+            },
+            {
+              "label": "Freeze Dried Treats",
+              "label_ar": "مكافآت مجمدة",
+              "slug": "cat-freeze-dried-treats"
+            },
+            {
+              "label": "Functional Treats",
+              "label_ar": "مكافآت وظيفية",
+              "slug": "cat-functional-treats"
+            },
+            {
+              "label": "Soft Treats",
+              "label_ar": "مكافآت ناعمة",
+              "slug": "cat-soft-treats"
+            },
+            {
+              "label": "Grilled Fillet Treats",
+              "label_ar": "مكافآت مشوية",
+              "slug": "cat-grilled-fillet-treats"
+            }
+          ]
+        },
+        {
+          "label": "Litter",
+          "label_ar": "التراب",
+          "items": [
+            {
+              "label": "Clumping Litter",
+              "label_ar": "تراب متماثل",
+              "slug": "cat-clumping-litter"
+            },
+            {
+              "label": "Unscented",
+              "label_ar": "غير مُعطر",
+              "slug": "cat-unscented-litter"
+            },
+            {
+              "label": "Scented",
+              "label_ar": "معطر",
+              "slug": "cat-scented-litter"
+            },
+            {
+              "label": "Silica Gel",
+              "label_ar": "جل كريستالي",
+              "slug": "cat-silica-gel"
+            },
+            {
+              "label": "Dust Free",
+              "label_ar": "خالٍ من الغبار",
+              "slug": "cat-dust-free-litter"
+            }
+          ]
+        },
+        {
+          "label": "Supplies",
+          "label_ar": "الإمدات",
+          "items": [
+            {
+              "label": "Cat Beds",
+              "label_ar": "أسرّة قطط",
+              "slug": "cat-beds"
+            },
+            {
+              "label": "Cat Bowl & Feeders",
+              "label_ar": "أواني وموقدات قطط",
+              "slug": "cat-bowl-feeders"
+            },
+            {
+              "label": "Cat Grooming",
+              "label_ar": "تجميل قطط",
+              "slug": "cat-grooming"
+            },
+            {
+              "label": "Cat Health & Hygiene",
+              "label_ar": "صحة ونظافة قطط",
+              "slug": "cat-health-hygiene"
+            },
+            {
+              "label": "Cat Carrier",
+              "label_ar": "حقيبة نقل قطط",
+              "slug": "cat-carrier"
+            },
+            {
+              "label": "Cat Scratchers",
+              "label_ar": "خداشات قطط",
+              "slug": "cat-scratchers"
+            },
+            {
+              "label": "Cat Toys",
+              "label_ar": "ألعاب قطط",
+              "slug": "cat-toys"
+            }
+          ]
+        }
+      ],
+      "href": "/category/cat-dry-food"
     },
     {
       "id": "aquatics",
@@ -97,22 +343,75 @@
       "image": "/assets/mega-fish.png",
       "image_alt": "Fish",
       "subcategories": [
-        { "label": "Foods", "label_ar": "الطعام", "items": [
-          { "label": "Frozen Food", "label_ar": "طعام مجمد", "slug": "fish-frozen-food" },
-          { "label": "Dry Food", "label_ar": "طعام جاف", "slug": "fish-dry-food" },
-          { "label": "Brine Shrimp", "label_ar": "روبيان الملح", "slug": "brine-shrimp" },
-          { "label": "Betta", "label_ar": "سمك البتا", "slug": "betta" },
-          { "label": "Cichlid", "label_ar": "سمك الزعانف", "slug": "cichild" },
-          { "label": "Koi & Pond Fish", "label_ar": "سمك الكoi والبركين", "slug": "koi-pond-fish" },
-          { "label": "Turtle", "label_ar": "سلحفاة", "slug": "turtle-food" }
-        ]},
-        { "label": "Supplies", "label_ar": "الإمدات", "items": [
-          { "label": "Aquarium Supplies", "label_ar": "مستلزمات أكواريوم", "slug": "aquarium-supplies" },
-          { "label": "Saltwater Minerals", "label_ar": "معادن مياه مالحة", "slug": "salt-water" },
-          { "label": "LED Lighting", "label_ar": "إضاءة LED", "slug": "led-lighting" },
-          { "label": "Water Filtration", "label_ar": "تصفية الماء", "slug": "water-filters" }
-        ]}
-      ]
+        {
+          "label": "Foods",
+          "label_ar": "الطعام",
+          "items": [
+            {
+              "label": "Frozen Food",
+              "label_ar": "طعام مجمد",
+              "slug": "fish-frozen-food"
+            },
+            {
+              "label": "Dry Food",
+              "label_ar": "طعام جاف",
+              "slug": "fish-dry-food"
+            },
+            {
+              "label": "Brine Shrimp",
+              "label_ar": "روبيان الملح",
+              "slug": "brine-shrimp"
+            },
+            {
+              "label": "Betta",
+              "label_ar": "سمك البتا",
+              "slug": "betta"
+            },
+            {
+              "label": "Cichlid",
+              "label_ar": "سمك الزعانف",
+              "slug": "cichild"
+            },
+            {
+              "label": "Koi & Pond Fish",
+              "label_ar": "سمك الكoi والبركين",
+              "slug": "koi-pond-fish"
+            },
+            {
+              "label": "Turtle",
+              "label_ar": "سلحفاة",
+              "slug": "turtle-food"
+            }
+          ]
+        },
+        {
+          "label": "Supplies",
+          "label_ar": "الإمدات",
+          "items": [
+            {
+              "label": "Aquarium Supplies",
+              "label_ar": "مستلزمات أكواريوم",
+              "slug": "aquarium-supplies"
+            },
+            {
+              "label": "Saltwater Minerals",
+              "label_ar": "معادن مياه مالحة",
+              "slug": "salt-water"
+            },
+            {
+              "label": "LED Lighting",
+              "label_ar": "إضاءة LED",
+              "slug": "led-lighting"
+            },
+            {
+              "label": "Water Filtration",
+              "label_ar": "تصفية الماء",
+              "slug": "water-filters"
+            }
+          ]
+        }
+      ],
+      "href": "/category/fish-food"
     },
     {
       "id": "bird",
@@ -122,22 +421,75 @@
       "image": "/assets/mega-bird.png",
       "image_alt": "Bird",
       "subcategories": [
-        { "label": "Food & Treats", "label_ar": "الطعام والمكافآت", "items": [
-          { "label": "Parrot", "label_ar": "الببغاء", "slug": "parrot-food" },
-          { "label": "Macaw", "label_ar": "الماكاو", "slug": "macaw-food" },
-          { "label": "Canary", "label_ar": "الكناري", "slug": "canary-seed-mix" },
-          { "label": "Budgies", "label_ar": "الحمام البري", "slug": "budgies-seed-mix" },
-          { "label": "Cockatoos", "label_ar": "الكواكل", "slug": "cockatoos-food" },
-          { "label": "Finches", "label_ar": "العصافير", "slug": "finches-seed-mix" },
-          { "label": "Parakeets", "label_ar": "الطيور الصغيرة", "slug": "parakeets-seed-mix" },
-          { "label": "Lovebirds", "label_ar": "طيور الحب", "slug": "lovebirds-food" }
-        ]},
-        { "label": "Supplies", "label_ar": "الإمدات", "items": [
-          { "label": "Cages & Accessories", "label_ar": "أقفاص وملحقات", "slug": "birds-cages-accessories" },
-          { "label": "Toys", "label_ar": "ألعاب", "slug": "bird-toys" },
-          { "label": "Feeders & Waterer", "label_ar": "موقدات ومزودات ماء", "slug": "bird-feeders-waterer" }
-        ]}
-      ]
+        {
+          "label": "Food & Treats",
+          "label_ar": "الطعام والمكافآت",
+          "items": [
+            {
+              "label": "Parrot",
+              "label_ar": "الببغاء",
+              "slug": "parrot-food"
+            },
+            {
+              "label": "Macaw",
+              "label_ar": "الماكاو",
+              "slug": "macaw-food"
+            },
+            {
+              "label": "Canary",
+              "label_ar": "الكناري",
+              "slug": "canary-seed-mix"
+            },
+            {
+              "label": "Budgies",
+              "label_ar": "الحمام البري",
+              "slug": "budgies-seed-mix"
+            },
+            {
+              "label": "Cockatoos",
+              "label_ar": "الكواكل",
+              "slug": "cockatoos-food"
+            },
+            {
+              "label": "Finches",
+              "label_ar": "العصافير",
+              "slug": "finches-seed-mix"
+            },
+            {
+              "label": "Parakeets",
+              "label_ar": "الطيور الصغيرة",
+              "slug": "parakeets-seed-mix"
+            },
+            {
+              "label": "Lovebirds",
+              "label_ar": "طيور الحب",
+              "slug": "lovebirds-food"
+            }
+          ]
+        },
+        {
+          "label": "Supplies",
+          "label_ar": "الإمدات",
+          "items": [
+            {
+              "label": "Cages & Accessories",
+              "label_ar": "أقفاص وملحقات",
+              "slug": "birds-cages-accessories"
+            },
+            {
+              "label": "Toys",
+              "label_ar": "ألعاب",
+              "slug": "bird-toys"
+            },
+            {
+              "label": "Feeders & Waterer",
+              "label_ar": "موقدات ومزودات ماء",
+              "slug": "bird-feeders-waterer"
+            }
+          ]
+        }
+      ],
+      "href": "/category/bird-food"
     },
     {
       "id": "small-pet",
@@ -147,16 +499,45 @@
       "image": "/assets/mega-smallpet.jpg",
       "image_alt": "Small Pet",
       "subcategories": [
-        { "label": "Food & Treats", "label_ar": "الطعام والمكافآت", "items": [
-          { "label": "Rabbit", "label_ar": "الأرانب", "slug": "rabbit-food" },
-          { "label": "Guinea Pig", "label_ar": "كرموز", "slug": "guinea-pig-food" },
-          { "label": "Hamster", "label_ar": "الهامستر", "slug": "hamster-food" }
-        ]},
-        { "label": "Supplies", "label_ar": "الإمدات", "items": [
-          { "label": "Cages & Accessories", "label_ar": "أقفاص وملحقات", "slug": "small-pet-cages-accessories" },
-          { "label": "Litter & Accessories", "label_ar": "تراب وملحقات", "slug": "small-pet-litter" }
-        ]}
-      ]
+        {
+          "label": "Food & Treats",
+          "label_ar": "الطعام والمكافآت",
+          "items": [
+            {
+              "label": "Rabbit",
+              "label_ar": "الأرانب",
+              "slug": "rabbit-food"
+            },
+            {
+              "label": "Guinea Pig",
+              "label_ar": "كرموز",
+              "slug": "guinea-pig-food"
+            },
+            {
+              "label": "Hamster",
+              "label_ar": "الهامستر",
+              "slug": "hamster-food"
+            }
+          ]
+        },
+        {
+          "label": "Supplies",
+          "label_ar": "الإمدات",
+          "items": [
+            {
+              "label": "Cages & Accessories",
+              "label_ar": "أقفاص وملحقات",
+              "slug": "small-pet-cages-accessories"
+            },
+            {
+              "label": "Litter & Accessories",
+              "label_ar": "تراب وملحقات",
+              "slug": "small-pet-litter"
+            }
+          ]
+        }
+      ],
+      "href": "/category/rabbit-needs-accessories"
     }
   ]
 }
