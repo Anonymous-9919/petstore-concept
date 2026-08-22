@@ -56,6 +56,14 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const hasThumbs = images.length > 1;
   const inStock = product?.stock_status !== "outofstock";
 
+  // Sync thumb highlight when the user swipes the mobile strip
+  const onSliderScroll = () => {
+    const el = trackRef.current;
+    if (!el || !hasThumbs || images.length < 2) return;
+    const idx = Math.round((el.scrollLeft / el.scrollWidth) * images.length);
+    if (idx !== activeImg && idx >= 0 && idx < images.length) setActiveImg(idx);
+  };
+
   const addToCart = () => {
     if (!product) return;
     addItem({
@@ -97,24 +105,37 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   Sticky info column releases when this ends */}
               <div className="pdp-left">
                 <div className={cn("pdp-gallery", hasThumbs ? "has-thumbs" : "no-thumbs")}>
-                  {/* Main image - swipeable strip on mobile, big frame on desktop */}
+                  {/* Main image area - swipeable strip on mobile,
+                      single frame on desktop (click picture = next picture) */}
                   <div className="pdp-main-img-wrap">
+                    {discount > 0 && <span className="badge badge-sale">-{discount}%</span>}
                     <div
                       ref={trackRef}
                       className="pdp-mobile-slider"
+                      onScroll={onSliderScroll}
                     >
                       {images.map((src, i) => (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={i}
                           src={src}
-                          alt={name}
-                          className={cn("pdp-main-img", !hasThumbs && i > 0 && "hidden", i !== activeImg && hasThumbs && "hidden md:block")}
-                          onClick={() => setActiveImg(i)}
+                          alt={`${name} - ${i + 1}`}
+                          className={cn("pdp-main-img", hasThumbs && i === activeImg && "is-active")}
+                          onClick={() => {
+                            if (!hasThumbs) return;
+                            const next = (activeImg + 1) % images.length;
+                            setActiveImg(next);
+                            // On mobile, scroll the strip to reveal the clicked/next image
+                            if (window.innerWidth < 768 && trackRef.current) {
+                              trackRef.current.scrollTo({
+                                left: (trackRef.current.scrollWidth / images.length) * next,
+                                behavior: "smooth",
+                              });
+                            }
+                          }}
                         />
                       ))}
                     </div>
-                    {discount > 0 && <span className="badge badge-sale">-{discount}%</span>}
                   </div>
                   {hasThumbs && (
                     <div className="pdp-thumbs">

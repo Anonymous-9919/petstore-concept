@@ -89,7 +89,7 @@ export function Header() {
           <div className="header-main">
             {/* Mobile menu toggle - left corner */}
             <button
-              className="md:hidden p-2 text-[#241a12]"
+              className="md:hidden p-2 text-white"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
@@ -119,7 +119,7 @@ export function Header() {
               {/* Language toggle - hidden on mobile */}
               <button
                 onClick={() => setLang(lang === "en" ? "ar" : "en")}
-                className="hidden md:inline-flex text-xs font-semibold px-2 py-1 rounded border border-black/25 text-[#241a12] hover:bg-black/10 transition-colors"
+                className="hidden md:inline-flex text-xs font-semibold px-2 py-1 rounded border border-white/30 text-white hover:bg-white/20 transition-colors"
               >
                 {lang === "en" ? "Ø¹Ø±Ø¨ÙŠ" : "EN"}
               </button>
