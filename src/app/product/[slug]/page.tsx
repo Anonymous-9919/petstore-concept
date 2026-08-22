@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, use } from "react";
+import { useState, useEffect, useMemo, use, useRef } from "react";
 import Link from "next/link";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
@@ -14,17 +14,63 @@ import { getProductBySlug } from "@/lib/data";
 import storeData from "@/data/store.json";
 import type { Product } from "@/lib/types";
 import {
-  ChevronRight, Minus, Plus, ShoppingCart, Truck,
+  ChevronRight, Minus, Plus, ShoppingCart, Truck, Zap,
   Headset, Banknote, RotateCcw, ShieldCheck,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const store = storeData as unknown as { phone: string };
+
+function RelatedCarousel({ items, lang }: { items: Product[]; lang: string }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [page, setPage] = useState(0);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const perView = isMobile ? 2 : 5;
+
+  const onScroll = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const pages = Math.ceil(el.scrollWidth / el.clientWidth);
+    const idx = Math.min(pages - 1, Math.round((el.scrollLeft / el.scrollWidth) * pages));
+    setPage(idx);
+  };
+  const pages = Math.max(1, Math.ceil(items.length / perView));
+
+  return (
+    <section className="pdp-related">
+      <h2>{lang === "ar" ? "منتجات ذات صلة" : "You may also like"}</h2>
+      <div className="pdp-related-track" ref={trackRef} onScroll={onScroll}>
+        {items.map((p) => (
+          <div key={p.id} className="pdp-related-item">
+            <ProductCard product={p} />
+          </div>
+        ))}
+      </div>
+      {pages > 1 && (
+        <div className="pdp-related-dots">
+          {Array.from({ length: pages }).map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              className={i === page ? "active" : ""}
+              onClick={() => {
+                const el = trackRef.current;
+                if (el) el.scrollTo({ left: (el.scrollWidth / pages) * i, behavior: "smooth" });
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
 
 export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const lang = useLanguageStore((s) => s.lang);
   const addItem = useCartStore((s) => s.addItem);
   const setCartOpen = useUiStore((s) => s.setCartOpen);
+  const router = useRouter();
   const [product, setProduct] = useState<Product | null>(null);
   const [related, setRelated] = useState<Product[]>([]);
   const [activeImg, setActiveImg] = useState(0);
@@ -136,7 +182,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   </div>
                 </div>
 
-                {/* Quantity + Add to cart */}
+                {/* Quantity + Add to cart + Buy now */}
                 <div className="pdp-buy-row">
                   <div className="pdp-qty">
                     <button aria-label="Decrease quantity" onClick={() => setQty((q) => Math.max(1, q - 1))}><Minus size={15} /></button>
@@ -154,6 +200,16 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                       : (lang === "ar" ? "غير متوفر" : "Out of stock")}
                   </button>
                 </div>
+
+                {/* Buy now - adds and goes straight to the cart */}
+                <button
+                  className="pdp-buy-now"
+                  disabled={!inStock}
+                  onClick={() => { addToCart(); setCartOpen(false); router.push("/cart"); }}
+                >
+                  <Zap size={16} />
+                  {lang === "ar" ? "اشترِ الآن" : "Buy Now"}
+                </button>
 
                 {/* Shop with confidence */}
                 <div className="pdp-confidence">
@@ -182,16 +238,9 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
               </div>
             </div>
 
-            {/* Related products */}
+            {/* Related products - 2 per view on mobile w/ dots, 5 visible + scroll on desktop */}
             {related.length > 0 && (
-              <section className="pdp-related">
-                <h2>{lang === "ar" ? "منتجات ذات صلة" : "You may also like"}</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                  {related.map((p) => (
-                    <ProductCard key={p.id} product={p} />
-                  ))}
-                </div>
-              </section>
+              <RelatedCarousel items={related} lang={lang} />
             )}
           </>
         )}

@@ -37,16 +37,16 @@ export default function AccountPage() {
     <div className="min-h-screen flex flex-col">
       <AnnouncementBar />
       <Header />
-      <main className="flex-1 page-container pt-14 pb-16">
+      <main className="flex-1 page-container pt-16 pb-24">
         {!user ? (
           /* ---------------- LOGIN / REGISTER ---------------- */
           <div className="max-w-md mx-auto">
-            <div className="text-center mb-8">
-              <div className="w-14 h-14 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center mx-auto mb-3">
-                <User size={26} />
+            <div className="text-center mb-10">
+              <div className="w-16 h-16 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center mx-auto mb-5 shadow-lg shadow-orange-500/20">
+                <User size={30} />
               </div>
-              <h1 className="section-heading">{t("Welcome to your account", "مرحباً بك في حسابك")}</h1>
-              <p className="text-sm text-gray-500 mt-2">
+              <h1 className="section-heading !mb-2">{t("Welcome to your account", "مرحباً بك في حسابك")}</h1>
+              <p className="text-sm text-gray-500 leading-relaxed">
                 {t(
                   "Sign in to sync your cart and order history across devices.",
                   "سجّل الدخول لمزامنة سلتك وسجل طلباتك عبر جميع الأجهزة."
@@ -54,15 +54,15 @@ export default function AccountPage() {
               </p>
             </div>
 
-            <div className="flex border-b border-black/10 mb-6">
+            <div className="flex gap-2 mb-7 bg-black/[0.04] rounded-xl p-1.5">
               {(["login", "register"] as const).map((m) => (
                 <button
                   key={m}
                   onClick={() => { setMode(m); setError(""); }}
-                  className={`flex-1 py-3 text-sm font-semibold border-b-2 transition-colors ${
+                  className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${
                     mode === m
-                      ? "border-[var(--color-primary)] text-[var(--color-primary)]"
-                      : "border-transparent text-gray-500"
+                      ? "bg-[var(--color-primary)] text-white shadow-md"
+                      : "text-gray-500 hover:text-gray-800"
                   }`}
                 >
                   {m === "login" ? t("Sign in", "تسجيل الدخول") : t("Create account", "إنشاء حساب")}
