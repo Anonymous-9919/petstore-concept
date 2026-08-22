@@ -79,7 +79,8 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         ) : (
           <>
             <div className="pdp-grid">
-              {/* Gallery */}
+              {/* Left column: gallery + description (keeps sticky info
+                  pinned while all content scrolls - source-site behaviour) */}
               <div className="pdp-gallery">
                 <div className="pdp-main-img">
                   {discount > 0 && <span className="badge badge-sale">-{discount}%</span>}
@@ -162,18 +163,21 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Description */}
-            {(product.description || product.ar_description) && (
-              <section className="pdp-desc">
-                <h2>{lang === "ar" ? "وصف المنتج" : "Description"}</h2>
-                <div
-                  className="pdp-desc-body"
-                  dangerouslySetInnerHTML={{ __html: lang === "ar" && product.ar_description ? product.ar_description : product.description || "" }}
-                />
-              </section>
-            )}
+              {/* Description lives in the LEFT column (under the gallery) so the
+                  sticky info column stays pinned while everything scrolls */}
+              <div className="pdp-left-extra">
+                {(product.description || product.ar_description) && (
+                  <section className="pdp-desc">
+                    <h2>{lang === "ar" ? "وصف المنتج" : "Description"}</h2>
+                    <div
+                      className="pdp-desc-body"
+                      dangerouslySetInnerHTML={{ __html: lang === "ar" && product.ar_description ? product.ar_description : product.description || "" }}
+                    />
+                  </section>
+                )}
+              </div>
+            </div>
 
             {/* Related products */}
             {related.length > 0 && (

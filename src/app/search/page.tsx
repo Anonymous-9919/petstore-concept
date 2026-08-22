@@ -9,6 +9,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { ProductCard } from "@/components/product/ProductCard";
+import { CollectionBrowser } from "@/components/collection/CollectionBrowser";
 import type { Product } from "@/lib/types";
 
 function SearchContent({ query }: { query: string }) {
@@ -59,11 +60,7 @@ function SearchContent({ query }: { query: string }) {
           <p className="text-sm text-gray-400 mt-1">{t("search.try_different", lang)}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <CollectionBrowser items={products} />
       )}
     </main>
   );

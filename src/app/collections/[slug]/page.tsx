@@ -26,8 +26,8 @@ export default async function CollectionPage({ params }: { params: Params }) {
     <div className="min-h-screen flex flex-col">
       <AnnouncementBar />
       <Header />
-      <main className="flex-1 page-container py-8">
-        <h1 className="section-heading mb-6">{def.title_en}</h1>
+      <main className="flex-1 page-container pt-14 pb-16">
+        <h1 className="section-heading mb-10">{def.title_en}</h1>
         <CollectionBrowser items={items} />
       </main>
       <Footer />

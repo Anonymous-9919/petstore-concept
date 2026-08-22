@@ -108,7 +108,7 @@ export function CollectionBrowser({ items }: Props) {
       {drawerOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-black/50" onClick={() => setDrawerOpen(false)} />
-          <div className="absolute inset-y-0 right-0 w-[85%] max-w-[360px] bg-white shadow-xl overflow-y-auto">
+          <div className={`absolute inset-y-0 w-[85%] max-w-[360px] bg-white shadow-xl overflow-y-auto ${lang === "ar" ? "right-0" : "left-0"}`}>
             <div className="flex items-center justify-between px-5 h-14 border-b border-black/5 sticky top-0 bg-white">
               <span className="font-bold text-[15px]">{lang === "ar" ? "تصفية وترتيب" : "Filter and sort"}</span>
               <button onClick={() => setDrawerOpen(false)} aria-label="Close filters"><X size={20} /></button>

@@ -1699,7 +1699,30 @@ body {
     gap: 44px;
     align-items: start;
   }
-  .pdp-info { position: sticky; top: 20px; }
+  /* Source-site behaviour: whole info column sticks below header
+     until the gallery has scrolled past */
+  .pdp-info { position: sticky; top: 40px; }
+}
+
+/* Gallery: vertical thumb strip LEFT of the main image on desktop,
+   horizontal scroll strip UNDER it on mobile (source-site layout) */
+@media (min-width: 993px) {
+  .pdp-gallery {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+  .pdp-thumbs {
+    order: 1;
+    flex-direction: column;
+    margin-top: 0;
+    max-height: 620px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .pdp-thumb { width: 88px; height: 88px; }
+  .pdp-main-img { order: 2; }
 }
 
 .pdp-main-img {
@@ -1718,6 +1741,14 @@ body {
   margin-top: 10px;
   overflow-x: auto;
   scrollbar-width: none;
+}
+@media (max-width: 992px) {
+  .pdp-title { font-size: 20px; line-height: 1.4; }
+  .pdp-price-current { font-size: 22px; }
+  .pdp-buy-row { gap: 8px; }
+  .pdp-add-btn { height: 46px; font-size: 14.5px; }
+  .pdp-delivery-banner { padding: 11px 14px; margin-bottom: 16px; }
+  .pdp-confidence-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
 .pdp-thumb {
   width: 64px;
@@ -1862,6 +1893,10 @@ body {
 .pdp-confidence-row svg { color: var(--color-primary); flex-shrink: 0; }
 
 .pdp-desc { margin-top: 40px; }
+.pdp-left-extra { grid-column: 1 / -1; }
+@media (max-width: 992px) {
+  .pdp-left-extra { grid-column: auto; margin-top: 28px; }
+}
 .pdp-desc h2, .pdp-related h2 {
   font-family: var(--font-sans);
   font-size: 21px;
