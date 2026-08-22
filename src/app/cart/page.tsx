@@ -42,14 +42,14 @@ export default function CartPage() {
             <p className="text-gray-500 mb-2">{t("cart.empty", lang)}</p>
             {!user && (
               <p className="text-sm text-gray-500 mb-6">
-                {tt("Have an account?", "Ù„Ø¯ÙŠÙƒ Ø­Ø³Ø§Ø¨ØŸ")}{" "}
+                {tt("Have an account?", "لديك حساب؟")}{" "}
                 <Link href="/account" className="font-semibold text-[var(--color-primary)] underline">
-                  {tt("Log in to check out faster.", "Ø³Ø¬Ù‘Ù„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ù„Ø¥ØªÙ…Ø§Ù… Ø£Ø³Ø±Ø¹.")}
+                  {tt("Log in to check out faster.", "سجّل الدخول لإتمام أسرع.")}
                 </Link>
               </p>
             )}
             <Link href="/" className="inline-block px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white font-semibold text-sm hover:opacity-90">
-              {tt("Continue shopping", "Ù…ÙˆØ§ØµÙ„Ø© Ø§Ù„ØªØ³ÙˆÙ‚")}
+              {tt("Continue shopping", "مواصلة التسوق")}
             </Link>
           </div>
         ) : (
@@ -58,17 +58,17 @@ export default function CartPage() {
             <div className="flex items-center justify-between flex-wrap gap-3 mb-8">
               <h1 className="section-heading !mb-0">{t("cart.title", lang)}</h1>
               <Link href="/" className="text-sm font-semibold text-[var(--color-primary)] underline underline-offset-2">
-                {tt("Continue shopping", "Ù…ÙˆØ§ØµÙ„Ø© Ø§Ù„ØªØ³ÙˆÙ‚")}
+                {tt("Continue shopping", "مواصلة التسوق")}
               </Link>
             </div>
 
             {/* Cart table: Product | Total | Quantity | Total */}
             <div className="cart-table" role="table" aria-label={t("cart.title", lang)}>
               <div className="cart-table-head hidden md:grid" role="row">
-                <span>{lang === "ar" ? "Ø§Ù„Ù…Ù†ØªØ¬" : "Product"}</span>
-                <span>{lang === "ar" ? "Ø§Ù„Ø³Ø¹Ø±" : "Total"}</span>
-                <span>{lang === "ar" ? "Ø§Ù„ÙƒÙ…ÙŠØ©" : "Quantity"}</span>
-                <span className="text-right">{lang === "ar" ? "Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ" : "Total"}</span>
+                <span>{lang === "ar" ? "المنتج" : "Product"}</span>
+                <span>{lang === "ar" ? "السعر" : "Total"}</span>
+                <span>{lang === "ar" ? "الكمية" : "Quantity"}</span>
+                <span className="text-right">{lang === "ar" ? "الإجمالي" : "Total"}</span>
               </div>
 
               {items.map((item) => (
@@ -87,7 +87,7 @@ export default function CartPage() {
                   </div>
 
                   {/* Price */}
-                  <div className="cart-cell" data-label={lang === "ar" ? "Ø§Ù„Ø³Ø¹Ø±" : "Price"} dir="ltr">
+                  <div className="cart-cell" data-label={lang === "ar" ? "السعر" : "Price"} dir="ltr">
                     {formatPrice(item.price, "KD", 3)}
                   </div>
 
@@ -108,7 +108,7 @@ export default function CartPage() {
                   </div>
 
                   {/* Line total + remove */}
-                  <div className="cart-cell font-bold relative" data-label={lang === "ar" ? "Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ" : "Total"} dir="ltr">
+                  <div className="cart-cell font-bold relative" data-label={lang === "ar" ? "الإجمالي" : "Total"} dir="ltr">
                     {formatPrice((parseFloat(item.price) * item.quantity).toFixed(3), "KD", 3)}
                     <button
                       onClick={() => removeItem(item.key)}
@@ -136,14 +136,14 @@ export default function CartPage() {
                   onClick={() => setNoteOpen((v) => !v)}
                   className="text-sm font-semibold text-gray-700 underline underline-offset-2"
                 >
-                  {lang === "ar" ? "ØªØ¹Ù„ÙŠÙ…Ø§Øª Ø®Ø§ØµØ© Ø¨Ø§Ù„Ø·Ù„Ø¨" : "Order special instructions"}
+                  {lang === "ar" ? "تعليمات خاصة بالطلب" : "Order special instructions"}
                 </button>
                 {noteOpen && (
                   <textarea
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
                     rows={4}
-                    placeholder={lang === "ar" ? "ÙƒÙŠÙ ÙŠÙ…ÙƒÙ†Ù†Ø§ Ù…Ø³Ø§Ø¹Ø¯ØªÙƒØŸ" : "How can we help you?"}
+                    placeholder={lang === "ar" ? "كيف يمكننا مساعدتك؟" : "How can we help you?"}
                     className="mt-3 w-full border border-black/15 rounded-lg p-3 text-sm"
                   />
                 )}
@@ -155,16 +155,16 @@ export default function CartPage() {
                   <span className="text-lg font-bold" dir="ltr">{formatPrice(total.toFixed(3), "KD", 3)}</span>
                 </div>
                 <p className="text-[12px] text-gray-500 mt-2 mb-4">
-                  {tt("Tax included. Shipping calculated at checkout.", "Ø´Ø§Ù…Ù„ Ø§Ù„Ø¶Ø±ÙŠØ¨Ø©. ÙŠÙØ­Ø³Ø¨ Ø§Ù„Ø´Ø­Ù† Ø¹Ù†Ø¯ Ø§Ù„Ø¯ÙØ¹.")}
+                  {tt("Tax included. Shipping calculated at checkout.", "شامل الضريبة. يُحسب الشحن عند الدفع.")}
                 </p>
                 <Link
                   href="/cart"
                   className="w-full h-12 flex items-center justify-center rounded-lg bg-[var(--color-primary)] text-white font-bold text-sm hover:opacity-90"
                 >
-                  {tt("Check out", "Ø¥ØªÙ…Ø§Ù… Ø§Ù„Ø´Ø±Ø§Ø¡")}
+                  {tt("Check out", "إتمام الشراء")}
                 </Link>
                 <div className="flex items-center justify-center gap-2 mt-4 text-[12px] text-gray-500">
-                  <span>{tt("Free delivery on orders over KD 10", "ØªÙˆØµÙŠÙ„ Ù…Ø¬Ø§Ù†ÙŠ Ù„Ù„Ø·Ù„Ø¨Ø§Øª ÙÙˆÙ‚ 10 Ø¯.Ùƒ")}</span>
+                  <span>{tt("Free delivery on orders over KD 10", "توصيل مجاني للطلبات فوق 10 د.ك")}</span>
                 </div>
               </div>
             </div>

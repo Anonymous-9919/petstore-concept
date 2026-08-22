@@ -1253,7 +1253,14 @@ body {
 
 @media (max-width: 768px) {
   .header-main { height: 64px; gap: 8px; }
-  .header-main .header-logo { flex: 1; justify-content: center; }
+  /* Pixel-perfect logo centering regardless of side element widths */
+  .header-main { position: relative; }
+  .header-main .header-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    flex: none;
+  }
   .header-logo-img { height: 48px; }
   .header-actions { gap: 4px; }
   .header-action-btn { width: 36px; height: 36px; }
@@ -1686,6 +1693,7 @@ body {
   gap: 6px;
   font-size: 13px;
   color: #6b7280;
+  padding-top: 10px;
   margin-bottom: 18px;
 }
 .pdp-breadcrumb a { color: #6b7280; }
