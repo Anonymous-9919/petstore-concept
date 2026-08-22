@@ -75,12 +75,18 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
     if (best !== activeImg && best >= 0 && best < images.length) setActiveImg(best);
   };
 
-  // Scroll the mobile swipe strip to image i (direction-safe via scrollIntoView)
+  // Scroll the mobile swipe strip to image i.
+  // NOTE: programmatic SMOOTH scrolling is silently canceled by the CSS
+  // mandatory scroll-snap on some browsers (observed on Chrome/Android),
+  // so we jump instantly using center deltas (RTL-safe).
   const goToImage = (i: number) => {
-    const el = trackRef.current?.children[i] as HTMLElement | undefined;
-    if (el && typeof window !== "undefined" && window.innerWidth < 993) {
-      el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-    }
+    const track = trackRef.current;
+    if (!track || typeof window === "undefined" || window.innerWidth >= 993) return;
+    const el = track.children[i] as HTMLElement | undefined;
+    if (!el) return;
+    const elCenter = el.offsetLeft + el.offsetWidth / 2;
+    const delta = elCenter - (track.scrollLeft + track.clientWidth / 2);
+    if (Math.abs(delta) > 1) track.scrollBy({ left: delta });
   };
 
   const addToCart = () => {
