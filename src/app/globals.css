@@ -19,7 +19,7 @@
   --color-bg: #ffffff;
   --color-bg-alt: #fff7ed;
   --color-bg-card: #ffffff;
-  --color-bg-header: #f97316;
+  --color-bg-header: #ffe9d6;
   --color-bg-footer: #fbe3d2;
   --color-bg-announcement: #ffffff;
 
@@ -212,9 +212,9 @@ body {
 .header-logo-text {
   font-size: 24px;
   font-weight: 800;
-  color: var(--color-text-inverse);
+  color: #241a12;
   letter-spacing: -0.5px;
-}
+  }
 
 .header-search {
   flex: 1;
@@ -262,16 +262,16 @@ body {
   width: 40px;
   height: 40px;
   display: flex;
+  color: #241a12;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  color: var(--color-text-inverse);
   background: transparent;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.header-action-btn:hover { background-color: rgba(255,255,255,0.2); }
+.header-action-btn:hover { background-color: rgba(0,0,0,0.06); }
 
 /* Mobile search bar - full width below header */
 .mobile-search-bar {
@@ -1692,6 +1692,14 @@ body {
 .pdp-breadcrumb a:hover { color: var(--color-primary); }
 
 .pdp-grid { display: block; }
+/* Mobile: image first, then title/price/qty/buttons/confidence, then description */
+@media (max-width: 992px) {
+  .pdp-grid { display: flex; flex-direction: column; }
+  .pdp-left { display: contents; }
+  .pdp-gallery { order: 1; }
+  .pdp-info { order: 2; }
+  .pdp-desc { order: 3; }
+}
 @media (min-width: 993px) {
   .pdp-grid {
     display: grid;
@@ -2034,6 +2042,29 @@ main.flex-1 { min-width: 0; }
 }
 .account-card p { font-size: 13.5px; color: #6b7280; margin-top: 3px; }
 .account-card svg { color: var(--color-primary); }
+
+.account-submit {
+  width: 100%;
+  min-height: 54px;
+  padding: 15px 24px;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+.account-submit:hover { opacity: 0.92; }
+.account-submit:active { transform: scale(0.99); }
 
 /* ============================================
    CART PAGE - source-site table layout

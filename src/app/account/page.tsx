@@ -37,11 +37,11 @@ export default function AccountPage() {
     <div className="min-h-screen flex flex-col">
       <AnnouncementBar />
       <Header />
-      <main className="flex-1 page-container pt-16 pb-24">
+      <main className="flex-1 page-container pt-20 pb-32">
         {!user ? (
           /* ---------------- LOGIN / REGISTER ---------------- */
           <div className="max-w-md mx-auto">
-            <div className="text-center mb-10">
+            <div className="text-center mb-12">
               <div className="w-16 h-16 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center mx-auto mb-5 shadow-lg shadow-orange-500/20">
                 <User size={30} />
               </div>
@@ -89,7 +89,7 @@ export default function AccountPage() {
                 className="account-input"
               />
               {error && <p className="text-sm text-red-600">{error}</p>}
-              <button type="submit" className="pdp-add-btn !mb-0">
+              <button type="submit" className="account-submit">
                 {mode === "login" ? t("Sign in", "تسجيل الدخول") : t("Create my account", "أنشئ حسابي")}
               </button>
             </form>

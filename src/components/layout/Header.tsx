@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
@@ -89,7 +89,7 @@ export function Header() {
           <div className="header-main">
             {/* Mobile menu toggle - left corner */}
             <button
-              className="md:hidden p-2 text-white"
+              className="md:hidden p-2 text-[#241a12]"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
@@ -107,7 +107,7 @@ export function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search......."}
+                placeholder={lang === "ar" ? "Ø§Ø¨Ø­Ø« Ø¹Ù† Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª..." : "Search......."}
               />
               <button type="submit" aria-label="Search">
                 <Search size={20} />
@@ -119,9 +119,9 @@ export function Header() {
               {/* Language toggle - hidden on mobile */}
               <button
                 onClick={() => setLang(lang === "en" ? "ar" : "en")}
-                className="hidden md:inline-flex text-xs font-semibold px-2 py-1 rounded border border-white/30 text-white hover:bg-white/20 transition-colors"
+                className="hidden md:inline-flex text-xs font-semibold px-2 py-1 rounded border border-black/25 text-[#241a12] hover:bg-black/10 transition-colors"
               >
-                {lang === "en" ? "عربي" : "EN"}
+                {lang === "en" ? "Ø¹Ø±Ø¨ÙŠ" : "EN"}
               </button>
 
               {/* Wishlist - desktop + mobile */}
@@ -160,7 +160,7 @@ export function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={lang === "ar" ? "ابحث عن المنتجات..." : "Search......."}
+                placeholder={lang === "ar" ? "Ø§Ø¨Ø­Ø« Ø¹Ù† Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª..." : "Search......."}
               />
               <button type="submit" aria-label="Search">
                 <Search size={20} />
@@ -192,12 +192,12 @@ export function Header() {
               {/* Extra nav items */}
               <div className="nav-item-wrapper">
                 <Link href="/category" className="nav-item">
-                  {lang === "ar" ? "تسوق حسب الفئة" : "Shop by Category"}
+                  {lang === "ar" ? "ØªØ³ÙˆÙ‚ Ø­Ø³Ø¨ Ø§Ù„ÙØ¦Ø©" : "Shop by Category"}
                 </Link>
               </div>
               <div className="nav-item-wrapper">
                 <Link href="/best-sellers" className="nav-item">
-                  {lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}
+                  {lang === "ar" ? "Ø§Ù„Ø£ÙƒØ«Ø± Ù…Ø¨ÙŠØ¹Ø§Ù‹" : "Best sellers"}
                 </Link>
               </div>
             </div>
@@ -277,7 +277,7 @@ export function Header() {
         >
           {/* Drawer header */}
           <div className="flex items-center justify-between px-5 h-14 border-b border-black/5">
-            <span className="font-bold text-[15px] text-gray-900">{lang === "ar" ? "القائمة" : "Menu"}</span>
+            <span className="font-bold text-[15px] text-gray-900">{lang === "ar" ? "Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©" : "Menu"}</span>
             <button
               onClick={() => { setMobileOpen(false); setMenuStack([{ type: "root" }]); }}
               aria-label="Close menu"
@@ -309,11 +309,11 @@ export function Header() {
                         </button>
                       ))}
                       <Link href="/category" className="mobile-menu-row body2" onClick={() => { setMobileOpen(false); }}>
-                        <span>{lang === "ar" ? "تسوق حسب الفئة" : "Shop by Category"}</span>
+                        <span>{lang === "ar" ? "ØªØ³ÙˆÙ‚ Ø­Ø³Ø¨ Ø§Ù„ÙØ¦Ø©" : "Shop by Category"}</span>
                         <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
                       </Link>
                       <Link href="/category" className="mobile-menu-row body2" onClick={() => { setMobileOpen(false); }}>
-                        <span>{lang === "ar" ? "الأكثر مبيعاً" : "Best sellers"}</span>
+                        <span>{lang === "ar" ? "Ø§Ù„Ø£ÙƒØ«Ø± Ù…Ø¨ÙŠØ¹Ø§Ù‹" : "Best sellers"}</span>
                         <ChevronRight size={18} className="text-gray-400 rtl:rotate-180" />
                       </Link>
 
@@ -323,7 +323,7 @@ export function Header() {
                           onClick={() => setLang(lang === "en" ? "ar" : "en")}
                           className="w-full text-sm border border-black/10 rounded-lg px-3 py-2.5 font-semibold"
                         >
-                          {lang === "en" ? "العربية" : "English"}
+                          {lang === "en" ? "Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©" : "English"}
                         </button>
                       </div>
                     </div>
@@ -337,7 +337,7 @@ export function Header() {
                       <div>
                         <button className="mobile-menu-back" onClick={() => setMenuStack(menuStack.slice(0, -1))}>
                           <ChevronLeft size={18} className="rtl:rotate-180" />
-                          <span>{lang === "ar" ? "القائمة" : "Menu"}</span>
+                          <span>{lang === "ar" ? "Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©" : "Menu"}</span>
                         </button>
                         <div className="px-5 pt-4 pb-2">
                           <h3 className="text-[19px] font-bold text-gray-900">{lang === "ar" ? cat.label_ar : cat.label}</h3>
