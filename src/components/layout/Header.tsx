@@ -10,9 +10,12 @@ import {
   Menu,
   X,
   Phone,
+  User,
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
+import { useUiStore } from "@/lib/ui-store";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { useLanguageStore, useCartStore } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import type { NavItem } from "@/lib/types";
@@ -42,6 +45,7 @@ export function Header() {
   const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = useState(false);
+  const setCartOpen = useUiStore((s) => s.setCartOpen);
   const [menuStack, setMenuStack] = useState<MenuView[]>([{ type: "root" }]);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [navData, setNavData] = useState<NavItem[]>([]);
@@ -125,15 +129,24 @@ export function Header() {
                 <Heart size={20} />
               </Link>
 
-              {/* Cart - desktop + mobile */}
-              <Link href="/cart" className="flex items-center justify-center header-action-btn relative" aria-label="Cart">
+              {/* Account */}
+              <Link href="/account" className="flex items-center justify-center header-action-btn" aria-label="Account">
+                <User size={20} />
+              </Link>
+
+              {/* Cart - opens the side drawer (source-site UX) */}
+              <button
+                onClick={() => setCartOpen(true)}
+                className="flex items-center justify-center header-action-btn relative"
+                aria-label="Cart"
+              >
                 <ShoppingCart size={20} />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-white text-[var(--color-primary)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}
-              </Link>
+              </button>
 
               {/* Phone - desktop (REMOVED) */}
 
@@ -251,6 +264,9 @@ export function Header() {
           )}
         </div>
       </header>
+
+      {/* Side cart drawer - source-site UX */}
+      <CartDrawer />
 
       {/* Mobile Slide-out Menu - PetCentral-style drill-down drawer.
           Opens from the LEFT in English (LTR), from the RIGHT in Arabic (RTL) */}

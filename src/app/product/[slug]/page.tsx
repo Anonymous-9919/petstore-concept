@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ProductCard } from "@/components/product/ProductCard";
 import { useLanguageStore, useCartStore } from "@/lib/store";
+import { useUiStore } from "@/lib/ui-store";
 import { formatPrice, getBestPrice, cn } from "@/lib/utils";
 import { getProductBySlug } from "@/lib/data";
 import storeData from "@/data/store.json";
@@ -23,6 +24,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const { slug } = use(params);
   const lang = useLanguageStore((s) => s.lang);
   const addItem = useCartStore((s) => s.addItem);
+  const setCartOpen = useUiStore((s) => s.setCartOpen);
   const [product, setProduct] = useState<Product | null>(null);
   const [related, setRelated] = useState<Product[]>([]);
   const [activeImg, setActiveImg] = useState(0);
@@ -60,6 +62,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
       price: best,
       image: images[0] || "",
     });
+    setCartOpen(true); // open side cart like the source site
   };
 
   return (

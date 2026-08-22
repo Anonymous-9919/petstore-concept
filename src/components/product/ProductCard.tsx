@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useLanguageStore, useCartStore, useWishlistStore } from "@/lib/store";
+import { useUiStore } from "@/lib/ui-store";
 import { t } from "@/lib/i18n";
 import { formatPrice, cn, getProductImage, getBestPrice, calcDiscount, stripHtml, truncate } from "@/lib/utils";
 import type { Product } from "@/lib/types";
@@ -17,6 +18,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((s) => s.addItem);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
+  const setCartOpen = useUiStore((s) => s.setCartOpen);
   const { addItem: addWishlist, removeItem: removeWishlist, isInWishlist } = useWishlistStore();
   const wishlisted = isInWishlist(product.id);
 
@@ -46,6 +48,7 @@ export function ProductCard({ product }: ProductCardProps) {
       price: bestPrice,
       image: getProductImage(product),
     });
+    setCartOpen(true); // open side cart like the source site
   };
 
   const handleIncrease = (e: React.MouseEvent) => {

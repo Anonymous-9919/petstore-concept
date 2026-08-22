@@ -1915,3 +1915,35 @@ body {
   overflow-wrap: break-word;
 }
 .pdp-related { margin-top: 42px; }
+
+/* ============================================
+   ACCOUNT PAGE
+   ============================================ */
+.account-input {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14.5px;
+  background: #fff;
+}
+.account-input:focus { outline: none; border-color: var(--color-primary); }
+.account-card {
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 22px;
+  box-shadow: 0 4px 24px rgba(20,20,20,0.06);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.account-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(249,115,22,0.13); }
+.account-card h3 {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #17181a;
+  margin-top: 8px;
+}
+.account-card p { font-size: 13.5px; color: #6b7280; margin-top: 3px; }
+.account-card svg { color: var(--color-primary); }
