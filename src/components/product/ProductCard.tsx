@@ -75,6 +75,11 @@ export function ProductCard({ product }: ProductCardProps) {
 
   const name = lang === "ar" ? product.ar_name || product.name : product.name;
 
+  // Second image for hover swap (source-site behaviour)
+  const imgs = Array.isArray(product.images) ? product.images : [];
+  const secondImage = imgs[1]?.src;
+  const hasSecond = !!secondImage;
+
   return (
     <Link href={`/product/${product.slug}`} className="group">
       <div className="product-card relative">
@@ -100,14 +105,26 @@ export function ProductCard({ product }: ProductCardProps) {
           />
         </button>
 
-        {/* Image */}
+        {/* Image - hover swaps to second image like the source site */}
         <div className="product-card-image">
           <img
             src={getProductImage(product)}
             alt={name}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            className={cn(
+              "w-full h-full object-contain transition-opacity duration-300",
+              hasSecond ? "group-hover:opacity-0" : "group-hover:scale-105"
+            )}
             loading="lazy"
           />
+          {hasSecond && (
+            <img
+              src={secondImage}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2"
+              loading="lazy"
+            />
+          )}
         </div>
 
         {/* Content */}

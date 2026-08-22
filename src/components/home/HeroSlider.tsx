@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 interface Slide {
   id: number;
@@ -29,6 +30,7 @@ export function HeroSlider() {
   const [slides, setSlides] = useState<Slide[]>([]);
   const touchStartX = useRef<number | null>(null);
   const pausedRef = useRef(false);
+  const swipedRef = useRef(false);
 
   useEffect(() => {
     loadSlides().then(setSlides);
@@ -50,12 +52,14 @@ export function HeroSlider() {
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     pausedRef.current = true;
+    swipedRef.current = false;
   };
   const onTouchMove = (e: React.TouchEvent) => {
     if (touchStartX.current === null || slides.length < 2) return;
     const delta = e.touches[0].clientX - touchStartX.current;
     if (Math.abs(delta) > 50) {
       goTo(current + (delta < 0 ? 1 : -1));
+      swipedRef.current = true; // suppress link navigation on swipe
       touchStartX.current = e.touches[0].clientX; // allow continuous swipes
     }
   };
@@ -92,6 +96,16 @@ export function HeroSlider() {
               key={s.id}
               className={`hero-slide ${idx === current ? "active" : ""}`}
             >
+              {/* Whole slide links to its related products collection.
+                  Swipes suppress navigation; plain taps follow the link. */}
+              <Link
+                href={s.href || "/"}
+                className="absolute inset-0 z-[3]"
+                aria-label={s.title_en || `Slide ${s.id}`}
+                onClick={(e) => {
+                  if (swipedRef.current) e.preventDefault();
+                }}
+              />
               {/* Dedicated mobile art below 993px (1.9-ratio, fills box exactly),
                   full desktop art from 993px up - official-site structure */}
               <img
