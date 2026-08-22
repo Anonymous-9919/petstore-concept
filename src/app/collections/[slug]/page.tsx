@@ -26,7 +26,7 @@ export default async function CollectionPage({ params }: { params: Params }) {
     <div className="min-h-screen flex flex-col">
       <AnnouncementBar />
       <Header />
-      <main className="flex-1 page-container pt-14 pb-16">
+      <main className="flex-1 page-container pt-16 pb-20">
         <h1 className="section-heading mb-10">{def.title_en}</h1>
         <CollectionBrowser items={items} />
       </main>

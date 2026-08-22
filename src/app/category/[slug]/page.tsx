@@ -89,12 +89,12 @@ function CategoryInner({ slug }: { slug: string }) {
       </div>
 
       {/* Title */}
-      <div className="page-container pt-10 pb-8">
+      <div className="page-container pt-16 pb-12">
         <h1 className="section-heading">{lang === "ar" ? catName.ar : catName.en}</h1>
       </div>
 
       {/* Detailed faceted browser takes over everywhere */}
-      <div className="page-container pb-16">
+      <div className="page-container pb-20">
         {loading ? (
           <div className="text-center py-20 text-gray-500">{t("general.loading", lang)}</div>
         ) : (
