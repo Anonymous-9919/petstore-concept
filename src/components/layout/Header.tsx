@@ -252,10 +252,13 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Slide-out Menu - PetCentral-style drill-down drawer */}
+      {/* Mobile Slide-out Menu - PetCentral-style drill-down drawer.
+          Opens from the LEFT in English (LTR), from the RIGHT in Arabic (RTL) */}
       <div className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
         <div className="absolute inset-0 bg-black/50" onClick={() => { setMobileOpen(false); setMenuStack([{ type: "root" }]); }} />
-        <div className="absolute inset-y-0 right-0 w-[85%] max-w-[360px] bg-[#fdf9fe] shadow-xl overflow-hidden flex flex-col">
+        <div
+          className={`absolute inset-y-0 w-[85%] max-w-[360px] bg-[#fdf9fe] shadow-xl overflow-hidden flex flex-col ${lang === "ar" ? "right-0" : "left-0"}`}
+        >
           {/* Drawer header */}
           <div className="flex items-center justify-between px-5 h-14 border-b border-black/5">
             <span className="font-bold text-[15px] text-gray-900">{lang === "ar" ? "القائمة" : "Menu"}</span>
