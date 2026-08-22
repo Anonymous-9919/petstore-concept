@@ -29,7 +29,7 @@ export default function CartPage() {
       <main className="flex-1 page-container pt-12 pb-16">
         {/* Breadcrumb */}
         <nav className="pdp-breadcrumb !mb-8">
-          <Link href="/">{t("cart.home", lang)}</Link>
+          <Link href="/">{t("breadcrumb.home", lang)}</Link>
           <span>/</span>
           <span>{t("cart.title", lang)}</span>
         </nav>
@@ -108,12 +108,12 @@ export default function CartPage() {
                   </div>
 
                   {/* Line total + remove */}
-                  <div className="cart-cell font-bold relative" data-label={lang === "ar" ? "الإجمالي" : "Total"} dir="ltr">
-                    {formatPrice((parseFloat(item.price) * item.quantity).toFixed(3), "KD", 3)}
+                  <div className="cart-cell font-bold flex items-center justify-end gap-2" data-label={lang === "ar" ? "الإجمالي" : "Total"} dir="ltr">
+                    <span>{formatPrice((parseFloat(item.price) * item.quantity).toFixed(3), "KD", 3)}</span>
                     <button
                       onClick={() => removeItem(item.key)}
                       aria-label="Remove"
-                      className="absolute top-1/2 -translate-y-1/2 ltr:right-0 rtl:left-0 text-gray-300 hover:text-red-500 md:hidden"
+                      className="text-gray-300 hover:text-red-500 shrink-0 md:hidden"
                     >
                       <Trash2 size={15} />
                     </button>

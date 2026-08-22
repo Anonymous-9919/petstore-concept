@@ -56,12 +56,31 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const hasThumbs = images.length > 1;
   const inStock = product?.stock_status !== "outofstock";
 
-  // Sync thumb highlight when the user swipes the mobile strip
+  // Sync thumb highlight when the user swipes the mobile strip.
+  // Center-of-viewport matching so it works identically in LTR and RTL.
   const onSliderScroll = () => {
     const el = trackRef.current;
     if (!el || !hasThumbs || images.length < 2) return;
-    const idx = Math.round((el.scrollLeft / el.scrollWidth) * images.length);
-    if (idx !== activeImg && idx >= 0 && idx < images.length) setActiveImg(idx);
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let best = 0;
+    let bestDist = Infinity;
+    Array.from(el.children).forEach((child, i) => {
+      const c = child as HTMLElement;
+      const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    });
+    if (best !== activeImg && best >= 0 && best < images.length) setActiveImg(best);
+  };
+
+  // Scroll the mobile swipe strip to image i (direction-safe via scrollIntoView)
+  const goToImage = (i: number) => {
+    const el = trackRef.current?.children[i] as HTMLElement | undefined;
+    if (el && typeof window !== "undefined" && window.innerWidth < 993) {
+      el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
   };
 
   const addToCart = () => {
@@ -125,13 +144,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                             if (!hasThumbs) return;
                             const next = (activeImg + 1) % images.length;
                             setActiveImg(next);
-                            // On mobile, scroll the strip to reveal the clicked/next image
-                            if (window.innerWidth < 768 && trackRef.current) {
-                              trackRef.current.scrollTo({
-                                left: (trackRef.current.scrollWidth / images.length) * next,
-                                behavior: "smooth",
-                              });
-                            }
+                            goToImage(next);
                           }}
                         />
                       ))}
@@ -146,7 +159,10 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                           src={src}
                           alt=""
                           className={cn("pdp-thumb", i === activeImg && "active")}
-                          onClick={() => setActiveImg(i)}
+                          onClick={() => {
+                            setActiveImg(i);
+                            goToImage(i);
+                          }}
                         />
                       ))}
                     </div>
